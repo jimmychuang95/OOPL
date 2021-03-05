@@ -16,6 +16,7 @@ bool Guess(int number) {
 	if (number == target)return true;
 	return flase;
 
+
 }
 
 int main(array<System::string^>^args)
