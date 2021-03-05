@@ -22,6 +22,7 @@ bool Guess(int number) {
 	else std::cout << "Wrong" << std::endl;
 	return flase;
 
+
 }
 
 int main(array<System::string^>^args)
