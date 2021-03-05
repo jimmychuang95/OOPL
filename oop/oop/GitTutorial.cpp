@@ -6,7 +6,16 @@
 using namespace  System;
 
 bool Guess(int number) {
-	return false
+	static int target = -1;
+
+	if (target == -1) {
+		Random r;
+		target = r.Next() % 100 + 1;
+	}
+
+	if (number == target)return true;
+	return flase;
+
 }
 
 int main(array<System::string^>^args)
