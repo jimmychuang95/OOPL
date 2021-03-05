@@ -14,8 +14,13 @@ bool Guess(int number) {
 	}
 
 
-	if (number == target)return true;
-	return flase;
+	)if (number == target) {
+	std::cout << "Correct!";
+	target = -1;
+	return true;
+	}
+	else std::cout << "Wrong" << std::endl;
+	return false;
 }
 
 int main(array<System::string^>^args)
