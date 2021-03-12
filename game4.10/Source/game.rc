@@ -108,27 +108,23 @@ IDB_BITMAP3             BITMAP                  "..\\res\\bitmap3.bmp"
 
 IDB_BITMAP4             BITMAP                  "..\\res\\bitmap4.bmp"
 
-IDB_BITMAP5             BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\Bitmaps\\homepage.bmp"
-
 IDB_BITMAP6             BITMAP                  "..\\res\\bitmap6.bmp"
-
-IDB_BITMAP7             BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\RES\\homepage.bmp"
 
 IDB_BITMAP8             BITMAP                  "..\\res\\bitmap8.bmp"
 
-IDB_BITMAP9             BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\Bitmaps\\level_select.bmp"
+IDB_BITMAP9             BITMAP                  "..\\Bitmaps\\stage_select.bmp"
 
-MY_HOMEPAGE             BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\Bitmaps\\homepage_try.bmp"
+MY_HOMEPAGE             BITMAP                  "..\\Bitmaps\\homepage.bmp"
 
-MY_LEVEL_SELECT         BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\Bitmaps\\stage_select.bmp"
+MY_LEVEL_SELECT         BITMAP                  "..\\Bitmaps\\stage_select.bmp"
 
-MY_STAGE_1              BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\Bitmaps\\stage_1.bmp"
+MY_STAGE_1              BITMAP                  "..\\Bitmaps\\stage_1.bmp"
 
-MY_LEADER               BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\Bitmaps\\leader.bmp"
+MY_LEADER               BITMAP                  "..\\Bitmaps\\leader.bmp"
 
-MY_BOX                  BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\Bitmaps\\box.bmp"
+MY_BOX                  BITMAP                  "..\\Bitmaps\\box.bmp"
 
-MY_FLOOR                BITMAP                  "C:\\Users\\LAB1223\\Desktop\\game4.10\\Bitmaps\\floor.bmp"
+MY_FLOOR                BITMAP                  "..\\Bitmaps\\floor.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
