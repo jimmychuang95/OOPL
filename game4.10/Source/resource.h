@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ 玻ネ Include 郎
-// パ game.rc ㄏノ
+// Microsoft Visual C++ 產生的 Include 檔案。
+// 由 game.rc 使用
 //
 #define IDD_ABOUTBOX                    100
 #define IDP_SOCKETS_INIT_FAILED         104
@@ -48,6 +48,11 @@
 #define MY_LEADER                       169
 #define MY_BOX                          170
 #define MY_FLOOR                        171
+#define MY_LEADER_DOWN                  172
+#define MY_LEADER_LEFT                  173
+#define MY_LEADER_RIGHT                 174
+#define IDB_BITMAP11                    175
+#define MY_LEADER_UP                    175
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -60,7 +65,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        172
+#define _APS_NEXT_RESOURCE_VALUE        176
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
