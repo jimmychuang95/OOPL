@@ -32,6 +32,8 @@ MY_LEADER_RIGHT         BITMAP                  "D:\\NTUT\\OOPL\\oopl\\game4.10\
 
 MY_LEADER_UP            BITMAP                  "D:\\NTUT\\OOPL\\oopl\\game4.10\\Bitmaps\\leader_up.bmp"
 
+MY_STAGE_ONE            BITMAP                  "D:\\NTUT\\OOPL\\oopl\\game4.10\\Bitmaps\\stage_one.bmp"
+
 #endif    // 中文 (簡體，中華人民共和國) resources
 /////////////////////////////////////////////////////////////////////////////
 

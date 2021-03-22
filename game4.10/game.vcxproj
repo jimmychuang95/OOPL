@@ -329,8 +329,12 @@
     <Image Include="Bitmaps\homepage.bmp" />
     <Image Include="Bitmaps\homepage_try.bmp" />
     <Image Include="Bitmaps\leader.bmp" />
+    <Image Include="Bitmaps\leader_left.bmp" />
+    <Image Include="Bitmaps\leader_right.bmp" />
+    <Image Include="Bitmaps\leader_up.bmp" />
     <Image Include="Bitmaps\level_select.bmp" />
     <Image Include="Bitmaps\stage_1.bmp" />
+    <Image Include="Bitmaps\stage_one.bmp" />
     <Image Include="Bitmaps\stage_select.bmp" />
     <Image Include="res\bitmap3.bmp" />
     <Image Include="res\bitmap4.bmp" />

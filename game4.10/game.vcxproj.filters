@@ -213,5 +213,17 @@
     <Image Include="Bitmaps\floor.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Bitmaps\leader_left.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Bitmaps\leader_right.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Bitmaps\leader_up.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Bitmaps\stage_one.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
