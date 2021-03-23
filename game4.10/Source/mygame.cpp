@@ -342,12 +342,12 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
 {
-	eraser.SetMovingLeft(true);
+	//eraser.SetMovingLeft(true);
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 {
-	eraser.SetMovingLeft(false);
+	//eraser.SetMovingLeft(false);
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 矪瞶菲公笆
@@ -357,12 +357,12 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
 {
-	eraser.SetMovingRight(true);
+	//eraser.SetMovingRight(true);
 }
 
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 {
-	eraser.SetMovingRight(false);
+	//eraser.SetMovingRight(false);
 }
 
 void CGameStateRun::OnShow()

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Resource.h"
 #include <mmsystem.h>
 #include <ddraw.h>
@@ -10,6 +10,7 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// CEraser: Eraser class
 	/////////////////////////////////////////////////////////////////////////////
+	const int MOVE_SIZE = 38;
 
 	CEraser::CEraser()
 	{
@@ -46,16 +47,20 @@ namespace game_framework {
 	}
 
 	void CEraser::LoadBitmap()
-	{
-		animation.AddBitmap(IDB_ERASER1, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER3, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
+	{	
+		animation.AddBitmap(LEADER_DOWN, RGB(255, 255, 255));
+		animation.AddBitmap(LEADER_UP, RGB(255, 255, 255));
+		animation.AddBitmap(LEADER_LEFT, RGB(255, 255, 255));
+		animation.AddBitmap(LEADER_RIGHT, RGB(255, 255, 255));
+		//animation.AddBitmap(IDB_ERASER1, RGB(255, 255, 255));
+		//animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
+		//animation.AddBitmap(IDB_ERASER3, RGB(255, 255, 255));
+		//animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
 	}
 
 	void CEraser::OnMove()
 	{
-		const int STEP_SIZE = 2;
+		const int STEP_SIZE = 3;
 		animation.OnMove();
 		if (isMovingLeft)
 			x -= STEP_SIZE;

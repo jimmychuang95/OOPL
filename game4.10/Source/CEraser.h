@@ -1,32 +1,32 @@
-namespace game_framework {
+ï»¿namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
-	// ³o­Óclass´£¨Ñ¥i¥H¥ÎÁä½L©Î·Æ¹«±±¨îªºÀ¿¤l
-	// ¬İÀ´´N¥i¥H§ï¼g¦¨¦Û¤vªºµ{¦¡¤F
+	// ç¡‚î…ŒclassçŸ—ã„‘î™¯î™ãƒé¾„çµƒâ”ªè²å…¬åŒ—îŸ‘î€™æ½î˜’
+	// îƒ¸æ¥ç¢î™¯î™Ñç³¶Î˜îî˜œî€™ç¥˜Î‘î—¬
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CEraser
 	{
 	public:
 		CEraser();
-		int  GetX1();					// À¿¤l¥ª¤W¨¤ x ®y¼Ğ
-		int  GetY1();					// À¿¤l¥ª¤W¨¤ y ®y¼Ğ
-		int  GetX2();					// À¿¤l¥k¤U¨¤ x ®y¼Ğ
-		int  GetY2();					// À¿¤l¥k¤U¨¤ y ®y¼Ğ
-		void Initialize();				// ³]©wÀ¿¤l¬°ªì©l­È
-		void LoadBitmap();				// ¸ü¤J¹Ï§Î
-		void OnMove();					// ²¾°ÊÀ¿¤l
-		void OnShow();					// ±NÀ¿¤l¹Ï§Î¶K¨ìµe­±
-		void SetMovingDown(bool flag);	// ³]©w¬O§_¥¿¦b©¹¤U²¾°Ê
-		void SetMovingLeft(bool flag);	// ³]©w¬O§_¥¿¦b©¹¥ª²¾°Ê
-		void SetMovingRight(bool flag); // ³]©w¬O§_¥¿¦b©¹¥k²¾°Ê
-		void SetMovingUp(bool flag);	// ³]©w¬O§_¥¿¦b©¹¤W²¾°Ê
-		void SetXY(int nx, int ny);		// ³]©wÀ¿¤l¥ª¤W¨¤®y¼Ğ
+		int  GetX1();					// æ½î˜’ã‚ªî—½Ã  x ç•’å¤¹
+		int  GetY1();					// æ½î˜’ã‚ªî—½Ã  y ç•’å¤¹
+		int  GetX2();					// æ½î˜’î™±î—»Ã  x ç•’å¤¹
+		int  GetY2();					// æ½î˜’î™±î—»Ã  y ç•’å¤¹
+		void Initialize();				// ç ï¹šæ½î˜’îƒ‹î‹ï¹î…
+		void LoadBitmap();				// æ›´î—°ç“œî¬
+		void OnMove();					// ç°¿ç¬†æ½î˜’
+		void OnShow();					// ç›¢æ½î˜’ç“œî¬ç¦ŸîŸç¤¶î„ª
+		void SetMovingDown(bool flag);	// ç ï¹šçŒîœ¥ã‚¿î›ˆâ”•î—»ç°¿ç¬†
+		void SetMovingLeft(bool flag);	// ç ï¹šçŒîœ¥ã‚¿î›ˆâ”•ã‚ªç°¿ç¬†
+		void SetMovingRight(bool flag); // ç ï¹šçŒîœ¥ã‚¿î›ˆâ”•î™±ç°¿ç¬†
+		void SetMovingUp(bool flag);	// ç ï¹šçŒîœ¥ã‚¿î›ˆâ”•î—½ç°¿ç¬†
+		void SetXY(int nx, int ny);		// ç ï¹šæ½î˜’ã‚ªî—½Ã ç•’å¤¹
 	protected:
-		CAnimation animation;		// À¿¤lªº°Êµe
-		int x, y;					// À¿¤l¥ª¤W¨¤®y¼Ğ
-		bool isMovingDown;			// ¬O§_¥¿¦b©¹¤U²¾°Ê
-		bool isMovingLeft;			// ¬O§_¥¿¦b©¹¥ª²¾°Ê
-		bool isMovingRight;			// ¬O§_¥¿¦b©¹¥k²¾°Ê
-		bool isMovingUp;			// ¬O§_¥¿¦b©¹¤W²¾°Ê
+		CAnimation animation;		// æ½î˜’î€™ç¬†ç¤¶
+		int x, y;					// æ½î˜’ã‚ªî—½Ã ç•’å¤¹
+		bool isMovingDown;			// çŒîœ¥ã‚¿î›ˆâ”•î—»ç°¿ç¬†
+		bool isMovingLeft;			// çŒîœ¥ã‚¿î›ˆâ”•ã‚ªç°¿ç¬†
+		bool isMovingRight;			// çŒîœ¥ã‚¿î›ˆâ”•î™±ç°¿ç¬†
+		bool isMovingUp;			// çŒîœ¥ã‚¿î›ˆâ”•î—½ç°¿ç¬†
 	};
 }
