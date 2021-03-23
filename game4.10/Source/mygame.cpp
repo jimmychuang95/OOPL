@@ -26,7 +26,7 @@
  *         demonstrate the use of states.
  *      2. Demo the use of CInteger in CGameStateRun.
  *   2005-09-13
- *      Rewrite the codes for CBall and CEraser.
+ *      Rewrite the codes for CBall and CLeader.
  *   2005-09-20 V4.2Beta1.
  *   2005-09-29 V4.2Beta2.
  *      1. Add codes to display IDC_GAMECURSOR in GameStateRun.

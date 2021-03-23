@@ -4,40 +4,40 @@
 #include <ddraw.h>
 #include "audio.h"
 #include "gamelib.h"
-#include "CEraser.h"
+#include "CLeader.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
-	// CEraser: Eraser class
+	// CLeader: Leader class
 	/////////////////////////////////////////////////////////////////////////////
 	const int MOVE_SIZE = 38;
 
-	CEraser::CEraser()
+	CLeader::CLeader()
 	{
 		Initialize();
 	}
 
-	int CEraser::GetX1()
+	int CLeader::GetX1()
 	{
 		return x;
 	}
 
-	int CEraser::GetY1()
+	int CLeader::GetY1()
 	{
 		return y;
 	}
 
-	int CEraser::GetX2()
+	int CLeader::GetX2()
 	{
 		return x + animation.Width();
 	}
 
-	int CEraser::GetY2()
+	int CLeader::GetY2()
 	{
 		return y + animation.Height();
 	}
 
-	void CEraser::Initialize()
+	void CLeader::Initialize()
 	{
 		const int X_POS = 280;
 		const int Y_POS = 400;
@@ -46,19 +46,15 @@ namespace game_framework {
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 	}
 
-	void CEraser::LoadBitmap()
+	void CLeader::LoadBitmap()
 	{	
 		animation.AddBitmap(LEADER_DOWN, RGB(255, 255, 255));
 		animation.AddBitmap(LEADER_UP, RGB(255, 255, 255));
 		animation.AddBitmap(LEADER_LEFT, RGB(255, 255, 255));
 		animation.AddBitmap(LEADER_RIGHT, RGB(255, 255, 255));
-		//animation.AddBitmap(IDB_ERASER1, RGB(255, 255, 255));
-		//animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		//animation.AddBitmap(IDB_ERASER3, RGB(255, 255, 255));
-		//animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
 	}
 
-	void CEraser::OnMove()
+	void CLeader::OnMove()
 	{
 		const int STEP_SIZE = 3;
 		animation.OnMove();
@@ -72,32 +68,32 @@ namespace game_framework {
 			y += STEP_SIZE;
 	}
 
-	void CEraser::SetMovingDown(bool flag)
+	void CLeader::SetMovingDown(bool flag)
 	{
 		isMovingDown = flag;
 	}
 
-	void CEraser::SetMovingLeft(bool flag)
+	void CLeader::SetMovingLeft(bool flag)
 	{
 		isMovingLeft = flag;
 	}
 
-	void CEraser::SetMovingRight(bool flag)
+	void CLeader::SetMovingRight(bool flag)
 	{
 		isMovingRight = flag;
 	}
 
-	void CEraser::SetMovingUp(bool flag)
+	void CLeader::SetMovingUp(bool flag)
 	{
 		isMovingUp = flag;
 	}
 
-	void CEraser::SetXY(int nx, int ny)
+	void CLeader::SetXY(int nx, int ny)
 	{
 		x = nx; y = ny;
 	}
 
-	void CEraser::OnShow()
+	void CLeader::OnShow()
 	{
 		animation.SetTopLeft(x, y);
 		animation.OnShow();

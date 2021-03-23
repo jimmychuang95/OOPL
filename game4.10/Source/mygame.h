@@ -1,5 +1,5 @@
-/*
- * mygame.h: ¥»ÀÉ®×Àx¹CÀ¸¥»¨­ªºclassªºinterface
+ï»¿/*
+ * mygame.h: ã‚»éƒî†®çº—ç¬´æ ã‚»Åî€™classî€™interface
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -22,7 +22,7 @@
  *      1. Add CGameStateInit, CGameStateRun, and CGameStateOver to
  *         demonstrate the use of states.
  *   2005-09-13
- *      Rewrite the codes for CBall and CEraser.
+ *      Rewrite the codes for CBall and CLeader.
  *   2005-09-20 V4.2Beta1.
  *   2005-09-29 V4.2Beta2.
  *   2006-02-08 V4.2
@@ -38,7 +38,7 @@
  *      3. Use ShowInitProgress(percent) to display loading progress.
 */
 
-#include "CEraser.h"
+#include "CLeader.h"
 #include "CBall.h"
 #include "CBouncingBall.h"
 
@@ -47,77 +47,77 @@ namespace game_framework {
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
 
-	enum AUDIO_ID {				// ©w¸q¦UºØ­µ®Äªº½s¸¹
+	enum AUDIO_ID {				// ï¹šç«¡îš»è´ºî„®î†›î€™çµªè…¹
 		AUDIO_DING,				// 0
 		AUDIO_LAKE,				// 1
 		AUDIO_NTUT				// 2
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// ³o­Óclass¬°¹CÀ¸ªº¹CÀ¸¶}ÀYµe­±ª«¥ó
-	// ¨C­ÓMember functionªºImplementation³£­n§ËÀ´
+	// ç¡‚î…Œclassîƒ‹ç¬´æ î€™ç¬´æ ç§¨ç¹·ç¤¶î„ªî€Šãƒ³
+	// â€“î…ŒMember functionî€™Implementationå¸¸ç’¶î©æ¥
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateInit : public CGameState {
 	public:
 		CGameStateInit(CGame *g);
-		void OnInit();  								// ¹CÀ¸ªºªì­È¤Î¹Ï§Î³]©w
-		void OnBeginState();							// ³]©w¨C¦¸­«ª±©Ò»İªºÅÜ¼Æ
-		void OnKeyUp(UINT, UINT, UINT); 				// ³B²zÁä½LUpªº°Ê§@
-		void OnLButtonDown(UINT nFlags, CPoint point);  // ³B²z·Æ¹«ªº°Ê§@
+		void OnInit();  								// ç¬´æ î€™î‹î…ã®ç“œî¬ç ï¹š
+		void OnBeginState();							// ç ï¹šâ€“Î©î„¤î€â”®æƒ î€™è·‘è®¡
+		void OnKeyUp(UINT, UINT, UINT); 				// çŸªç¶é¾„çµƒUpî€™ç¬†îœ†
+		void OnLButtonDown(UINT nFlags, CPoint point);  // çŸªç¶è²å…¬î€™ç¬†îœ†
 	protected:
-		void OnShow();									// Åã¥Ü³o­Óª¬ºAªº¹CÀ¸µe­±
+		void OnShow();									// é™ªãƒœç¡‚î…Œî€‹ç¯ˆî€™ç¬´æ ç¤¶î„ª
 	private:
-		CMovingBitmap logo;								// csieªºlogo
+		CMovingBitmap logo;								// csieî€™logo
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// ³o­Óclass¬°¹CÀ¸ªº¹CÀ¸°õ¦æª«¥ó¡A¥D­nªº¹CÀ¸µ{¦¡³£¦b³o¸Ì
-	// ¨C­ÓMember functionªºImplementation³£­n§ËÀ´
+	// ç¡‚î…Œclassîƒ‹ç¬´æ î€™ç¬´æ ç£…ï¸½î€Šãƒ³î“‡î™Šç’¶î€™ç¬´æ ç¥˜Î‘å¸¸î›ˆç¡‚æŸ‘
+	// â€“î…ŒMember functionî€™Implementationå¸¸ç’¶î©æ¥
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateRun : public CGameState {
 	public:
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
-		void OnBeginState();							// ³]©w¨C¦¸­«ª±©Ò»İªºÅÜ¼Æ
-		void OnInit();  								// ¹CÀ¸ªºªì­È¤Î¹Ï§Î³]©w
+		void OnBeginState();							// ç ï¹šâ€“Î©î„¤î€â”®æƒ î€™è·‘è®¡
+		void OnInit();  								// ç¬´æ î€™î‹î…ã®ç“œî¬ç ï¹š
 		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT);
-		void OnLButtonDown(UINT nFlags, CPoint point);  // ³B²z·Æ¹«ªº°Ê§@
-		void OnLButtonUp(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@
-		void OnMouseMove(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@ 
-		void OnRButtonDown(UINT nFlags, CPoint point);  // ³B²z·Æ¹«ªº°Ê§@
-		void OnRButtonUp(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@
+		void OnLButtonDown(UINT nFlags, CPoint point);  // çŸªç¶è²å…¬î€™ç¬†îœ†
+		void OnLButtonUp(UINT nFlags, CPoint point);	// çŸªç¶è²å…¬î€™ç¬†îœ†
+		void OnMouseMove(UINT nFlags, CPoint point);	// çŸªç¶è²å…¬î€™ç¬†îœ† 
+		void OnRButtonDown(UINT nFlags, CPoint point);  // çŸªç¶è²å…¬î€™ç¬†îœ†
+		void OnRButtonUp(UINT nFlags, CPoint point);	// çŸªç¶è²å…¬î€™ç¬†îœ†
 	protected:
-		void OnMove();									// ²¾°Ê¹CÀ¸¤¸¯À
-		void OnShow();									// Åã¥Ü³o­Óª¬ºAªº¹CÀ¸µe­±
+		void OnMove();									// ç°¿ç¬†ç¬´æ ã˜î‡µ
+		void OnShow();									// é™ªãƒœç¡‚î…Œî€‹ç¯ˆî€™ç¬´æ ç¤¶î„ª
 	private:
-		const int		NUMBALLS;	// ²yªºÁ`¼Æ
-		CMovingBitmap	background;	// ­I´º¹Ï
-		CMovingBitmap	help;		// »¡©ú¹Ï
-		CBall			*ball;		// ²yªº°}¦C
-		CMovingBitmap	corner;		// ¨¤¸¨¹Ï
-		CEraser			eraser;		// ©ç¤l
-		CInteger		hits_left;	// ³Ñ¤Uªº¼²À»¼Æ
-		CBouncingBall   bball;		// ¤ÏÂĞ¼u¸õªº²y
+		const int		NUMBALLS;	// ç´î€™ç¾†è®¡
+		CMovingBitmap	background;	// ç’‰æ˜¥ç“œ
+		CMovingBitmap	help;		// å¼§î ‹ç“œ
+		CBall			*ball;		// ç´î€™çššîš©
+		CMovingBitmap	corner;		// Ã è¾…ç“œ
+		CLeader			eraser;		// â•ƒî˜’
+		CInteger		hits_left;	// é€î—»î€™ç–¾é˜‘è®¡
+		CBouncingBall   bball;		// ã¯æ»¦ç´†é“¬î€™ç´
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// ³o­Óclass¬°¹CÀ¸ªºµ²§ôª¬ºA(Game Over)
-	// ¨C­ÓMember functionªºImplementation³£­n§ËÀ´
+	// ç¡‚î…Œclassîƒ‹ç¬´æ î€™æŒ¡î±î€‹ç¯ˆ(Game Over)
+	// â€“î…ŒMember functionî€™Implementationå¸¸ç’¶î©æ¥
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateOver : public CGameState {
 	public:
 		CGameStateOver(CGame *g);
-		void OnBeginState();							// ³]©w¨C¦¸­«ª±©Ò»İªºÅÜ¼Æ
+		void OnBeginState();							// ç ï¹šâ€“Î©î„¤î€â”®æƒ î€™è·‘è®¡
 		void OnInit();
 	protected:
-		void OnMove();									// ²¾°Ê¹CÀ¸¤¸¯À
-		void OnShow();									// Åã¥Ü³o­Óª¬ºAªº¹CÀ¸µe­±
+		void OnMove();									// ç°¿ç¬†ç¬´æ ã˜î‡µ
+		void OnShow();									// é™ªãƒœç¡‚î…Œî€‹ç¯ˆî€™ç¬´æ ç¤¶î„ª
 	private:
-		int counter;	// ­Ë¼Æ¤§­p¼Æ¾¹
+		int counter;	// î…„è®¡ã‡ç’¸è®¡ç«Ÿ
 	};
 
 }
