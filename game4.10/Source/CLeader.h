@@ -16,17 +16,23 @@
 		void LoadBitmap();				// 更瓜
 		void OnMove();					// 簿笆揽
 		void OnShow();					// 盢揽瓜禟礶
+		void OnShowLeft();
 		void SetMovingDown(bool flag);	// 砞﹚琌タ┕簿笆
 		void SetMovingLeft(bool flag);	// 砞﹚琌タ┕オ簿笆
 		void SetMovingRight(bool flag); // 砞﹚琌タ┕簿笆
 		void SetMovingUp(bool flag);	// 砞﹚琌タ┕簿笆
 		void SetXY(int nx, int ny);		// 砞﹚揽オà畒夹
+		void SetStanding(bool flag);
 	protected:
-		CAnimation animation;		// 揽笆礶
-		int x, y;					// 揽オà畒夹
+		CMovingBitmap animation_up;		// 揽笆礶
+		CMovingBitmap animation_down;
+		CMovingBitmap animation_left;
+		CMovingBitmap animation_right;
+		int x, y,current;					// 揽オà畒夹
 		bool isMovingDown;			// 琌タ┕簿笆
 		bool isMovingLeft;			// 琌タ┕オ簿笆
 		bool isMovingRight;			// 琌タ┕簿笆
-		bool isMovingUp;			// 琌タ┕簿笆
+		bool isMovingUp;
+		bool isStanding;
 	};
 }

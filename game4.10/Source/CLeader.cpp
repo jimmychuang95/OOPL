@@ -29,35 +29,37 @@ namespace game_framework {
 
 	int CLeader::GetX2()
 	{
-		return x + animation.Width();
+		return x + animation_up.Width();
 	}
 
 	int CLeader::GetY2()
 	{
-		return y + animation.Height();
+		return y + animation_up.Height();
 	}
 
 	void CLeader::Initialize()
 	{
-		const int X_POS = 280;
-		const int Y_POS = 400;
+		const int X_POS = 115;
+		const int Y_POS = 318;
+		current = 4;
 		x = X_POS;
 		y = Y_POS;
+		isStanding = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 	}
 
 	void CLeader::LoadBitmap()
 	{	
-		animation.AddBitmap(LEADER_DOWN, RGB(255, 255, 255));
-		animation.AddBitmap(LEADER_UP, RGB(255, 255, 255));
-		animation.AddBitmap(LEADER_LEFT, RGB(255, 255, 255));
-		animation.AddBitmap(LEADER_RIGHT, RGB(255, 255, 255));
+		animation_up.LoadBitmap(LEADER_UP, RGB(255, 255, 255));
+		animation_down.LoadBitmap(LEADER_DOWN, RGB(255, 255, 255));
+		animation_left.LoadBitmap(LEADER_LEFT, RGB(255, 255, 255));
+		animation_right.LoadBitmap(LEADER_RIGHT, RGB(255, 255, 255));
 	}
 
 	void CLeader::OnMove()
 	{
-		const int STEP_SIZE = 3;
-		animation.OnMove();
+		const int STEP_SIZE = 37;
+		//animation_up.OnMove();
 		if (isMovingLeft)
 			x -= STEP_SIZE;
 		if (isMovingRight)
@@ -88,14 +90,55 @@ namespace game_framework {
 		isMovingUp = flag;
 	}
 
+	void CLeader::SetStanding(bool flag) {
+		isStanding = flag;
+	}
+
 	void CLeader::SetXY(int nx, int ny)
 	{
 		x = nx; y = ny;
 	}
 
 	void CLeader::OnShow()
-	{
-		animation.SetTopLeft(x, y);
-		animation.OnShow();
+	{	
+		if (isMovingLeft) {
+			animation_left.SetTopLeft(x, y);
+			animation_left.ShowBitmap();
+			current = 1;
+		}
+		else if (isMovingRight) {
+			animation_right.SetTopLeft(x, y);
+			animation_right.ShowBitmap();
+			current = 2;
+		}
+		else if (isMovingUp) {
+			animation_up.SetTopLeft(x, y);
+			animation_up.ShowBitmap();
+			current = 3;
+		}
+		else if (isMovingDown) {
+			animation_down.SetTopLeft(x, y);
+			animation_down.ShowBitmap();
+			current = 4;
+		}
+		if (isStanding) {
+			if (current == 1) {
+				animation_left.SetTopLeft(x, y);
+				animation_left.ShowBitmap();
+			}
+			if (current == 2) {
+				animation_right.SetTopLeft(x, y);
+				animation_right.ShowBitmap();
+			}
+			if (current == 3) {
+				animation_up.SetTopLeft(x, y);
+				animation_up.ShowBitmap();
+			}
+			if (current == 4) {
+				animation_down.SetTopLeft(x, y);
+				animation_down.ShowBitmap();
+			}
+		}
 	}
+
 }
