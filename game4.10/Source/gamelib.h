@@ -1,5 +1,5 @@
-/*
- * gamelib.h: ¥»ÀÉ®×Àx¹CÀ¸¬ÛÃöªºclassªºinterface
+ï»¿/*
+ * gamelib.h: ã‚»éƒî†®çº—ç¬´æ îƒ¶é—½î€™classî€™interface
  * Copyright (C) 2002-2008 Woei-Kae Chen <wkc@csie.ntut.edu.tw>
  *
  * This file is part of game, a free game development framework for windows.
@@ -63,21 +63,21 @@
 */
 
 /////////////////////////////////////////////////////////////////////////////
-// ©w¸q¹CÀ¸¥i³]©wªºÀô¹Ò»P±ø¥ó
+// ï¹šç«¡ç¬´æ î™¯ç ï¹šî€™åæŒ‚ç±”å…µãƒ³
 /////////////////////////////////////////////////////////////////////////////
 
-#define SIZE_X				 337		// ³]©w¹CÀ¸µe­±ªº¸ÑªR«×¬°640x480
-#define SIZE_Y				 599		// µù¡G­Y¤£¨Ï¥Î¼Ğ·Çªº¸ÑªR«×¡A«h¤£¯à¤Á´«¨ì¥ş¿Ã¹õ
-#define OPEN_AS_FULLSCREEN	 false		// ¬O§_¥H¥ş¿Ã¹õ¤è¦¡¶}±Ò¹CÀ¸
-#define SHOW_LOAD_PROGRESS   true		// ¬O§_Åã¥Üloading(OnInit)ªº¶i«×
-#define DEFAULT_BG_COLOR	 RGB(0,0,0)	// ¹CÀ¸µe­±¹w³]ªº­I´ºÃC¦â(¶Â¦â)
-#define GAME_CYCLE_TIME		 33		    // ¨C33ms¶]¤@¦¸Move¤ÎShow(¨C¬í30¦¸)
-#define SHOW_GAME_CYCLE_TIME false		// ¬O§_¦bdebug modeÅã¥Ücycle time
-#define ENABLE_GAME_PAUSE	 true		// ¬O§_¤¹³\¥H Ctrl-Q ¼È°±¹CÀ¸
-#define ENABLE_AUDIO		 true		// ±Ò°Ê­µ®Ä¤¶­±
+#define SIZE_X				 337		// ç ï¹šç¬´æ ç¤¶î„ªî€™ç§†çŒ‚î‚”îƒ‹640x480
+#define SIZE_Y				 599		// çˆ¹î“ç’ãƒã„ãƒå¤¹éî€™ç§†çŒ‚î‚”î“‡ç¥ãƒîˆ•ã¡ä¼ îŸî„æ£µè¾Š
+#define OPEN_AS_FULLSCREEN	 false		// çŒîœ¥î™î„æ£µè¾Šã‚ˆÎ‘ç§¨å¸ç¬´æ 
+#define SHOW_LOAD_PROGRESS   true		// çŒîœ¥é™ªãƒœloading(OnInit)î€™ç§ˆî‚”
+#define DEFAULT_BG_COLOR	 RGB(0,0,0)	// ç¬´æ ç¤¶î„ªç®‡ç î€™ç’‰æ˜¥è‚…ï¸¹(å µï¸¹)
+#define GAME_CYCLE_TIME		 33		    // â€“33msç¦²î—¦Î©Moveã®Show(â€“î„ˆ30Î©)
+#define SHOW_GAME_CYCLE_TIME false		// çŒîœ¥î›ˆdebug modeé™ªãƒœcycle time
+#define ENABLE_GAME_PAUSE	 true		// çŒîœ¥ã™ç ›î™ Ctrl-Q æ—¢æ°¨ç¬´æ 
+#define ENABLE_AUDIO		 false		// å¸ç¬†î„®î†›ã–î„ª
 
 /////////////////////////////////////////////////////////////////////////////
-// ©w¸qCGame¤ÎCGameState©Ò¨Ï¥Îªº¤T­Óª¬ºA±`¼Æ
+// ï¹šç«¡CGameã®CGameStateâ”®ã„ãƒî€™î—ºî…Œî€‹ç¯ˆç›½è®¡
 /////////////////////////////////////////////////////////////////////////////
 
 enum GAME_STATES {
@@ -96,8 +96,8 @@ enum GAME_STATES {
 using namespace std;
 
 /////////////////////////////////////////////////////////////////////////////
-// ¦^³øµ{¦¡¿ù»~¥Îªºmacro
-// ³Æµù¡G³o¸Ì¨Ï¥Îmacro¥H«K«O¯dÀÉ®×¦WºÙ¤Î¦æ¸¹¡A§Q©ódebug¡C
+// î›„å¨ç¥˜Î‘å²¿ç²‡ãƒî€™macro
+// ç§°çˆ¹î“ç¡‚æŸ‘ã„ãƒmacroî™ç½ç‚ç—™éƒî†®îš½å˜¿ã®ï¸½è…¹î“‡îœ—î „debugî“‰
 /////////////////////////////////////////////////////////////////////////////
 
 #define GAME_ASSERT(boolexp,str)											\
@@ -118,39 +118,39 @@ using namespace std;
 namespace game_framework {
 
 /////////////////////////////////////////////////////////////////////////////
-// ³o­Óclass´£¨Ñ®É¶¡¡B¿ù»~µ¥±±¨î
-// ¤@¯ëªº¹CÀ¸¨Ã¤£»İª½±µ¾Ş§@³o­Óª«¥ó¡A¦]¦¹¥i¥H¤£ºŞ³o­Óclassªº¨Ï¥Î¤èªk
+// ç¡‚î…ŒclassçŸ—ã„‘î† ä¸î“ˆå²¿ç²‡å•åŒ—îŸ‘
+// î—¦îˆ î€™ç¬´æ îŸ‹ãƒæƒ î€œé’¡å·¨îœ†ç¡‚î…Œî€Šãƒ³î“‡î›ƒî…î™¯î™ãƒæ¨ç¡‚î…Œclassî€™ã„ãƒã‚ˆçŒ­
 /////////////////////////////////////////////////////////////////////////////
 
 class CSpecialEffect {
 public:
-	static void  SetCurrentTime();					// Àx¦s¥Ø«eªº®É¶¡¦Üctime
-	static DWORD GetEllipseTime();					// Åª¨ú¥Ø«eªº®É¶¡ - ctime
-	static int   GetCurrentTimeCount();				// Åª¨úÀx¦sctimeªº¦¸¼Æ
-	static void  Delay(DWORD ms);					// ©µ¿ğ x ms
-	static void  DelayFromSetCurrentTime(DWORD ms);	// ¦Ûctime°_ºâ¡A©µ¿ğ x ms
+	static void  SetCurrentTime();					// çº—î›™ãƒ˜ç¡î€™î† ä¸îctime
+	static DWORD GetEllipseTime();					// å¼„îŸãƒ˜ç¡î€™î† ä¸ - ctime
+	static int   GetCurrentTimeCount();				// å¼„îŸçº—î›™ctimeî€™Î©è®¡
+	static void  Delay(DWORD ms);					// â”‘ç­ x ms
+	static void  DelayFromSetCurrentTime(DWORD ms);	// îctimeç™¬è¡¡î“‡â”‘ç­ x ms
 private:
 	static DWORD ctime;
 	static int	 ctimeCount;
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// ³o­Óclass·|«Ø¥ßDirectDrawª«¥ó¡A¥H´£¨Ñ¨ä¥Lclass¨Ï¥Î
-// ¤@¯ëªº¹CÀ¸¨Ã¤£»İª½±µ¾Ş§@³o­Óª«¥ó¡A¦]¦¹¥i¥H¤£ºŞ³o­Óclassªº¨Ï¥Î¤èªk
+// ç¡‚î…Œclassç©¦î‚•ãƒŸDirectDrawî€Šãƒ³î“‡î™çŸ—ã„‘ã„¤î™’classã„ãƒ
+// î—¦îˆ î€™ç¬´æ îŸ‹ãƒæƒ î€œé’¡å·¨îœ†ç¡‚î…Œî€Šãƒ³î“‡î›ƒî…î™¯î™ãƒæ¨ç¡‚î…Œclassî€™ã„ãƒã‚ˆçŒ­
 /////////////////////////////////////////////////////////////////////////////
 
 class CDDraw {
 	friend class CMovingBitmap;
 public:
 	~CDDraw();
-	static void  BltBackColor(DWORD);		// ±NBack plain¥ş³¡µÛ¤W«ü©wªºÃC¦â
-	static void  BltBackToPrimary();		// ±NBack plain¶K¦ÜPrimary plain
-	static CDC*  GetBackCDC();				// ¨ú±oBack PlainªºDC (device context)
-	static void  GetClientRect(CRect &r);	// ¨ú±o³]©wªº¸ÑªR«×
+	static void  BltBackColor(DWORD);		// ç›¢Back plainî„åœºå¸î—½î‚¹ï¹šî€™è‚…ï¸¹
+	static void  BltBackToPrimary();		// ç›¢Back plainç¦ŸîPrimary plain
+	static CDC*  GetBackCDC();				// îŸçœ”Back Plainî€™DC (device context)
+	static void  GetClientRect(CRect &r);	// îŸçœ”ç ï¹šî€™ç§†çŒ‚î‚”
 	static void  Init(int, int);			// Initialize direct draw
-	static void  ReleaseBackCDC();			// ©ñ±¼Back PlainªºDC (device context)
-	static bool  SetFullScreen(bool);		// ³]©w¬°¥ş¿Ã¹õ¼Ò¦¡/µøµ¡¼Ò¦¡
-	static bool  IsFullScreen();			// ¦^µª¬O§_¬°¥ş¿Ã¹õ¼Ò¦¡/µøµ¡¼Ò¦¡
+	static void  ReleaseBackCDC();			// î ‚å¥”Back Plainî€™DC (device context)
+	static bool  SetFullScreen(bool);		// ç ï¹šîƒ‹î„æ£µè¾Šå®¶Î‘/è·Œæ€ å®¶Î‘
+	static bool  IsFullScreen();			// î›„æ°®çŒîœ¥îƒ‹î„æ£µè¾Šå®¶Î‘/è·Œæ€ å®¶Î‘
 private:
 	CDDraw();								// private constructor
 	static void  BltBitmapToBack(unsigned SurfaceID, int x, int y);
@@ -188,23 +188,23 @@ private:
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// ³o­Óclass´£¨Ñ°ÊºA(¥i¥H²¾°Ê)ªº¹Ï§Î
-// ¨C­ÓPublic Interfaceªº¥Îªk³£­nÀ´¡AImplementation¥i¥H¤£À´
+// ç¡‚î…ŒclassçŸ—ã„‘ç¬†ç¯ˆ(î™¯î™ç°¿ç¬†)î€™ç“œî¬
+// â€“î…ŒPublic Interfaceî€™ãƒçŒ­å¸¸ç’¶æ¥î“‡Implementationî™¯î™ãƒæ¥
 /////////////////////////////////////////////////////////////////////////////
 
 class CMovingBitmap {
 public:
 	CMovingBitmap();
-	int   Height();						// ¨ú±o¹Ï§Îªº°ª«×
-	int   Left();						// ¨ú±o¹Ï§Îªº¥ª¤W¨¤ªº x ®y¼Ğ
-	void  LoadBitmap(int,COLORREF=CLR_INVALID);		// ¸ü¤J¹Ï¡A«ü©w¹Ïªº½s¸¹(resource)¤Î³z©ú¦â
-	void  LoadBitmap(char *,COLORREF=CLR_INVALID);	// ¸ü¤J¹Ï¡A«ü©w¹ÏªºÀÉ¦W¤Î³z©ú¦â
-	void  SetTopLeft(int,int);			// ±N¹Ïªº¥ª¤W¨¤®y¼Ğ²¾¦Ü (x,y)
-	void  ShowBitmap();					// ±N¹Ï¶K¨ì¿Ã¹õ
-	void  ShowBitmap(double factor);	// ±N¹Ï¶K¨ì¿Ã¹õ factor < 1®ÉÁY¤p¡A>1®É©ñ¤j¡Cª`·N¡G»İ­nVGA¥dµwÅéªº¤ä´©¡A§_«h·|«ÜºC
-	void  ShowBitmap(CMovingBitmap &);	// ±N¹Ï¶K¨ì¨ì¥t¤@±i¹Ï¤W (¶È¨Ñ¯S®í¥Î³~)
-	int   Top();						// ¨ú±o¹Ï§Îªº¥ª¤W¨¤ªº y ®y¼Ğ
-	int   Width();						// ¨ú±o¹Ï§Îªº¼e«×
+	int   Height();						// îŸçœ”ç“œî¬î€™è”¼î‚”
+	int   Left();						// îŸçœ”ç“œî¬î€™ã‚ªî—½Ã î€™ x ç•’å¤¹
+	void  LoadBitmap(int,COLORREF=CLR_INVALID);		// æ›´î—°ç“œî“‡î‚¹ï¹šç“œî€™çµªè…¹(resource)ã®ç¡“î ‹ï¸¹
+	void  LoadBitmap(char *,COLORREF=CLR_INVALID);	// æ›´î—°ç“œî“‡î‚¹ï¹šç“œî€™éƒîš½ã®ç¡“î ‹ï¸¹
+	void  SetTopLeft(int,int);			// ç›¢ç“œî€™ã‚ªî—½Ã ç•’å¤¹ç°¿î (x,y)
+	void  ShowBitmap();					// ç›¢ç“œç¦ŸîŸæ£µè¾Š
+	void  ShowBitmap(double factor);	// ç›¢ç“œç¦ŸîŸæ£µè¾Š factor < 1î† ç½½î˜–î“‡>1î† î ‚î˜î“‰çŒ”ç¨®î“æƒ ç’¶VGAî™ªç¥‘ç °î€™ã‚„ç©¿î“‡îœ¥ç¥ç©¦î‚™ç¯Š
+	void  ShowBitmap(CMovingBitmap &);	// ç›¢ç“œç¦ŸîŸîŸî™ºî—¦çœç“œî—½ (åº¦ã„‘ç–­î‡„ãƒç¡š)
+	int   Top();						// îŸçœ”ç“œî¬î€™ã‚ªî—½Ã î€™ y ç•’å¤¹
+	int   Width();						// îŸçœ”ç“œî¬î€™ç³´î‚”
 protected:
 	CRect    location;			// location of the bitmap
 	bool     isBitmapLoaded;	// whether a bitmap has been loaded
@@ -212,61 +212,61 @@ protected:
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// ³o­Óclass´£¨Ñ¥i¥H²¾°Êªº°Êµe
-// ¨C­ÓPublic Interfaceªº¥Îªk³£­nÀ´¡AImplementation¥i¥H¤£À´
+// ç¡‚î…ŒclassçŸ—ã„‘î™¯î™ç°¿ç¬†î€™ç¬†ç¤¶
+// â€“î…ŒPublic Interfaceî€™ãƒçŒ­å¸¸ç’¶æ¥î“‡Implementationî™¯î™ãƒæ¥
 /////////////////////////////////////////////////////////////////////////////
 
 class CAnimation {
 public:
-	CAnimation(int=10);				// Constructor (¹w³]°Êµe¼½©ñÀW²v¨C1/3¬í´«¤@±i¹Ï)
+	CAnimation(int=10);				// Constructor (ç®‡ç ç¬†ç¤¶å†€î ‚ç¹µç¯â€“1/3î„ˆä¼ î—¦çœç“œ)
 	void  AddBitmap(int,COLORREF=CLR_INVALID);
-									// ¼W¥[¤@±i¹Ï§Î¦Ü°Êµe(¹Ïªº½s¸¹¤Î³z©ú¦â)
+									// ç³¤î™¡î—¦çœç“œî¬îç¬†ç¤¶(ç“œî€™çµªè…¹ã®ç¡“î ‹ï¸¹)
 	void  AddBitmap(char *,COLORREF=CLR_INVALID);
-									// ¼W¥[¤@±i¹Ï§Î¦Ü°Êµe(¹Ïªº½s¸¹¤Î³z©ú¦â)
-	int   GetCurrentBitmapNumber();	// ¨ú±o¥¿¦b¼·©ñªºbitmap¬O²Ä´X­Óbitmap
-	int   Height();					// ¨ú±o°Êµeªº°ª«×
-	bool  IsFinalBitmap();			// ¦^¶Ç¥¿¦b¼·©ñªºbitmap¬O§_¬°³Ì«á¤@­Óbitmap
-	int   Left();					// ¨ú±o°Êµeªº¥ª¤W¨¤ªº x ®y¼Ğ
-	void  OnMove();					// ¨ÌÀW²v§ó´«bitmap
-	void  OnShow();					// ±N°Êµe¶K¨ì¿Ã¹õ
-	void  Reset();					// ­«³]¼½©ñ¶¶§Ç¦^¨ì²Ä¤@±i¹Ï§Î
-	void  SetDelayCount(int);		// ³]©w°Êµe¼½©ñ³t«×ªº±`¼Æ(¶V¤j¶VºC)
-	void  SetTopLeft(int,int);		// ±N°Êµeªº¥ª¤W¨¤®y¼Ğ²¾¦Ü (x,y)
-	int   Top();					// ¨ú±o°Êµeªº¥ª¤W¨¤ªº y ®y¼Ğ
-	int   Width();					// ¨ú±o°Êµeªº¼e«×
+									// ç³¤î™¡î—¦çœç“œî¬îç¬†ç¤¶(ç“œî€™çµªè…¹ã®ç¡“î ‹ï¸¹)
+	int   GetCurrentBitmapNumber();	// îŸçœ”ã‚¿î›ˆæŒ¤î ‚î€™bitmapçŒæç¢­î…Œbitmap
+	int   Height();					// îŸçœ”ç¬†ç¤¶î€™è”¼î‚”
+	bool  IsFinalBitmap();			// î›„è‚šã‚¿î›ˆæŒ¤î ‚î€™bitmapçŒîœ¥îƒ‹ç¨‹î‚î—¦î…Œbitmap
+	int   Left();					// îŸçœ”ç¬†ç¤¶î€™ã‚ªî—½Ã î€™ x ç•’å¤¹
+	void  OnMove();					// ã„Œç¹µç¯î°ä¼ bitmap
+	void  OnShow();					// ç›¢ç¬†ç¤¶ç¦ŸîŸæ£µè¾Š
+	void  Reset();					// î„¤ç å†€î ‚æŠ–î¥î›„îŸæî—¦çœç“œî¬
+	void  SetDelayCount(int);		// ç ï¹šç¬†ç¤¶å†€î ‚ç¡‰î‚”î€™ç›½è®¡(ç¦«î˜ç¦«ç¯Š)
+	void  SetTopLeft(int,int);		// ç›¢ç¬†ç¤¶î€™ã‚ªî—½Ã ç•’å¤¹ç°¿î (x,y)
+	int   Top();					// îŸçœ”ç¬†ç¤¶î€™ã‚ªî—½Ã î€™ y ç•’å¤¹
+	int   Width();					// îŸçœ”ç¬†ç¤¶î€™ç³´î‚”
 private:
 	list<CMovingBitmap>				bmp;			// list of CMovingBitmap
 	list<CMovingBitmap>::iterator	bmp_iter;		// list iterator
-	int								bmp_counter;	// Àx¦sbmp_iter¬°²Än­Óbmp
-	int								delay_counter;	// ©µ½w°Êµe¼½©ñ³t«×ªº­p¼Æ¾¹
-	int								delay_count;	// °Êµe¼½©ñ³t«×ªº±`¼Æ
-	int								x, y;			// °Êµeªº®y¼Ğ
+	int								bmp_counter;	// çº—î›™bmp_iterîƒ‹ænî…Œbmp
+	int								delay_counter;	// â”‘çµ¯ç¬†ç¤¶å†€î ‚ç¡‰î‚”î€™ç’¸è®¡ç«Ÿ
+	int								delay_count;	// ç¬†ç¤¶å†€î ‚ç¡‰î‚”î€™ç›½è®¡
+	int								x, y;			// ç¬†ç¤¶î€™ç•’å¤¹
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// ³o­Óclass´£¨ÑÅã¥Ü¾ã¼Æ¹Ï§Îªº¯à¤O
-// ¨C­ÓPublic Interfaceªº¥Îªk³£­nÀ´¡AImplementation¥i¥H¤£À´
+// ç¡‚î…ŒclassçŸ—ã„‘é™ªãƒœä¿±è®¡ç“œî¬î€™îˆ•î—µ
+// â€“î…ŒPublic Interfaceî€™ãƒçŒ­å¸¸ç’¶æ¥î“‡Implementationî™¯î™ãƒæ¥
 /////////////////////////////////////////////////////////////////////////////
 
 class CInteger {
 public:
 	CInteger(int=5);			// default 5 digits
-	void Add(int n);			// ¼W¥[¾ã¼Æ­È
-	int  GetInteger();			// ¦^¶Ç¾ã¼Æ­È
-	void LoadBitmap();			// ¸ü¤J0..9¤Î­t¸¹¤§¹Ï§Î
-	void SetInteger(int);		// ³]©w¾ã¼Æ­È
-	void SetTopLeft(int,int);	// ±N°Êµeªº¥ª¤W¨¤®y¼Ğ²¾¦Ü (x,y)
-	void ShowBitmap();			// ±N°Êµe¶K¨ì¿Ã¹õ
+	void Add(int n);			// ç³¤î™¡ä¿±è®¡î…
+	int  GetInteger();			// î›„è‚šä¿±è®¡î…
+	void LoadBitmap();			// æ›´î—°0..9ã®ç’½è…¹ã‡ç“œî¬
+	void SetInteger(int);		// ç ï¹šä¿±è®¡î…
+	void SetTopLeft(int,int);	// ç›¢ç¬†ç¤¶î€™ã‚ªî—½Ã ç•’å¤¹ç°¿î (x,y)
+	void ShowBitmap();			// ç›¢ç¬†ç¤¶ç¦ŸîŸæ£µè¾Š
 private:
-	const int NUMDIGITS;			// ¦@Åã¥ÜNUMDIGITS­Ó¦ì¼Æ
-	static CMovingBitmap digit[11]; // Àx¦s0..9¤Î­t¸¹¤§¹Ï§Î(bitmap)
-	int x, y;						// Åã¥Üªº®y¼Ğ
-	int n;							// ¾ã¼Æ­È
-	bool isBmpLoaded;				// ¬O§_¤w¸g¸ü¤J¹Ï§Î
+	const int NUMDIGITS;			// îš¦é™ªãƒœNUMDIGITSî…Œî”è®¡
+	static CMovingBitmap digit[11]; // çº—î›™0..9ã®ç’½è…¹ã‡ç“œî¬(bitmap)
+	int x, y;						// é™ªãƒœî€™ç•’å¤¹
+	int n;							// ä¿±è®¡î…
+	bool isBmpLoaded;				// çŒîœ¥î˜ç«’æ›´î—°ç“œî¬
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// «Å§i©|¥¼©w¸qªºclass
+// î‚‚îœ¯ï¹Ÿã‚¼ï¹šç«¡î€™class
 /////////////////////////////////////////////////////////////////////////////
 
 class CGame;
@@ -275,8 +275,8 @@ class CGameStateRun;
 class CGameStateOver;
 
 /////////////////////////////////////////////////////////////////////////////
-// ³o­Óclass¬°¹CÀ¸ªº¦UºØª¬ºA¤§Base class(¬O¤@­Óabstract class)
-// ¨C­ÓPublic Interfaceªº¥Îªk³£­nÀ´¡AImplementation¥i¥H¤£À´
+// ç¡‚î…Œclassîƒ‹ç¬´æ î€™îš»è´ºî€‹ç¯ˆã‡Base class(çŒî—¦î…Œabstract class)
+// â€“î…ŒPublic Interfaceî€™ãƒçŒ­å¸¸ç’¶æ¥î“‡Implementationî™¯î™ãƒæ¥
 /////////////////////////////////////////////////////////////////////////////
 
 class CGameState {
@@ -285,64 +285,64 @@ public:
 	void OnDraw();			// Template Method
 	void OnCycle();			// Template Method
 	//
-	// virtual functions, ¥ÑÄ~©ÓªÌ´£¨Ñimplementation
+	// virtual functions, ãƒ‘è†¥â”¯î€«çŸ—ã„‘implementation
 	//
 	virtual ~CGameState() {}								// virtual destructor
-	virtual void OnBeginState() {}							// ³]©w¨C¦¸¶i¤J³o­Óª¬ºA®É©Ò»İªºªì­È
-	virtual void OnInit() {}								// ª¬ºAªºªì­È¤Î¹Ï§Î³]©w
-	virtual void OnKeyDown(UINT, UINT, UINT) {}				// ³B²zÁä½LDownªº°Ê§@
-	virtual void OnKeyUp(UINT, UINT, UINT) {}				// ³B²zÁä½LUpªº°Ê§@
-	virtual void OnLButtonDown(UINT nFlags, CPoint point) {}// ³B²z·Æ¹«ªº°Ê§@
-	virtual void OnLButtonUp(UINT nFlags, CPoint point) {}	// ³B²z·Æ¹«ªº°Ê§@
-	virtual void OnMouseMove(UINT nFlags, CPoint point) {}  // ³B²z·Æ¹«ªº°Ê§@ 
-	virtual void OnRButtonDown(UINT nFlags, CPoint point) {}// ³B²z·Æ¹«ªº°Ê§@
-	virtual void OnRButtonUp(UINT nFlags, CPoint point) {}	// ³B²z·Æ¹«ªº°Ê§@
+	virtual void OnBeginState() {}							// ç ï¹šâ€“Î©ç§ˆî—°ç¡‚î…Œî€‹ç¯ˆî† â”®æƒ î€™î‹î…
+	virtual void OnInit() {}								// î€‹ç¯ˆî€™î‹î…ã®ç“œî¬ç ï¹š
+	virtual void OnKeyDown(UINT, UINT, UINT) {}				// çŸªç¶é¾„çµƒDownî€™ç¬†îœ†
+	virtual void OnKeyUp(UINT, UINT, UINT) {}				// çŸªç¶é¾„çµƒUpî€™ç¬†îœ†
+	virtual void OnLButtonDown(UINT nFlags, CPoint point) {}// çŸªç¶è²å…¬î€™ç¬†îœ†
+	virtual void OnLButtonUp(UINT nFlags, CPoint point) {}	// çŸªç¶è²å…¬î€™ç¬†îœ†
+	virtual void OnMouseMove(UINT nFlags, CPoint point) {}  // çŸªç¶è²å…¬î€™ç¬†îœ† 
+	virtual void OnRButtonDown(UINT nFlags, CPoint point) {}// çŸªç¶è²å…¬î€™ç¬†îœ†
+	virtual void OnRButtonUp(UINT nFlags, CPoint point) {}	// çŸªç¶è²å…¬î€™ç¬†îœ†
 protected:
-	void GotoGameState(int state);							// ¸õÅD¦Ü«ü©wªºstate
-	void ShowInitProgress(int percent);						// Åã¥Üªì©l¤Æªº¶i«×
+	void GotoGameState(int state);							// é“¬è‡˜îî‚¹ï¹šî€™state
+	void ShowInitProgress(int percent);						// é™ªãƒœî‹ï¹ã¦î€™ç§ˆî‚”
 	//
-	// virtual functions, ¥ÑÄ~©ÓªÌ´£¨Ñimplementation
+	// virtual functions, ãƒ‘è†¥â”¯î€«çŸ—ã„‘implementation
 	//
-	virtual void OnMove() {}								// ²¾°Ê³o­Óª¬ºAªº¹CÀ¸¤¸¯À
-	virtual void OnShow() = 0;								// Åã¥Ü³o­Óª¬ºAªº¹CÀ¸µe­±
+	virtual void OnMove() {}								// ç°¿ç¬†ç¡‚î…Œî€‹ç¯ˆî€™ç¬´æ ã˜î‡µ
+	virtual void OnShow() = 0;								// é™ªãƒœç¡‚î…Œî€‹ç¯ˆî€™ç¬´æ ç¤¶î„ª
 	CGame *game;
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// ³o­Óclass¬O¹CÀ¸ªº®Ö¤ß¡A±±¨î¹CÀ¸ªº¶i¦æ
-// ¤@¯ëªº¹CÀ¸¨Ã¤£»İª½±µ¾Ş§@³o­Óª«¥ó¡A¦]¦¹¥i¥H¤£ºŞ³o­Óclassªº¨Ï¥Î¤èªk
+// ç¡‚î…ŒclassçŒç¬´æ î€™î†­ã¿î“‡åŒ—îŸ‘ç¬´æ î€™ç§ˆï¸½
+// î—¦îˆ î€™ç¬´æ îŸ‹ãƒæƒ î€œé’¡å·¨îœ†ç¡‚î…Œî€Šãƒ³î“‡î›ƒî…î™¯î™ãƒæ¨ç¡‚î…Œclassî€™ã„ãƒã‚ˆçŒ­
 /////////////////////////////////////////////////////////////////////////////
 
 class CGame {
 public:
 	CGame();										// Constructor
 	~CGame();										// Destructor
-	bool IsRunning();								// Åª¨ú¹CÀ¸¬O§_¥¿¦b¶i¦æ¤¤
-	void OnDraw();									// ¹ïÀ³CGameViewªºOnDraw()
-	void OnFilePause();								// ¹CÀ¸¼È°±
-	void OnInit();									// ¹CÀ¸Ã¸¹Ï¤Î­µ®Äªºªì©l¤Æ
-	void OnInitStates();							// ¹CÀ¸¦Uª¬ºAªºªì­È¤Î¹Ï§Î³]©w
-	bool OnIdle();									// ¹CÀ¸ªº¥D°j°é
-	void OnKeyDown(UINT, UINT, UINT);				// ³B²zÁä½LDownªº°Ê§@
-	void OnKeyUp(UINT, UINT, UINT);					// ³B²zÁä½LUpªº°Ê§@
-	void OnKillFocus();								// ¹CÀ¸³Q­¢¼È°±
-	void OnLButtonDown(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@
-	void OnLButtonUp(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@
-	void OnMouseMove(UINT nFlags, CPoint point);    // ³B²z·Æ¹«ªº°Ê§@ 
-	void OnRButtonDown(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@
-	void OnRButtonUp(UINT nFlags, CPoint point);	// ³B²z·Æ¹«ªº°Ê§@
-	void OnResume();								// ³B²z¦Û¡u«İ©R¡vÁÙ­ìªº°Ê§@
-	void OnSetFocus();								// ³B²zFocus
-	void OnSuspend();								// ³B²z¡u«İ©R¡vªº°Ê§@
+	bool IsRunning();								// å¼„îŸç¬´æ çŒîœ¥ã‚¿î›ˆç§ˆï¸½ã„
+	void OnDraw();									// ç™¸è±CGameViewî€™OnDraw()
+	void OnFilePause();								// ç¬´æ æ—¢æ°¨
+	void OnInit();									// ç¬´æ é…¶ç“œã®î„®î†›î€™î‹ï¹ã¦
+	void OnInitStates();							// ç¬´æ îš»î€‹ç¯ˆî€™î‹î…ã®ç“œî¬ç ï¹š
+	bool OnIdle();									// ç¬´æ î€™î™Šç™¹ä¼´
+	void OnKeyDown(UINT, UINT, UINT);				// çŸªç¶é¾„çµƒDownî€™ç¬†îœ†
+	void OnKeyUp(UINT, UINT, UINT);					// çŸªç¶é¾„çµƒUpî€™ç¬†îœ†
+	void OnKillFocus();								// ç¬´æ ç †î„›æ—¢æ°¨
+	void OnLButtonDown(UINT nFlags, CPoint point);	// çŸªç¶è²å…¬î€™ç¬†îœ†
+	void OnLButtonUp(UINT nFlags, CPoint point);	// çŸªç¶è²å…¬î€™ç¬†îœ†
+	void OnMouseMove(UINT nFlags, CPoint point);    // çŸªç¶è²å…¬î€™ç¬†îœ† 
+	void OnRButtonDown(UINT nFlags, CPoint point);	// çŸªç¶è²å…¬î€™ç¬†îœ†
+	void OnRButtonUp(UINT nFlags, CPoint point);	// çŸªç¶è²å…¬î€™ç¬†îœ†
+	void OnResume();								// çŸªç¶îî“»î‚šã‘î“¼ä¸´î…¥î€™ç¬†îœ†
+	void OnSetFocus();								// çŸªç¶Focus
+	void OnSuspend();								// çŸªç¶î“»î‚šã‘î“¼î€™ç¬†îœ†
 	void SetGameState(int);
 	static CGame *Instance();
 private:
-	bool			running;			// ¹CÀ¸¬O§_¥¿¦b¶i¦æ¤¤(¥¼³QPause)
-	bool            suspended;			// ¹CÀ¸¬O§_³Qsuspended
-	const int		NUM_GAME_STATES;	// ¹CÀ¸ªºª¬ºA¼Æ(3­Óª¬ºA)
-	CGameState		*gameState;			// pointer«ü¦V¥Ø«eªº¹CÀ¸ª¬ºA
-	CGameState		*gameStateTable[3];	// ¹CÀ¸ª¬ºAª«¥óªºpointer
-	static CGame	instance;			// ¹CÀ¸°ß¤@ªºinstance
+	bool			running;			// ç¬´æ çŒîœ¥ã‚¿î›ˆç§ˆï¸½ã„(ã‚¼ç †Pause)
+	bool            suspended;			// ç¬´æ çŒîœ¥ç †suspended
+	const int		NUM_GAME_STATES;	// ç¬´æ î€™î€‹ç¯ˆè®¡(3î…Œî€‹ç¯ˆ)
+	CGameState		*gameState;			// pointerî‚¹îš¼ãƒ˜ç¡î€™ç¬´æ î€‹ç¯ˆ
+	CGameState		*gameStateTable[3];	// ç¬´æ î€‹ç¯ˆî€Šãƒ³î€™pointer
+	static CGame	instance;			// ç¬´æ æ–‘î—¦î€™instance
 };
 
 }

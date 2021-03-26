@@ -192,36 +192,36 @@ void CGameStateOver::OnShow()
 CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g), NUMBALLS(28)
 {
-	ball = new CBall [NUMBALLS];
+	//ball = new CBall [NUMBALLS];
 }
 
 CGameStateRun::~CGameStateRun()
 {
-	delete [] ball;
+	//delete [] ball;
 }
 
 void CGameStateRun::OnBeginState()
 {
-	const int BALL_GAP = 90;
-	const int BALL_XY_OFFSET = 45;
-	const int BALL_PER_ROW = 7;
-	const int HITS_LEFT = 10;
-	const int HITS_LEFT_X = 590;
-	const int HITS_LEFT_Y = 0;
-	const int BACKGROUND_X = 60;
-	const int ANIMATION_SPEED = 15;
-	for (int i = 0; i < NUMBALLS; i++) {				// 砞﹚瞴癬﹍畒夹
-		int x_pos = i % BALL_PER_ROW;
-		int y_pos = i / BALL_PER_ROW;
-		ball[i].SetXY(x_pos * BALL_GAP + BALL_XY_OFFSET, y_pos * BALL_GAP + BALL_XY_OFFSET);
-		ball[i].SetDelay(x_pos);
-		ball[i].SetIsAlive(true);
-	}
+	//const int BALL_GAP = 90;
+	//const int BALL_XY_OFFSET = 45;
+	//const int BALL_PER_ROW = 7;
+	//const int HITS_LEFT = 10;
+	//const int HITS_LEFT_X = 590;
+	//const int HITS_LEFT_Y = 0;
+	//const int BACKGROUND_X = 60;
+	//const int ANIMATION_SPEED = 15;
+	//for (int i = 0; i < NUMBALLS; i++) {				// 砞﹚瞴癬﹍畒夹
+		//int x_pos = i % BALL_PER_ROW;
+		//int y_pos = i / BALL_PER_ROW;
+		//ball[i].SetXY(x_pos * BALL_GAP + BALL_XY_OFFSET, y_pos * BALL_GAP + BALL_XY_OFFSET);
+		//ball[i].SetDelay(x_pos);
+		//ball[i].SetIsAlive(true);
+	//}
 	eraser.Initialize();
-	background.SetTopLeft(BACKGROUND_X,0);				// 砞﹚璉春癬﹍畒夹
+	background.SetTopLeft(0,0);				// 砞﹚璉春癬﹍畒夹
 	//help.SetTopLeft(0, SIZE_Y - help.Height());			// 砞﹚弧瓜癬﹍畒夹
-	hits_left.SetInteger(HITS_LEFT);					// ﹚逞疾阑计
-	hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// ﹚逞疾阑计畒夹
+	//hits_left.SetInteger(HITS_LEFT);					// ﹚逞疾阑计
+	//hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// ﹚逞疾阑计畒夹
 	CAudio::Instance()->Play(AUDIO_LAKE, true);			// 挤 WAVE
 	CAudio::Instance()->Play(AUDIO_DING, false);		// 挤 WAVE
 	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 挤 MIDI
@@ -242,9 +242,9 @@ void CGameStateRun::OnMove()							// 簿笆笴栏じ
 	//
 	// 簿笆瞴
 	//
-	int i;
-	for (i=0; i < NUMBALLS; i++)
-		ball[i].OnMove();
+	//int i;
+	//for (i=0; i < NUMBALLS; i++)
+		//ball[i].OnMove();
 	//
 	// 簿笆揽
 	//
@@ -252,24 +252,24 @@ void CGameStateRun::OnMove()							// 簿笆笴栏じ
 	//
 	// 耞揽琌窱瞴
 	//
-	for (i=0; i < NUMBALLS; i++)
-		if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
-			ball[i].SetIsAlive(false);
-			CAudio::Instance()->Play(AUDIO_DING);
-			hits_left.Add(-1);
-			//
+	//for (i=0; i < NUMBALLS; i++)
+		//if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
+		//	ball[i].SetIsAlive(false);
+		//	CAudio::Instance()->Play(AUDIO_DING);
+		//	hits_left.Add(-1);
+		//	//
 			// 璝逞緇窱疾Ω计0玥铬Game Over篈
 			//
-			if (hits_left.GetInteger() <= 0) {
-				CAudio::Instance()->Stop(AUDIO_LAKE);	// 氨ゎ WAVE
-				CAudio::Instance()->Stop(AUDIO_NTUT);	// 氨ゎ MIDI
-				GotoGameState(GAME_STATE_OVER);
-			}
-		}
+		//	if (hits_left.GetInteger() <= 0) {
+		//		CAudio::Instance()->Stop(AUDIO_LAKE);	// 氨ゎ WAVE
+		//		CAudio::Instance()->Stop(AUDIO_NTUT);	// 氨ゎ MIDI
+		//		GotoGameState(GAME_STATE_OVER);
+			//}
+		//}
 	//
 	// 簿笆紆铬瞴
 	//
-	bball.OnMove();
+	//bball.OnMove();
 }
 
 void CGameStateRun::OnInit()  								// 笴栏の瓜砞﹚
@@ -282,9 +282,9 @@ void CGameStateRun::OnInit()  								// 笴栏の瓜砞﹚
 	//
 	// 秨﹍更戈
 	//
-	int i;
-	for (i = 0; i < NUMBALLS; i++)	
-		ball[i].LoadBitmap();								// 更材i瞴瓜
+	//int i;
+	//for (i = 0; i < NUMBALLS; i++)	
+		//ball[i].LoadBitmap();								// 更材i瞴瓜
 	eraser.LoadBitmap();
 	background.LoadBitmap(MY_STAGE_ONE);					    // 更璉春瓜
 	//
@@ -298,8 +298,8 @@ void CGameStateRun::OnInit()  								// 笴栏の瓜砞﹚
 	//help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 更弧瓜
 	//corner.LoadBitmap(IDB_CORNER);							// 更à辅瓜
 	//corner.ShowBitmap(background);							// 盢corner禟background
-	bball.LoadBitmap();										// 更瓜
-	hits_left.LoadBitmap();									
+	//bball.LoadBitmap();										// 更瓜
+	//hits_left.LoadBitmap();									
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 更絪腹0羘ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 更絪腹1羘lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 更絪腹2羘ntut.mid
@@ -317,6 +317,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_LEFT) {
 		eraser.SetMovingLeft(true);
 		eraser.SetStanding(false);
+		TRACE("nRepCnt : %d", nRepCnt);
 	}
 	if (nChar == KEY_RIGHT) {
 		eraser.SetMovingRight(true);
@@ -394,10 +395,10 @@ void CGameStateRun::OnShow()
 	background.SetTopLeft(0, 0);
 	background.ShowBitmap();			// 禟璉春瓜
 	//help.ShowBitmap();					// 禟弧瓜
-	hits_left.ShowBitmap();
-	for (int i=0; i < NUMBALLS; i++)
-		ball[i].OnShow();				// 禟材i腹瞴
-	bball.OnShow();						// 禟紆铬瞴
+	//hits_left.ShowBitmap();
+	//for (int i=0; i < NUMBALLS; i++)
+		//ball[i].OnShow();				// 禟材i腹瞴
+	//bball.OnShow();						// 禟紆铬瞴
 	eraser.OnShow();					// 禟揽
 
 	//
