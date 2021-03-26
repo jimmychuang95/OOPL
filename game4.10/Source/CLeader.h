@@ -12,6 +12,7 @@
 		int  GetY1();					// 揽オà y 畒夹
 		int  GetX2();					// 揽à x 畒夹
 		int  GetY2();					// 揽à y 畒夹
+		bool GetStatus();
 		void Initialize();				// 砞﹚揽﹍
 		void LoadBitmap();				// 更瓜
 		void OnMove();					// 簿笆揽

@@ -37,9 +37,14 @@ namespace game_framework {
 		return y + animation_up.Height();
 	}
 
+	bool CLeader::GetStatus()
+	{
+		return isStanding;
+	}
+
 	void CLeader::Initialize()
 	{
-		const int X_POS = 115;
+		const int X_POS = 113;
 		const int Y_POS = 318;
 		current = 4;
 		x = X_POS;
@@ -58,7 +63,7 @@ namespace game_framework {
 
 	void CLeader::OnMove()
 	{
-		const int STEP_SIZE = 37;
+		const int STEP_SIZE = 2;
 		//animation_up.OnMove();
 		if (isMovingLeft)
 			x -= STEP_SIZE;

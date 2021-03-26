@@ -190,7 +190,7 @@ void CGameStateOver::OnShow()
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateRun::CGameStateRun(CGame *g)
-: CGameState(g), NUMBALLS(28)
+: CGameState(g), NUMBALLS(28), MOVE_COUNTER(20)
 {
 	//ball = new CBall [NUMBALLS];
 }
@@ -219,6 +219,7 @@ void CGameStateRun::OnBeginState()
 	//}
 	eraser.Initialize();
 	background.SetTopLeft(0,0);				// 砞﹚璉春癬﹍畒夹
+	moveCounter = MOVE_COUNTER;
 	//help.SetTopLeft(0, SIZE_Y - help.Height());			// 砞﹚弧瓜癬﹍畒夹
 	//hits_left.SetInteger(HITS_LEFT);					// ﹚逞疾阑计
 	//hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// ﹚逞疾阑计畒夹
@@ -248,6 +249,14 @@ void CGameStateRun::OnMove()							// 簿笆笴栏じ
 	//
 	// 簿笆揽
 	//
+	moveCounter--;
+	if (moveCounter <= 0) {
+		eraser.SetMovingLeft(false);
+		eraser.SetMovingRight(false);
+		eraser.SetMovingUp(false);
+		eraser.SetMovingDown(false);
+		eraser.SetStanding(true);
+	}
 	eraser.OnMove();
 	//
 	// 耞揽琌窱瞴
@@ -315,21 +324,32 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard絙繷
 	const char KEY_DOWN  = 0x28; // keyboard絙繷
 	if (nChar == KEY_LEFT) {
-		eraser.SetMovingLeft(true);
-		eraser.SetStanding(false);
-		TRACE("nRepCnt : %d", nRepCnt);
+		if (eraser.GetStatus()) {
+			moveCounter = MOVE_COUNTER;
+			eraser.SetMovingLeft(true);
+			eraser.SetStanding(false);
+		}
 	}
 	if (nChar == KEY_RIGHT) {
-		eraser.SetMovingRight(true);
-		eraser.SetStanding(false);
+		if (eraser.GetStatus()) {
+			moveCounter = MOVE_COUNTER;
+			eraser.SetMovingRight(true);
+			eraser.SetStanding(false);
+		}
 	}
 	if (nChar == KEY_UP) {
-		eraser.SetMovingUp(true);
-		eraser.SetStanding(false);
+		if (eraser.GetStatus()) {
+			moveCounter = MOVE_COUNTER;
+			eraser.SetMovingUp(true);
+			eraser.SetStanding(false);
+		}
 	}
 	if (nChar == KEY_DOWN) {
-		eraser.SetMovingDown(true);
-		eraser.SetStanding(false);
+		if (eraser.GetStatus()) {
+			moveCounter = MOVE_COUNTER;
+			eraser.SetMovingDown(true);
+			eraser.SetStanding(false);
+		}
 	}
 }
 
@@ -340,20 +360,16 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard絙繷
 	const char KEY_DOWN  = 0x28; // keyboard絙繷
 	if (nChar == KEY_LEFT) {
-		eraser.SetMovingLeft(false);
-		eraser.SetStanding(true);
+		
 	}
 	if (nChar == KEY_RIGHT) {
-		eraser.SetMovingRight(false);
-		eraser.SetStanding(true);
+
 	}
 	if (nChar == KEY_UP) {
-		eraser.SetMovingUp(false);
-		eraser.SetStanding(true);
+
 	}
 	if (nChar == KEY_DOWN) {
-		eraser.SetMovingDown(false);
-		eraser.SetStanding(true);
+
 	}
 }
 

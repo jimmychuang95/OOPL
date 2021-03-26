@@ -93,6 +93,8 @@ namespace game_framework {
 		void OnMove();									// 簿笆笴栏じ
 		void OnShow();									// 陪ボ硂篈笴栏礶
 	private:
+		const int		MOVE_COUNTER;
+		int				moveCounter;
 		const int		NUMBALLS;	// 瞴羆计
 		CMovingBitmap	background;	// 璉春瓜
 		CMovingBitmap	help;		// 弧瓜
