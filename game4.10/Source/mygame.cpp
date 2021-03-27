@@ -170,6 +170,8 @@ void CGameStateOver::OnInit()
 	ShowInitProgress(100);
 }
 
+
+
 void CGameStateOver::OnShow()
 {
 	CDC *pDC = CDDraw::GetBackCDC();			// 眔 Back Plain  CDC 
@@ -184,6 +186,93 @@ void CGameStateOver::OnShow()
 	pDC->SelectObject(fp);						// 奔 font f (窾ぃ璶簗奔)
 	CDDraw::ReleaseBackCDC();					// 奔 Back Plain  CDC
 }
+
+
+CGameMap::CGameMap()
+	:x(34), y(206), mx(36), my(37)
+{
+	int map_init[5][7] = {  {1,1,1,1,1,1,1},
+							{1,0,0,2,0,3,1},
+							{1,0,0,1,1,1,1},
+							{1,0,4,1,1,1,1},
+							{1,1,1,1,1,1,1}}; //0=floor,1=wall,2=box,3=finish,4=leader
+	for (int i = 0; i < 5; i++)
+		for (int j = 0; j < 7; j++)
+		{
+			map[i][j] = map_init[i][j];
+		}
+	for (int i = 0; i < 5; i++)
+		for (int j = 0; j < 7; j++)
+		{
+			if (map[i][j] == 4) {
+				leadersite[0] = i;
+				leadersite[1] = j;
+			}
+		}
+}
+
+int CGameMap::GetComponent(int x, int y)
+{
+	return map[x][y];
+}
+
+bool CGameMap::MoveRight()
+{
+	if (map[leadersite[0]][leadersite[1]+1] != 1) {
+		int temp = map[leadersite[0]][leadersite[1]];
+		map[leadersite[0]][leadersite[1]] = map[leadersite[0]][leadersite[1]+1];
+		map[leadersite[0]][leadersite[1]+1] = temp;
+		
+		return true;
+	}
+	return false;
+}
+
+bool CGameMap::MoveLeft()
+{
+	if (map[leadersite[0]][leadersite[1] - 1] != 1) {
+		int temp = map[leadersite[0]][leadersite[1]];
+		map[leadersite[0]][leadersite[1]] = map[leadersite[0]][leadersite[1]-1];
+		map[leadersite[0]][leadersite[1] - 1] = temp;
+		return true;
+	}
+	return false;
+}
+
+bool CGameMap::MoveUp()
+{
+	if (map[leadersite[0] - 1][leadersite[1]] != 1) {
+		int temp = map[leadersite[0]][leadersite[1]];
+		map[leadersite[0]][leadersite[1]] = map[leadersite[0] - 1][leadersite[1]];
+		map[leadersite[0] - 1][leadersite[1]] = temp;
+		return true;
+	}
+	return false;
+}
+
+bool CGameMap::MoveDown()
+{
+	if (map[leadersite[0] + 1][leadersite[1]] != 1) {
+		int temp = map[leadersite[0]][leadersite[1]];
+		map[leadersite[0]][leadersite[1]] = map[leadersite[0] + 1][leadersite[1]];
+		map[leadersite[0] + 1][leadersite[1]] = temp;
+		return true;
+	}
+	return false;
+
+}
+void CGameMap::SetLeader()
+{
+	for (int i = 0; i < 5; i++)
+		for (int j = 0; j < 7; j++)
+		{
+			if (map[i][j] == 4) {
+			leadersite[0] = i;
+			leadersite[1] = j;
+			}
+		}
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 // 硂class笴栏笴栏磅︽ン璶笴栏祘Α常硂柑
@@ -295,8 +384,8 @@ void CGameStateRun::OnInit()  								// 笴栏の瓜砞﹚
 	//for (i = 0; i < NUMBALLS; i++)	
 		//ball[i].LoadBitmap();								// 更材i瞴瓜
 	eraser.LoadBitmap();
-	background.LoadBitmap(MY_STAGE_ONE);					    // 更璉春瓜
-	//
+	background.LoadBitmap(MY_STAGE_ONE);                  // 更璉春瓜
+	
 	// ЧΘ场だLoading笆矗蔼秈
 	//
 	ShowInitProgress(50);
@@ -325,30 +414,42 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_DOWN  = 0x28; // keyboard絙繷
 	if (nChar == KEY_LEFT) {
 		if (eraser.GetStatus()) {
-			moveCounter = MOVE_COUNTER;
-			eraser.SetMovingLeft(true);
-			eraser.SetStanding(false);
+			if (gamemap.MoveLeft()) {
+				moveCounter = MOVE_COUNTER;
+				eraser.SetMovingLeft(true);
+				eraser.SetStanding(false);
+				gamemap.SetLeader();
+			}
 		}
 	}
 	if (nChar == KEY_RIGHT) {
 		if (eraser.GetStatus()) {
-			moveCounter = MOVE_COUNTER;
-			eraser.SetMovingRight(true);
-			eraser.SetStanding(false);
+			if (gamemap.MoveRight()) {
+				moveCounter = MOVE_COUNTER;
+				eraser.SetMovingRight(true);
+				eraser.SetStanding(false);
+				gamemap.SetLeader();
+			}
 		}
 	}
 	if (nChar == KEY_UP) {
 		if (eraser.GetStatus()) {
-			moveCounter = MOVE_COUNTER;
-			eraser.SetMovingUp(true);
-			eraser.SetStanding(false);
+			if (gamemap.MoveUp()) {
+				moveCounter = MOVE_COUNTER;
+				eraser.SetMovingUp(true);
+				eraser.SetStanding(false);
+				gamemap.SetLeader();
+			}
 		}
 	}
 	if (nChar == KEY_DOWN) {
 		if (eraser.GetStatus()) {
-			moveCounter = MOVE_COUNTER;
-			eraser.SetMovingDown(true);
-			eraser.SetStanding(false);
+			if (gamemap.MoveDown()) {
+				moveCounter = MOVE_COUNTER;
+				eraser.SetMovingDown(true);
+				eraser.SetStanding(false);
+				gamemap.SetLeader();
+			}
 		}
 	}
 }
