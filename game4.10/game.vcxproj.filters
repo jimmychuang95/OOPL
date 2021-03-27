@@ -129,6 +129,12 @@
     <ClCompile Include="Source\CLeader.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CGameMap.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CBox.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -165,6 +171,12 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\CLeader.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CGameMap.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CBox.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>

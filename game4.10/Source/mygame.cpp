@@ -188,393 +188,7 @@ void CGameStateOver::OnShow()
 }
 
 
-CGameMap::CGameMap()
-	:x(34), y(206), mx(36), my(37)
-{
-	int map_init[5][7] = {  {1,1,1,1,1,1,1},
-							{1,0,0,2,0,3,1},
-							{1,0,0,1,1,1,1},
-							{1,0,4,1,1,1,1},
-							{1,1,1,1,1,1,1}}; //0=floor,1=wall,2=box,3=finish,4=leader
-	for (int i = 0; i < 5; i++)
-		for (int j = 0; j < 7; j++)
-		{
-			map[i][j] = map_init[i][j];
-		}
-	for (int i = 0; i < 5; i++)
-		for (int j = 0; j < 7; j++)
-		{
-			if (map[i][j] == 4) {
-				leadersite[0] = i;
-				leadersite[1] = j;
-			}
-		}
-}
 
-int CGameMap::GetComponent(int x, int y)
-{
-	return map[x][y];
-}
-
-bool CGameMap::MoveRight()
-{
-	if (map[leadersite[0]][leadersite[1] + 1] != 1) {
-		if (map[leadersite[0]][leadersite[1] + 1] == 0) {//leader floor
-			map[leadersite[0]][leadersite[1]] = 0;
-			map[leadersite[0]][leadersite[1] + 1] = 4;
-			this->SetLeader();
-			TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-			return true;
-		}
-
-		if (map[leadersite[0]][leadersite[1] + 1] == 3) {//leader finish
-			map[leadersite[0]][leadersite[1]] = 0;
-			map[leadersite[0]][leadersite[1] + 1] = 5;	  //5 = leader in finish
-			leadersite[1] += 1;                           //設leadersite在finish上
-			TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-			return true;
-		}
-
-		if (map[leadersite[0]][leadersite[1] + 1] == 2) {
-			if (map[leadersite[0]][leadersite[1] + 2] == 0) {// leader box floor
-				map[leadersite[0]][leadersite[1]] = 0;
-				map[leadersite[0]][leadersite[1] + 1] = 4;
-				map[leadersite[0]][leadersite[1] + 2] = 2;
-				this->SetLeader();
-				TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-				return true;
-			}
-			if (map[leadersite[0]][leadersite[1] + 2] == 3) {//leader box finish
-				map[leadersite[0]][leadersite[1]] = 0;
-				map[leadersite[0]][leadersite[1] + 1] = 4;
-				map[leadersite[0]][leadersite[1] + 2] = 6; // 6 = finished
-				this->SetLeader();
-				TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-				return true;
-			}
-			if (map[leadersite[0]][leadersite[1] + 1] == 6) {
-				if (map[leadersite[0]][leadersite[1] + 2] == 0) {// leader finished floor
-					map[leadersite[0]][leadersite[1]] = 0;
-					map[leadersite[0]][leadersite[1]+1] = 5;
-					map[leadersite[0]][leadersite[1]+2] = 2;
-					leadersite[1] += 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-				if (map[leadersite[0]][leadersite[1] + 2] == 3) {// leader finished floor
-					map[leadersite[0]][leadersite[1]] = 0;
-					map[leadersite[0]][leadersite[1] + 1] = 5;
-					map[leadersite[0]][leadersite[1] + 2] = 6;
-					leadersite[1] += 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-			}
-			if (map[leadersite[0]][leadersite[1]] == 5) {
-				if (map[leadersite[0]][leadersite[1] + 1] == 0) {//leader in finished flloor
-					map[leadersite[0]][leadersite[1]] = 3;
-					map[leadersite[0]][leadersite[1] + 1] = 4;
-					leadersite[1] += 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-				if (map[leadersite[0]][leadersite[1] + 1] == 6) {
-					if (map[leadersite[0]][leadersite[1] + 1] == 0) {//leader in finished finished floor
-						map[leadersite[0]][leadersite[1]] = 3;
-						map[leadersite[0]][leadersite[1] + 1] = 5;
-						map[leadersite[0]][leadersite[1] + 2] = 0;
-						leadersite[1] += 1;
-						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-						return true;
-					}
-					if (map[leadersite[0]][leadersite[1] + 1] == 3) {//leader in finished finished finish
-						map[leadersite[0]][leadersite[1]] = 3;
-						map[leadersite[0]][leadersite[1] + 1] = 5;
-						map[leadersite[0]][leadersite[1] + 2] = 6;
-						leadersite[1] += 1;
-						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-						return true;
-					}
-				}
-			}
-
-		}
-	}
-	return false;
-}
-
-bool CGameMap::MoveLeft()
-{
-	if (map[leadersite[0]][leadersite[1] - 1] != 1) {
-		if (map[leadersite[0]][leadersite[1] - 1] == 0) {
-			map[leadersite[0]][leadersite[1]] = 0;
-			map[leadersite[0]][leadersite[1] - 1] = 4;
-			this->SetLeader();
-			TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-			return true;
-		}
-
-		if (map[leadersite[0]][leadersite[1] - 1] == 3) {
-			map[leadersite[0]][leadersite[1]] = 0;
-			map[leadersite[0]][leadersite[1] - 1] = 5;	  
-			leadersite[1] -= 1;                          
-			TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-			return true;
-		}
-
-		if (map[leadersite[0]][leadersite[1] - 1] == 2) {
-			if (map[leadersite[0]][leadersite[1] - 2] == 0) {
-				map[leadersite[0]][leadersite[1]] = 0;
-				map[leadersite[0]][leadersite[1] - 1] = 4;
-				map[leadersite[0]][leadersite[1] - 2] = 2;
-				this->SetLeader();
-				TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-				return true;
-			}
-			if (map[leadersite[0]][leadersite[1] - 2] == 3) {
-				map[leadersite[0]][leadersite[1]] = 0;
-				map[leadersite[0]][leadersite[1] - 1] = 4;
-				map[leadersite[0]][leadersite[1] - 2] = 6;
-				this->SetLeader();
-				TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-				return true;
-			}
-			if (map[leadersite[0]][leadersite[1] - 1] == 6) {
-				if (map[leadersite[0]][leadersite[1] - 2] == 0) {
-					map[leadersite[0]][leadersite[1]] = 0;
-					map[leadersite[0]][leadersite[1] - 1] = 5;
-					map[leadersite[0]][leadersite[1] - 2] = 2;
-					leadersite[1] -= 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-				if (map[leadersite[0]][leadersite[1] - 2] == 3) {
-					map[leadersite[0]][leadersite[1]] = 0;
-					map[leadersite[0]][leadersite[1] - 1] = 5;
-					map[leadersite[0]][leadersite[1] - 2] = 6;
-					leadersite[1] -= 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-			}
-			if (map[leadersite[0]][leadersite[1]] == 5) {
-				if (map[leadersite[0]][leadersite[1] - 1] == 0) {
-					map[leadersite[0]][leadersite[1]] = 3;
-					map[leadersite[0]][leadersite[1] - 1] = 4;
-					leadersite[1] -= 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-				if (map[leadersite[0]][leadersite[1] - 1] == 6) {
-					if (map[leadersite[0]][leadersite[1] - 1] == 0) {
-						map[leadersite[0]][leadersite[1]] = 3;
-						map[leadersite[0]][leadersite[1] - 1] = 5;
-						map[leadersite[0]][leadersite[1] - 2] = 0;
-						leadersite[1] -= 1;
-						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-						return true;
-					}
-					if (map[leadersite[0]][leadersite[1] - 1] == 3) {
-						map[leadersite[0]][leadersite[1]] = 3;
-						map[leadersite[0]][leadersite[1] - 1] = 5;
-						map[leadersite[0]][leadersite[1] - 2] = 6;
-						leadersite[1] -= 1;
-						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-						return true;
-					}
-				}
-			}
-
-		}
-	}
-	return false;
-}
-
-bool CGameMap::MoveUp()
-{
-	if (map[leadersite[0] - 1][leadersite[1]] != 1) {
-		if (map[leadersite[0] - 1][leadersite[1]] == 0) {
-			map[leadersite[0]][leadersite[1]] = 0;
-			map[leadersite[0] - 1][leadersite[1]] = 4;
-			this->SetLeader();
-			TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-			return true;
-		}
-
-		if (map[leadersite[0] - 1][leadersite[1]] == 3) {
-			map[leadersite[0]][leadersite[1]] = 0;
-			map[leadersite[0] - 1][leadersite[1]] = 5;
-			leadersite[0] -= 1;
-			TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-			return true;
-		}
-
-		if (map[leadersite[0] - 1][leadersite[1]] == 2) {
-			if (map[leadersite[0] - 2][leadersite[1]] == 0) {
-				map[leadersite[0]][leadersite[1]] = 0;
-				map[leadersite[0] - 1][leadersite[1]] = 4;
-				map[leadersite[0] - 2][leadersite[1]] = 2;
-				this->SetLeader();
-				TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-				return true;
-			}
-			if (map[leadersite[0] - 2][leadersite[1]] == 3) {
-				map[leadersite[0]][leadersite[1]] = 0;
-				map[leadersite[0] - 1][leadersite[1]] = 4;
-				map[leadersite[0] - 2][leadersite[1]] = 6;
-				this->SetLeader();
-				TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-				return true;
-			}
-			if (map[leadersite[0] - 1][leadersite[1]] == 6) {
-				if (map[leadersite[0] - 2][leadersite[1]] == 0) {
-					map[leadersite[0]][leadersite[1]] = 0;
-					map[leadersite[0] - 1][leadersite[1]] = 5;
-					map[leadersite[0] - 2][leadersite[1]] = 2;
-					leadersite[0] -= 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-				if (map[leadersite[0] - 2][leadersite[1]] == 3) {
-					map[leadersite[0]][leadersite[1]] = 0;
-					map[leadersite[0] - 1][leadersite[1]] = 5;
-					map[leadersite[0] - 2][leadersite[1]] = 6;
-					leadersite[0] -= 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-			}
-			if (map[leadersite[0]][leadersite[1]] == 5) {
-				if (map[leadersite[0] - 1][leadersite[1]] == 0) {
-					map[leadersite[0]][leadersite[1]] = 3;
-					map[leadersite[0] - 1][leadersite[1]] = 4;
-					leadersite[0] -= 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-				if (map[leadersite[0] - 1][leadersite[1]] == 6) {
-					if (map[leadersite[0] - 1][leadersite[1]] == 0) {
-						map[leadersite[0]][leadersite[1]] = 3;
-						map[leadersite[0] - 1][leadersite[1]] = 5;
-						map[leadersite[0] - 2][leadersite[1]] = 0;
-						leadersite[0] -= 1;
-						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-						return true;
-					}
-					if (map[leadersite[0] - 1][leadersite[1]] == 3) {
-						map[leadersite[0]][leadersite[1]] = 3;
-						map[leadersite[0] - 1][leadersite[1]] = 5;
-						map[leadersite[0] - 2][leadersite[1]] = 6;
-						leadersite[0] -= 1;
-						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-						return true;
-					}
-				}
-			}
-
-		}
-	}
-	return false;
-}
-
-bool CGameMap::MoveDown()
-{
-	if (map[leadersite[0] + 1][leadersite[1]] != 1) {
-		if (map[leadersite[0] + 1][leadersite[1]] == 0) {
-			map[leadersite[0]][leadersite[1]] = 0;
-			map[leadersite[0] + 1][leadersite[1]] = 4;
-			this->SetLeader();
-			TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-			return true;
-		}
-
-		if (map[leadersite[0] + 1][leadersite[1]] == 3) {
-			map[leadersite[0]][leadersite[1]] = 0;
-			map[leadersite[0] + 1][leadersite[1]] = 5;
-			leadersite[0] += 1;
-			TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-			return true;
-		}
-
-		if (map[leadersite[0] + 1][leadersite[1]] == 2) {
-			if (map[leadersite[0] + 2][leadersite[1]] == 0) {
-				map[leadersite[0]][leadersite[1]] = 0;
-				map[leadersite[0] + 1][leadersite[1]] = 4;
-				map[leadersite[0] + 2][leadersite[1]] = 2;
-				this->SetLeader();
-				TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-				return true;
-			}
-			if (map[leadersite[0] + 2][leadersite[1]] == 3) {
-				map[leadersite[0]][leadersite[1]] = 0;
-				map[leadersite[0] + 1][leadersite[1]] = 4;
-				map[leadersite[0] + 2][leadersite[1]] = 6;
-				this->SetLeader();
-				TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-				return true;
-			}
-			if (map[leadersite[0] + 1][leadersite[1]] == 6) {
-				if (map[leadersite[0] + 2][leadersite[1]] == 0) {
-					map[leadersite[0]][leadersite[1]] = 0;
-					map[leadersite[0] + 1][leadersite[1]] = 5;
-					map[leadersite[0] + 2][leadersite[1]] = 2;
-					leadersite[0] += 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-				if (map[leadersite[0] + 2][leadersite[1]] == 3) {
-					map[leadersite[0]][leadersite[1]] = 0;
-					map[leadersite[0] + 1][leadersite[1]] = 5;
-					map[leadersite[0] + 2][leadersite[1]] = 6;
-					leadersite[0] += 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-			}
-			if (map[leadersite[0]][leadersite[1]] == 5) {
-				if (map[leadersite[0] + 1][leadersite[1]] == 0) {
-					map[leadersite[0]][leadersite[1]] = 3;
-					map[leadersite[0] + 1][leadersite[1]] = 4;
-					leadersite[0] += 1;
-					TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-					return true;
-				}
-				if (map[leadersite[0] + 1][leadersite[1]] == 6) {
-					if (map[leadersite[0] + 1][leadersite[1]] == 0) {
-						map[leadersite[0]][leadersite[1]] = 3;
-						map[leadersite[0] + 1][leadersite[1]] = 5;
-						map[leadersite[0] + 2][leadersite[1]] = 0;
-						leadersite[0] += 1;
-						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-						return true;
-					}
-					if (map[leadersite[0] + 1][leadersite[1]] == 3) {
-						map[leadersite[0]][leadersite[1]] = 3;
-						map[leadersite[0] + 1][leadersite[1]] = 5;
-						map[leadersite[0] + 2][leadersite[1]] = 6;
-						leadersite[0] += 1;
-						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
-						return true;
-					}
-				}
-			}
-
-		}
-	}
-	return false;
-}
-
-void CGameMap::SetLeader()
-{
-	for (int i = 0; i < 5; i++)
-		for (int j = 0; j < 7; j++)
-		{
-			if (map[i][j] == 4) {
-			leadersite[0] = i;
-			leadersite[1] = j;
-			}
-		}
-}
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -609,9 +223,10 @@ void CGameStateRun::OnBeginState()
 		//ball[i].SetDelay(x_pos);
 		//ball[i].SetIsAlive(true);
 	//}
-	eraser.Initialize();
+	leader.Initialize();
 	background.SetTopLeft(0,0);				// 砞﹚璉春癬﹍畒夹
 	moveCounter = MOVE_COUNTER;
+	finishCounter = 30;
 	//help.SetTopLeft(0, SIZE_Y - help.Height());			// 砞﹚弧瓜癬﹍畒夹
 	//hits_left.SetInteger(HITS_LEFT);					// ﹚逞疾阑计
 	//hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// ﹚逞疾阑计畒夹
@@ -643,18 +258,57 @@ void CGameStateRun::OnMove()							// 簿笆笴栏じ
 	//
 	moveCounter--;
 	if (moveCounter <= 0) {
-		eraser.SetMovingLeft(false);
-		eraser.SetMovingRight(false);
-		eraser.SetMovingUp(false);
-		eraser.SetMovingDown(false);
-		eraser.SetStanding(true);
+		leader.SetMovingLeft(false);
+		leader.SetMovingRight(false);
+		leader.SetMovingUp(false);
+		leader.SetMovingDown(false);
+		box.SetMovingLeft(false);
+		box.SetMovingRight(false);
+		box.SetMovingUp(false);
+		box.SetMovingDown(false);
+		leader.SetStanding(true);
 	}
-	eraser.OnMove();
+	leader.OnMove();
+	
+	if (leader.GetX1() - box.GetX2() < 5 && leader.GetX1() - box.GetX2() > -5 && leader.GetY1() - box.GetY1() < 5 && leader.GetY1() - box.GetY1() > -5) {	//box push left
+		box.PushedLeft(true);
+	}
+	else {
+		box.PushedLeft(false);
+	}
+
+	if (leader.GetX2() - box.GetX1() < 5 && leader.GetX2() - box.GetX1() > -5 && leader.GetY1() - box.GetY1() < 5 && leader.GetY1() - box.GetY1() > -5) {	//box push right
+		box.PushedRight(true);
+	}
+	else {
+		box.PushedRight(false);
+	}
+
+	if (leader.GetY2() - box.GetY1() < 5 && leader.GetY2() - box.GetY1() > -5 && leader.GetX1() - box.GetX1() < 5 && leader.GetX1() - box.GetX1() > -5) {
+		box.PushedDown(true);
+	}
+	else {
+		box.PushedDown(false);
+	}
+
+	if (leader.GetY1() - box.GetY2() < 5 && leader.GetY1() - box.GetY2() > -5 && leader.GetX1() - box.GetX1() < 5 && leader.GetX1() - box.GetX1() > -5) {
+		box.PushedUp(true);
+	}
+	else {
+		box.PushedUp(false);
+	}
+	box.OnMove();
+
+	if (gamemap.IsFinish()) {
+		finishCounter--;
+		if(finishCounter <= 0)
+			GotoGameState(GAME_STATE_OVER);
+	}
 	//
 	// 耞揽琌窱瞴
 	//
 	//for (i=0; i < NUMBALLS; i++)
-		//if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
+		//if (ball[i].IsAlive() && ball[i].HitEraser(&leader)) {
 		//	ball[i].SetIsAlive(false);
 		//	CAudio::Instance()->Play(AUDIO_DING);
 		//	hits_left.Add(-1);
@@ -686,7 +340,8 @@ void CGameStateRun::OnInit()  								// 笴栏の瓜砞﹚
 	//int i;
 	//for (i = 0; i < NUMBALLS; i++)	
 		//ball[i].LoadBitmap();								// 更材i瞴瓜
-	eraser.LoadBitmap();
+	leader.LoadBitmap();
+	box.LoadBitmap();
 	background.LoadBitmap(MY_STAGE_ONE);                  // 更璉春瓜
 	
 	// ЧΘ场だLoading笆矗蔼秈
@@ -716,42 +371,54 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard絙繷
 	const char KEY_DOWN  = 0x28; // keyboard絙繷
 	if (nChar == KEY_LEFT) {
-		if (eraser.GetStatus()) {
+		if (leader.GetStatus()) {
 			if (gamemap.MoveLeft()) {
 				moveCounter = MOVE_COUNTER;
-				eraser.SetMovingLeft(true);
-				eraser.SetStanding(false);
+				leader.SetMovingLeft(true);
+				leader.SetStanding(false);
 				//gamemap.SetLeader();
+				if (box.CanPushLeft()) {
+					box.SetMovingLeft(true);
+				}
 			}
 		}
 	}
 	if (nChar == KEY_RIGHT) {
-		if (eraser.GetStatus()) {
+		if (leader.GetStatus()) {
 			if (gamemap.MoveRight()) {
 				moveCounter = MOVE_COUNTER;
-				eraser.SetMovingRight(true);
-				eraser.SetStanding(false);
+				leader.SetMovingRight(true);
+				leader.SetStanding(false);
 				//gamemap.SetLeader();
+				if (box.CanPushRight()) {
+					box.SetMovingRight(true);
+				}
 			}
 		}
 	}
 	if (nChar == KEY_UP) {
-		if (eraser.GetStatus()) {
+		if (leader.GetStatus()) {
 			if (gamemap.MoveUp()) {
 				moveCounter = MOVE_COUNTER;
-				eraser.SetMovingUp(true);
-				eraser.SetStanding(false);
+				leader.SetMovingUp(true);
+				leader.SetStanding(false);
 				//gamemap.SetLeader();
+				if (box.CanPushUp()) {
+					box.SetMovingUp(true);
+				}
 			}
 		}
 	}
 	if (nChar == KEY_DOWN) {
-		if (eraser.GetStatus()) {
+		if (leader.GetStatus()) {
 			if (gamemap.MoveDown()) {
 				moveCounter = MOVE_COUNTER;
-				eraser.SetMovingDown(true);
-				eraser.SetStanding(false);
+				leader.SetMovingDown(true);
+				leader.SetStanding(false);
 				//gamemap.SetLeader();
+				if (box.CanPushDown()) {
+					box.SetMovingDown(true);
+				}
 			}
 		}
 	}
@@ -779,12 +446,12 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
 {
-	//eraser.SetMovingLeft(true);
+	//leader.SetMovingLeft(true);
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 {
-	//eraser.SetMovingLeft(false);
+	//leader.SetMovingLeft(false);
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 矪瞶菲公笆
@@ -794,12 +461,12 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
 {
-	//eraser.SetMovingRight(true);
+	//leader.SetMovingRight(true);
 }
 
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 {
-	//eraser.SetMovingRight(false);
+	//leader.SetMovingRight(false);
 }
 
 void CGameStateRun::OnShow()
@@ -819,8 +486,8 @@ void CGameStateRun::OnShow()
 	//for (int i=0; i < NUMBALLS; i++)
 		//ball[i].OnShow();				// 禟材i腹瞴
 	//bball.OnShow();						// 禟紆铬瞴
-	eraser.OnShow();					// 禟揽
-
+	leader.OnShow();					// 禟揽
+	box.OnShow();
 	//
 	//  禟オのà辅瓜
 	//

@@ -41,6 +41,8 @@
 #include "CLeader.h"
 #include "CBall.h"
 #include "CBouncingBall.h"
+#include "CGameMap.h"
+#include "CBox.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -72,24 +74,6 @@ namespace game_framework {
 	};
 
 
-	class CGameMap
-	{
-	public:
-		CGameMap();
-		int CGameMap::GetComponent(int x, int y);
-		bool CGameMap::MoveRight();
-		bool CGameMap::MoveLeft();
-		bool CGameMap::MoveUp();
-		bool CGameMap::MoveDown();
-		void CGameMap::SetLeader();
-	protected:
-		int map[5][7];
-		const int x, y;
-		const int mx, my;
-		int leadersite[2] = { 0 };
-	};
-
-
 	/////////////////////////////////////////////////////////////////////////////
 	// 硂class笴栏笴栏磅︽ン璶笴栏祘Α常硂柑
 	// –Member functionImplementation常璶来
@@ -114,15 +98,17 @@ namespace game_framework {
 	private:
 		const int		MOVE_COUNTER;
 		int				moveCounter;
+		int				finishCounter;
 		const int		NUMBALLS;	// 瞴羆计
 		CMovingBitmap	background;	// 璉春瓜
 		CMovingBitmap	help;		// 弧瓜
 		CBall			*ball;		// 瞴皚
 		CMovingBitmap	corner;		// à辅瓜
-		CLeader			eraser;		// ╃
+		CLeader			leader;		// ╃
 		CInteger		hits_left;	// 逞疾阑计
 		CBouncingBall   bball;		// は滦紆铬瞴
 		CGameMap        gamemap;
+		CBox			box;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
