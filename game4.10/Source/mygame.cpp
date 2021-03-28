@@ -71,6 +71,7 @@ CGameStateInit::CGameStateInit(CGame *g)
 
 void CGameStateInit::OnInit()
 {
+	
 	//
 	// 讽瓜OnInit更┮Τ瓜璶丁磷笴栏
 	//     单ぃ瑻沸笴栏穦瞷Loading ...陪ボLoading秈
@@ -80,7 +81,11 @@ void CGameStateInit::OnInit()
 	// 秨﹍更戈
 	//
 	logo.LoadBitmap(MY_HOMEPAGE);
-	Sleep(300);				// 篊獽睲贰秈龟悔笴栏叫埃Sleep
+	
+	//Sleep(300);				// 篊獽睲贰秈龟悔笴栏叫埃Sleep
+
+			// 初始畫面bgm
+
 	//
 	// OnInit笆穦钡CGameStaterRun::OnInit()┮秈临⊿100%
 	//
@@ -88,22 +93,27 @@ void CGameStateInit::OnInit()
 
 void CGameStateInit::OnBeginState()
 {
+	CAudio::Instance()->Load(AUDIO_CLICK, "sounds\\click.mp3");
+	CAudio::Instance()->Load(AUDIO_BGM, "sounds\\bgm.mp3");
+	CAudio::Instance()->Play(AUDIO_BGM, true);
 }
 
 void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	const char KEY_ESC = 27;
 	const char KEY_SPACE = ' ';
-	if (nChar == KEY_SPACE)
-		GotoGameState(GAME_STATE_RUN);						// ち传GAME_STATE_RUN
-	else if (nChar == KEY_ESC)								// Demo 闽超笴栏よ猭
+	//if (nChar == KEY_SPACE)
+		//GotoGameState(GAME_STATE_RUN);						// ち传GAME_STATE_RUN
+	if (nChar == KEY_ESC)								// Demo 闽超笴栏よ猭
 		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE,0,0);	// 闽超笴栏
 }
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (point.x < 230 && point.x > 110 && point.y > 260 && point.y < 315) {
-		GotoGameState(GAME_STATE_RUN);		// ち传GAME_STATE_RUN
+		GotoGameState(GAME_STATE_RUN);
+		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		CAudio::Instance()->Stop(AUDIO_BGM);		// ち传GAME_STATE_RUN
 	}
 }
 
@@ -150,6 +160,7 @@ void CGameStateOver::OnMove()
 
 void CGameStateOver::OnBeginState()
 {
+	CAudio::Instance()->Play(AUDIO_CLEAR, false);
 	counter = 30 * 5; // 5 seconds
 }
 
@@ -168,6 +179,7 @@ void CGameStateOver::OnInit()
 	// 程沧秈100%
 	//
 	ShowInitProgress(100);
+	CAudio::Instance()->Load(AUDIO_CLEAR, "sounds\\clear.mp3");	// 破關聲音
 }
 
 
@@ -226,13 +238,13 @@ void CGameStateRun::OnBeginState()
 	leader.Initialize();
 	background.SetTopLeft(0,0);				// 砞﹚璉春癬﹍畒夹
 	moveCounter = MOVE_COUNTER;
-	finishCounter = 30;
+	finishCounter = 40;
 	//help.SetTopLeft(0, SIZE_Y - help.Height());			// 砞﹚弧瓜癬﹍畒夹
 	//hits_left.SetInteger(HITS_LEFT);					// ﹚逞疾阑计
 	//hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// ﹚逞疾阑计畒夹
-	CAudio::Instance()->Play(AUDIO_LAKE, true);			// 挤 WAVE
-	CAudio::Instance()->Play(AUDIO_DING, false);		// 挤 WAVE
-	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 挤 MIDI
+	//CAudio::Instance()->Play(AUDIO_LAKE, true);			// 挤 WAVE
+	//CAudio::Instance()->Play(AUDIO_DING, false);		// 挤 WAVE
+	//CAudio::Instance()->Play(AUDIO_NTUT, true);			// 挤 MIDI
 }
 
 void CGameStateRun::OnMove()							// 簿笆笴栏じ
@@ -267,6 +279,7 @@ void CGameStateRun::OnMove()							// 簿笆笴栏じ
 		box.SetMovingUp(false);
 		box.SetMovingDown(false);
 		leader.SetStanding(true);
+		CAudio::Instance()->Stop(AUDIO_BOX);
 	}
 	leader.OnMove();
 	
@@ -284,14 +297,14 @@ void CGameStateRun::OnMove()							// 簿笆笴栏じ
 		box.PushedRight(false);
 	}
 
-	if (leader.GetY2() - box.GetY1() < 5 && leader.GetY2() - box.GetY1() > -5 && leader.GetX1() - box.GetX1() < 5 && leader.GetX1() - box.GetX1() > -5) {
+	if (leader.GetY2() - box.GetY1() < 5 && leader.GetY2() - box.GetY1() > -5 && leader.GetX1() - box.GetX1() < 5 && leader.GetX1() - box.GetX1() > -5) {	//box push down
 		box.PushedDown(true);
 	}
 	else {
 		box.PushedDown(false);
 	}
 
-	if (leader.GetY1() - box.GetY2() < 5 && leader.GetY1() - box.GetY2() > -5 && leader.GetX1() - box.GetX1() < 5 && leader.GetX1() - box.GetX1() > -5) {
+	if (leader.GetY1() - box.GetY2() < 5 && leader.GetY1() - box.GetY2() > -5 && leader.GetX1() - box.GetX1() < 5 && leader.GetX1() - box.GetX1() > -5) {	//box push up
 		box.PushedUp(true);
 	}
 	else {
@@ -356,9 +369,10 @@ void CGameStateRun::OnInit()  								// 笴栏の瓜砞﹚
 	//corner.ShowBitmap(background);							// 盢corner禟background
 	//bball.LoadBitmap();										// 更瓜
 	//hits_left.LoadBitmap();									
-	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 更絪腹0羘ding.wav
-	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 更絪腹1羘lake.mp3
-	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 更絪腹2羘ntut.mid
+	
+		// 點擊鼠標聲音
+	CAudio::Instance()->Load(AUDIO_BOX,    "sounds\\box_long.mp3");		// 箱子移動聲音
+	
 	//
 	// OnInit笆穦钡CGameStaterOver::OnInit()┮秈临⊿100%
 	//
@@ -379,6 +393,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				//gamemap.SetLeader();
 				if (box.CanPushLeft()) {
 					box.SetMovingLeft(true);
+					CAudio::Instance()->Play(AUDIO_BOX, true);
 				}
 			}
 		}
@@ -392,6 +407,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				//gamemap.SetLeader();
 				if (box.CanPushRight()) {
 					box.SetMovingRight(true);
+					CAudio::Instance()->Play(AUDIO_BOX, true);
 				}
 			}
 		}
@@ -405,6 +421,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				//gamemap.SetLeader();
 				if (box.CanPushUp()) {
 					box.SetMovingUp(true);
+					CAudio::Instance()->Play(AUDIO_BOX, true);
 				}
 			}
 		}
@@ -418,6 +435,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				//gamemap.SetLeader();
 				if (box.CanPushDown()) {
 					box.SetMovingDown(true);
+					CAudio::Instance()->Play(AUDIO_BOX, true);
 				}
 			}
 		}
@@ -446,12 +464,14 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
 {
-	//leader.SetMovingLeft(true);
+	CAudio::Instance()->Play(AUDIO_CLICK, false);
+
+	//CAudio::Instance()->Stop(AUDIO_BOX);
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 {
-	//leader.SetMovingLeft(false);
+
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 矪瞶菲公笆

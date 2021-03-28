@@ -74,7 +74,7 @@
 #define GAME_CYCLE_TIME		 33		    // –33ms禲ΩMoveのShow(–30Ω)
 #define SHOW_GAME_CYCLE_TIME false		// 琌debug mode陪ボcycle time
 #define ENABLE_GAME_PAUSE	 true		// 琌す砛 Ctrl-Q 既氨笴栏
-#define ENABLE_AUDIO		 false		// 币笆ざ
+#define ENABLE_AUDIO		 true		// 币笆ざ
 
 /////////////////////////////////////////////////////////////////////////////
 // ﹚竡CGameのCGameState┮ㄏノ篈盽计

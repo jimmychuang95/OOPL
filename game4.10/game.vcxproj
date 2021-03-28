@@ -346,6 +346,7 @@
     <Image Include="Bitmaps\stage_1.bmp" />
     <Image Include="Bitmaps\stage_one.bmp" />
     <Image Include="Bitmaps\stage_select.bmp" />
+    <Image Include="Bitmaps\stage_two.bmp" />
     <Image Include="res\bitmap3.bmp" />
     <Image Include="res\bitmap4.bmp" />
     <Image Include="res\bitmap6.bmp" />
