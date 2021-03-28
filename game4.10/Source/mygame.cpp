@@ -154,8 +154,8 @@ CGameStateOver::CGameStateOver(CGame *g)
 void CGameStateOver::OnMove()
 {
 	counter--;
-	if (counter < 0)
-		GotoGameState(GAME_STATE_INIT);
+	//if (counter < 0)
+		//GotoGameState(GAME_STATE_INIT);
 }
 
 void CGameStateOver::OnBeginState()
@@ -179,6 +179,7 @@ void CGameStateOver::OnInit()
 	// 程沧秈100%
 	//
 	ShowInitProgress(100);
+	background.LoadBitmap(STAGE_ONE_CP);
 	CAudio::Instance()->Load(AUDIO_CLEAR, "sounds\\clear.mp3");	// 破關聲音
 }
 
@@ -186,17 +187,18 @@ void CGameStateOver::OnInit()
 
 void CGameStateOver::OnShow()
 {
-	CDC *pDC = CDDraw::GetBackCDC();			// 眔 Back Plain  CDC 
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 玻ネ font f; 160ボ16 point
-	fp=pDC->SelectObject(&f);					// 匡ノ font f
-	pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
-	char str[80];								// Demo 计癸﹃锣传
-	sprintf(str, "Game Over ! (%d)", counter / 30);
-	pDC->TextOut(240,210,str);
-	pDC->SelectObject(fp);						// 奔 font f (窾ぃ璶簗奔)
-	CDDraw::ReleaseBackCDC();					// 奔 Back Plain  CDC
+	//CDC *pDC = CDDraw::GetBackCDC();					// 眔 Back Plain  CDC 
+	//CFont f,*fp;
+	//f.CreatePointFont(160,"Times New Roman");			// 玻ネ font f; 160ボ16 point
+	//fp=pDC->SelectObject(&f);							// 匡ノ font f
+	///pDC->SetBkColor(RGB(0,0,0));
+	//pDC->SetTextColor(RGB(255,255,0));
+	//char str[80];										// Demo 计癸﹃锣传
+	//sprintf(str, "Game Over ! (%d)", counter / 30);
+	//pDC->TextOut(240,210,str);
+	//pDC->SelectObject(fp);							// 奔 font f (窾ぃ璶簗奔)
+	//CDDraw::ReleaseBackCDC();
+	background.ShowBitmap();							// 奔 Back Plain  CDC
 }
 
 

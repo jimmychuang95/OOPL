@@ -32,7 +32,7 @@ MY_LEADER_RIGHT         BITMAP                  "..\\Bitmaps\\leader_right.bmp"
 
 MY_LEADER_UP            BITMAP                  "..\\Bitmaps\\leader_up.bmp"
 
-MY_STAGE_ONE            BITMAP                  "..\\Bitmaps\\stage_one.bmp"
+MY_STAGE_ONE            BITMAP                  "..\\Bitmaps\\stage_1.bmp"
 
 LEADER_DOWN             BITMAP                  "..\\Bitmaps\\my_leader_down.bmp"
 
@@ -42,7 +42,13 @@ LEADER_RIGHT            BITMAP                  "..\\Bitmaps\\my_leader_right.bm
 
 LEADER_UP               BITMAP                  "..\\Bitmaps\\\\my_leader_up.bmp"
 
-MY_STAGE_TWO            BITMAP                  "D:\\NTUT\\OOPL\\oopl\\game4.10\\Bitmaps\\stage_two.bmp"
+MY_STAGE_TWO            BITMAP                  "..\\Bitmaps\\stage_2.bmp"
+
+MY_STAGE_THREE          BITMAP                  "..\\Bitmaps\\stage_3.bmp"
+
+MY_STAGE_FOUR           BITMAP                  "..\\Bitmaps\\stage_4.bmp"
+
+STAGE_ONE_CP            BITMAP                  "..\\Bitmaps\\CP_level1.bmp"
 
 #endif    // 中文 (簡體，中華人民共和國) resources
 /////////////////////////////////////////////////////////////////////////////
@@ -110,13 +116,7 @@ IDB_BITMAP6             BITMAP                  "..\\res\\bitmap6.bmp"
 
 IDB_BITMAP8             BITMAP                  "..\\res\\bitmap8.bmp"
 
-IDB_BITMAP9             BITMAP                  "..\\Bitmaps\\stage_select.bmp"
-
 MY_HOMEPAGE             BITMAP                  "..\\Bitmaps\\homepage.bmp"
-
-MY_LEVEL_SELECT         BITMAP                  "..\\Bitmaps\\stage_select.bmp"
-
-MY_STAGE_1              BITMAP                  "..\\Bitmaps\\stage_1.bmp"
 
 MY_LEADER               BITMAP                  "..\\Bitmaps\\leader.bmp"
 

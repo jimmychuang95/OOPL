@@ -331,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Bitmaps\box.bmp" />
+    <Image Include="Bitmaps\CP_level1.bmp" />
     <Image Include="Bitmaps\floor.bmp" />
     <Image Include="Bitmaps\homepage.bmp" />
     <Image Include="Bitmaps\homepage_try.bmp" />
@@ -344,6 +345,9 @@
     <Image Include="Bitmaps\my_leader_right.bmp" />
     <Image Include="Bitmaps\my_leader_up.bmp" />
     <Image Include="Bitmaps\stage_1.bmp" />
+    <Image Include="Bitmaps\stage_2.bmp" />
+    <Image Include="Bitmaps\stage_3.bmp" />
+    <Image Include="Bitmaps\stage_4.bmp" />
     <Image Include="Bitmaps\stage_one.bmp" />
     <Image Include="Bitmaps\stage_select.bmp" />
     <Image Include="Bitmaps\stage_two.bmp" />
@@ -351,6 +355,7 @@
     <Image Include="res\bitmap4.bmp" />
     <Image Include="res\bitmap6.bmp" />
     <Image Include="res\bitmap8.bmp" />
+    <Image Include="res\bitmap9.bmp" />
     <Image Include="RES\homepage.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

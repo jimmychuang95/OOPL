@@ -127,6 +127,7 @@ namespace game_framework {
 		void OnShow();									// 陪ボ硂篈笴栏礶
 	private:
 		int counter;	// 计ぇ璸计竟
+		CMovingBitmap	background;
 	};
 
 }
