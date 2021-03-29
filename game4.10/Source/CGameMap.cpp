@@ -12,7 +12,7 @@ namespace game_framework {
 	CGameMap::CGameMap()
 		:x(34), y(206), mx(36), my(37)
 	{
-		int map_init[5][7] = { {1,1,1,1,1,1,1},
+		int map_init[5][7] = {  {1,1,1,1,1,1,1},
 								{1,0,0,2,0,3,1},
 								{1,0,0,1,1,1,1},
 								{1,0,4,1,1,1,1},

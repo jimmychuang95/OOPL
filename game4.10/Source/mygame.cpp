@@ -84,11 +84,7 @@ void CGameStateInit::OnInit()
 	
 	//Sleep(300);				// 篊獽睲贰秈龟悔笴栏叫埃Sleep
 
-			// 初始畫面bgm
 
-	//
-	// OnInit笆穦钡CGameStaterRun::OnInit()┮秈临⊿100%
-	//
 }
 
 void CGameStateInit::OnBeginState()
@@ -111,7 +107,7 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (point.x < 230 && point.x > 110 && point.y > 260 && point.y < 315) {
-		GotoGameState(GAME_STATE_RUN);
+		GotoGameState(GAME_STATE_SELECT);
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		CAudio::Instance()->Stop(AUDIO_BGM);		// ち传GAME_STATE_RUN
 	}
@@ -141,6 +137,40 @@ void CGameStateInit::OnShow()
 	//pDC->SelectObject(fp);						// 奔 font f (窾ぃ璶簗奔)
 	//CDDraw::ReleaseBackCDC();					// 奔 Back Plain  CDC
 }								
+
+/////////////////////////////////////////////////////////////////////////////
+//class Game Select
+/////////////////////////////////////////////////////////////////////////////
+
+CGameStateSelect::CGameStateSelect(CGame *g)
+	: CGameState(g)
+{
+}
+
+void CGameStateSelect::OnInit()
+{
+	ShowInitProgress(0);
+	background.LoadBitmap(STAGE_ONE_SL);
+}
+
+void CGameStateSelect::OnBeginState()
+{
+
+}
+
+void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {
+		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		GotoGameState(GAME_STATE_RUN);
+	}
+	
+}
+
+void CGameStateSelect::OnShow()
+{
+	background.ShowBitmap();
+}
 
 /////////////////////////////////////////////////////////////////////////////
 // 硂class笴栏挡篈(Game Over)

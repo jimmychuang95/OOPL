@@ -75,6 +75,18 @@ namespace game_framework {
 	};
 
 
+	class CGameStateSelect : public CGameState {
+	public:
+		CGameStateSelect(CGame *g);
+		void OnInit();  								// 笴栏の瓜砞﹚
+		void OnBeginState();							// 砞﹚–Ω┮惠跑计
+		void OnLButtonDown(UINT nFlags, CPoint point);  // 矪瞶菲公笆
+	protected:
+		void OnShow();									// 陪ボ硂篈笴栏礶
+	private:
+		CMovingBitmap background;								// csielogo
+	};
+
 	/////////////////////////////////////////////////////////////////////////////
 	// 硂class笴栏笴栏磅︽ン璶笴栏祘Α常硂柑
 	// –Member functionImplementation常璶来

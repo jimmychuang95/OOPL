@@ -50,6 +50,8 @@ MY_STAGE_FOUR           BITMAP                  "..\\Bitmaps\\stage_4.bmp"
 
 STAGE_ONE_CP            BITMAP                  "..\\Bitmaps\\CP_level1.bmp"
 
+STAGE_ONE_SL            BITMAP                  "..\\Bitmaps\\SL_level1.bmp"
+
 #endif    // 中文 (簡體，中華人民共和國) resources
 /////////////////////////////////////////////////////////////////////////////
 
