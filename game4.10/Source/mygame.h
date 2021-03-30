@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *	 2004-03-02 V4.0
- *      1. Add CGameStateInit, CGameStateRun, and CGameStateOver to
+ *      1. Add CGameStateInit, CGameStageOne, and CGameStateOver to
  *         demonstrate the use of states.
  *   2005-09-13
  *      Rewrite the codes for CBall and CLeader.
@@ -28,7 +28,7 @@
  *   2006-02-08 V4.2
  *      1. Rename OnInitialUpdate() -> OnInit().
  *      2. Replace AUDIO_CANYON as AUDIO_NTUT.
- *      3. Add help bitmap to CGameStateRun.
+ *      3. Add help bitmap to CGameStageOne.
  *   2006-09-09 V4.3
  *      1. Rename Move() and Show() as OnMove and OnShow() to emphasize that they are
  *         event driven.
@@ -84,7 +84,8 @@ namespace game_framework {
 	protected:
 		void OnShow();									// 陪ボ硂篈笴栏礶
 	private:
-		CMovingBitmap background;								// csielogo
+		CMovingBitmap stageOneBg;
+		CMovingBitmap stageTwoBg;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -92,10 +93,10 @@ namespace game_framework {
 	// –Member functionImplementation常璶来
 	/////////////////////////////////////////////////////////////////////////////
 
-	class CGameStateRun : public CGameState {
+	class CGameStageOne : public CGameState {
 	public:
-		CGameStateRun(CGame *g);
-		~CGameStateRun();
+		CGameStageOne(CGame *g);
+		~CGameStageOne();
 		void OnBeginState();							// 砞﹚–Ω┮惠跑计
 		void OnInit();  								// 笴栏の瓜砞﹚
 		void OnKeyDown(UINT, UINT, UINT);
@@ -124,6 +125,7 @@ namespace game_framework {
 		CBox			box;
 	};
 
+
 	/////////////////////////////////////////////////////////////////////////////
 	// 硂class笴栏挡篈(Game Over)
 	// –Member functionImplementation常璶来
@@ -143,3 +145,6 @@ namespace game_framework {
 	};
 
 }
+
+
+

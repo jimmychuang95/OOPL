@@ -22,9 +22,9 @@
  *   2002-03-04 V3.1
  *          Add codes to demostrate the use of CMovingBitmap::ShowBitmap(CMovingBitmap &).
  *	 2004-03-02 V4.0
- *      1. Add CGameStateInit, CGameStateRun, and CGameStateOver to
+ *      1. Add CGameStateInit, CGameStageOne, and CGameStateOver to
  *         demonstrate the use of states.
- *      2. Demo the use of CInteger in CGameStateRun.
+ *      2. Demo the use of CInteger in CGameStageOne.
  *   2005-09-13
  *      Rewrite the codes for CBall and CLeader.
  *   2005-09-20 V4.2Beta1.
@@ -36,7 +36,7 @@
  *      3. Rename OnInitialUpdate() -> OnInit().
  *      4. Fix the bug that OnBeginState() of GameStateInit is not called.
  *      5. Replace AUDIO_CANYON as AUDIO_NTUT.
- *      6. Add help bitmap to CGameStateRun.
+ *      6. Add help bitmap to CGameStageOne.
  *   2006-09-09 V4.3
  *      1. Rename Move() and Show() as OnMove and OnShow() to emphasize that they are
  *         event driven.
@@ -99,7 +99,7 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_ESC = 27;
 	const char KEY_SPACE = ' ';
 	//if (nChar == KEY_SPACE)
-		//GotoGameState(GAME_STATE_RUN);						// ち传GAME_STATE_RUN
+		//GotoGameState(GAME_STAGE_ONE);						// ち传GAME_STAGE_ONE
 	if (nChar == KEY_ESC)								// Demo 闽超笴栏よ猭
 		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE,0,0);	// 闽超笴栏
 }
@@ -109,7 +109,7 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 	if (point.x < 230 && point.x > 110 && point.y > 260 && point.y < 315) {
 		GotoGameState(GAME_STATE_SELECT);
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		CAudio::Instance()->Stop(AUDIO_BGM);		// ち传GAME_STATE_RUN
+		CAudio::Instance()->Stop(AUDIO_BGM);		// ち传GAME_STAGE_ONE
 	}
 }
 
@@ -150,26 +150,27 @@ CGameStateSelect::CGameStateSelect(CGame *g)
 void CGameStateSelect::OnInit()
 {
 	ShowInitProgress(0);
-	background.LoadBitmap(STAGE_ONE_SL);
+	stageOneBg.LoadBitmap(STAGE_ONE_SL);
+	stageTwoBg.LoadBitmap(STAGE_TWO_SL);
 }
 
 void CGameStateSelect::OnBeginState()
 {
-
 }
 
 void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STATE_RUN);
+		GotoGameState(GAME_STAGE_ONE);
 	}
 	
 }
 
 void CGameStateSelect::OnShow()
 {
-	background.ShowBitmap();
+	stageOneBg.ShowBitmap();
+	
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -239,18 +240,18 @@ void CGameStateOver::OnShow()
 // 硂class笴栏笴栏磅︽ン璶笴栏祘Α常硂柑
 /////////////////////////////////////////////////////////////////////////////
 
-CGameStateRun::CGameStateRun(CGame *g)
+CGameStageOne::CGameStageOne(CGame *g)
 : CGameState(g), NUMBALLS(28), MOVE_COUNTER(20)
 {
 	//ball = new CBall [NUMBALLS];
 }
 
-CGameStateRun::~CGameStateRun()
+CGameStageOne::~CGameStageOne()
 {
 	//delete [] ball;
 }
 
-void CGameStateRun::OnBeginState()
+void CGameStageOne::OnBeginState()
 {
 	//const int BALL_GAP = 90;
 	//const int BALL_XY_OFFSET = 45;
@@ -279,7 +280,7 @@ void CGameStateRun::OnBeginState()
 	//CAudio::Instance()->Play(AUDIO_NTUT, true);			// 挤 MIDI
 }
 
-void CGameStateRun::OnMove()							// 簿笆笴栏じ
+void CGameStageOne::OnMove()							// 簿笆笴栏じ
 {
 	//
 	// 狦辨эcursor妓Α玥盢祘Αcommment
@@ -346,7 +347,7 @@ void CGameStateRun::OnMove()							// 簿笆笴栏じ
 
 	if (gamemap.IsFinish()) {
 		finishCounter--;
-		if(finishCounter <= 0)
+		if (finishCounter <= 0)
 			GotoGameState(GAME_STATE_OVER);
 	}
 	//
@@ -372,7 +373,7 @@ void CGameStateRun::OnMove()							// 簿笆笴栏じ
 	//bball.OnMove();
 }
 
-void CGameStateRun::OnInit()  								// 笴栏の瓜砞﹚
+void CGameStageOne::OnInit()  								// 笴栏の瓜砞﹚
 {
 	//
 	// 讽瓜OnInit更┮Τ瓜璶丁磷笴栏
@@ -410,7 +411,7 @@ void CGameStateRun::OnInit()  								// 笴栏の瓜砞﹚
 	//
 }
 
-void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+void CGameStageOne::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	const char KEY_LEFT  = 0x25; // keyboardオ絙繷
 	const char KEY_UP    = 0x26; // keyboard絙繷
@@ -474,7 +475,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 }
 
-void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
+void CGameStageOne::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	const char KEY_LEFT  = 0x25; // keyboardオ絙繷
 	const char KEY_UP    = 0x26; // keyboard絙繷
@@ -494,34 +495,34 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 }
 
-void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
+void CGameStageOne::OnLButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
 {
 	CAudio::Instance()->Play(AUDIO_CLICK, false);
 
 	//CAudio::Instance()->Stop(AUDIO_BOX);
 }
 
-void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
+void CGameStageOne::OnLButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 {
 
 }
 
-void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 矪瞶菲公笆
+void CGameStageOne::OnMouseMove(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 {
 	// ⊿ㄆ狦惠璶矪瞶菲公簿笆杠糶code硂柑
 }
 
-void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
+void CGameStageOne::OnRButtonDown(UINT nFlags, CPoint point)  // 矪瞶菲公笆
 {
 	//leader.SetMovingRight(true);
 }
 
-void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
+void CGameStageOne::OnRButtonUp(UINT nFlags, CPoint point)	// 矪瞶菲公笆
 {
 	//leader.SetMovingRight(false);
 }
 
-void CGameStateRun::OnShow()
+void CGameStageOne::OnShow()
 {
 	//
 	//  猔種Show柑窾ぃ璶簿笆ヴン畒夹簿笆畒夹莱パMove暗癸
@@ -549,3 +550,9 @@ void CGameStateRun::OnShow()
 	//corner.ShowBitmap();
 }
 }
+
+
+/////////////////////////////////////////////////
+//Game Stage Two
+/////////////////////////////////////////////////
+

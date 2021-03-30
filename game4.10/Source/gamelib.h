@@ -83,7 +83,7 @@
 enum GAME_STATES {
 	GAME_STATE_INIT,
 	GAME_STATE_SELECT,
-	GAME_STATE_RUN,
+	GAME_STAGE_ONE,
 	GAME_STATE_OVER
 };
 
@@ -273,7 +273,8 @@ private:
 class CGame;
 class CGameStateInit;
 class CGameStateSelect;
-class CGameStateRun;
+class CGameStageOne;
+class CGameStageTwo;
 class CGameStateOver;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -308,6 +309,8 @@ protected:
 	virtual void OnMove() {}								// 簿笆硂篈笴栏じ
 	virtual void OnShow() = 0;								// 陪ボ硂篈笴栏礶
 	CGame *game;
+
+	
 };
 
 /////////////////////////////////////////////////////////////////////////////

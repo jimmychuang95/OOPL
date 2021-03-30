@@ -345,6 +345,7 @@
     <Image Include="Bitmaps\my_leader_right.bmp" />
     <Image Include="Bitmaps\my_leader_up.bmp" />
     <Image Include="Bitmaps\SL_level1.bmp" />
+    <Image Include="Bitmaps\SL_level2.bmp" />
     <Image Include="Bitmaps\stage_1.bmp" />
     <Image Include="Bitmaps\stage_2.bmp" />
     <Image Include="Bitmaps\stage_3.bmp" />

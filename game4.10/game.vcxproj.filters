@@ -270,5 +270,8 @@
     <Image Include="Bitmaps\SL_level1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Bitmaps\SL_level2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

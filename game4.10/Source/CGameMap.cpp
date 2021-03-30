@@ -37,6 +37,7 @@ namespace game_framework {
 		return map[x][y];
 	}
 
+
 	bool CGameMap::MoveRight()
 	{
 		if (map[leadersite[0]][leadersite[1] + 1] != 1) {
