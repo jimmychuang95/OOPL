@@ -72,6 +72,7 @@ namespace game_framework {
 		void OnShow();									// 陪ボ硂篈笴栏礶
 	private:
 		CMovingBitmap logo;								// csielogo
+		int leaveInitCount = 0;
 	};
 
 
@@ -113,6 +114,35 @@ namespace game_framework {
 		const int		MOVE_COUNTER;
 		int				moveCounter;
 		int				finishCounter;
+		int				leaveStageOneCount = 0;
+		const int		NUMBALLS;	// 瞴羆计
+		CMovingBitmap	background;	// 璉春瓜
+		CMovingBitmap	help;		// 弧瓜
+		CBall			*ball;		// 瞴皚
+		CMovingBitmap	corner;		// à辅瓜
+		CLeader			leader;		// ╃
+		CInteger		hits_left;	// 逞疾阑计
+		CBouncingBall   bball;		// は滦紆铬瞴
+		CGameMap        gamemap;
+		CBox			box;
+	};
+
+	class CGameStageTwo : public CGameState {
+	public:
+		CGameStageTwo(CGame *g);
+		~CGameStageTwo();
+		void OnBeginState();							// 砞﹚–Ω┮惠跑计
+		void OnInit();  								// 笴栏の瓜砞﹚
+		void OnKeyDown(UINT, UINT, UINT);
+		void OnKeyUp(UINT, UINT, UINT);
+		void OnLButtonDown(UINT nFlags, CPoint point);	// 矪瞶菲公笆 
+	protected:
+		void OnMove();									// 簿笆笴栏じ
+		void OnShow();									// 陪ボ硂篈笴栏礶
+	private:
+		const int		MOVE_COUNTER;
+		int				moveCounter;
+		int				finishCounter;
 		const int		NUMBALLS;	// 瞴羆计
 		CMovingBitmap	background;	// 璉春瓜
 		CMovingBitmap	help;		// 弧瓜
@@ -136,11 +166,13 @@ namespace game_framework {
 		CGameStateOver(CGame *g);
 		void OnBeginState();							// 砞﹚–Ω┮惠跑计
 		void OnInit();
+		void OnLButtonDown(UINT nFlags, CPoint point);
 	protected:
 		void OnMove();									// 簿笆笴栏じ
 		void OnShow();									// 陪ボ硂篈笴栏礶
 	private:
 		int counter;	// 计ぇ璸计竟
+		int	leaveOverCount = 0;
 		CMovingBitmap	background;
 	};
 

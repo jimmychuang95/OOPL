@@ -84,6 +84,7 @@ enum GAME_STATES {
 	GAME_STATE_INIT,
 	GAME_STATE_SELECT,
 	GAME_STAGE_ONE,
+	GAME_STAGE_TWO,
 	GAME_STATE_OVER
 };
 
@@ -300,6 +301,8 @@ public:
 	virtual void OnMouseMove(UINT nFlags, CPoint point) {}  // 矪瞶菲公笆 
 	virtual void OnRButtonDown(UINT nFlags, CPoint point) {}// 矪瞶菲公笆
 	virtual void OnRButtonUp(UINT nFlags, CPoint point) {}	// 矪瞶菲公笆
+	int stageOpened = 1;
+	int stageNow = 1;
 protected:
 	void GotoGameState(int state);							// 铬臘﹚state
 	void ShowInitProgress(int percent);						// 陪ボ﹍て秈
@@ -309,7 +312,6 @@ protected:
 	virtual void OnMove() {}								// 簿笆硂篈笴栏じ
 	virtual void OnShow() = 0;								// 陪ボ硂篈笴栏礶
 	CGame *game;
-
 	
 };
 
@@ -346,7 +348,7 @@ private:
 	bool            suspended;			// 笴栏琌砆suspended
 	const int		NUM_GAME_STATES;	// 笴栏篈计(3篈)
 	CGameState		*gameState;			// pointerヘ玡笴栏篈
-	CGameState		*gameStateTable[4];	// 笴栏篈ンpointer
+	CGameState		*gameStateTable[5];	// 笴栏篈ンpointer
 	static CGame	instance;			// 笴栏斑instance
 };
 
