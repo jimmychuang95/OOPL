@@ -132,6 +132,7 @@ void CGameStateSelect::OnBeginState()
 
 void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 {
+	TRACE("%d\n", stageOpened);
 	if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STAGE_ONE);
@@ -142,7 +143,7 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 }
 
-void CGameStateSelect::OnShow()
+void CGameStateSelect::OnShow()		//待修改，需要全域變數!!!!
 {
 	if (stageOpened == 1) {
 		stageOneBg.ShowBitmap();
@@ -185,12 +186,12 @@ void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (pow(pow(point.x - 168, 2) + pow(point.y - 369, 2), 0.5) < 34) {
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STAGE_TWO);
+		GotoGameState(GAME_STAGE_TWO);			//待修改，需要全域變數!!!!
 		leaveOverCount++;
 	}
 	if (pow(pow(point.x - 239, 2) + pow(point.y - 369, 2), 0.5) < 24) {
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STAGE_ONE);
+		GotoGameState(GAME_STAGE_ONE);			//待修改，需要全域變數!!!!
 		leaveOverCount++;
 	}
 	if (pow(pow(point.x - 97, 2) + pow(point.y - 369, 2), 0.5) < 24) {
@@ -285,9 +286,10 @@ void CGameStageOne::OnMove()
 	if (gamemap.IsFinish()) {
 		finishCounter--;
 		if (finishCounter <= 0) {
-			if (stageOpened <= 2) {
+			if (stageOpened <= 2) {	//待修改，需要全域變數!!!!
 				stageOpened = 2;
 			}
+			TRACE("%d\n", stageOpened);
 			GotoGameState(GAME_STATE_OVER);
 		}
 	}
@@ -397,7 +399,7 @@ void CGameStageOne::OnLButtonDown(UINT nFlags, CPoint point)
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_SELECT);
 	}
-	
+	TRACE("%d\n", stageOpened);
 
 }
 
@@ -500,7 +502,7 @@ void CGameStageTwo::OnMove()
 	if (gamemap.IsFinish()) {
 		finishCounter--;
 		if (finishCounter <= 0) {
-			if (stageOpened <= 3) {
+			if (stageOpened <= 3) {	//待修改，需要全域變數!!!!
 				stageOpened = 3;
 			}
 			GotoGameState(GAME_STATE_OVER);
