@@ -12,7 +12,12 @@ namespace game_framework {
 	CGameMap::CGameMap()
 		:x(34), y(206), mx(36), my(37)
 	{
-		int map_init[5][7] = {  {1,1,1,1,1,1,1},
+		Initialize();
+	}
+	
+	void CGameMap::Initialize()
+	{
+		int map_init[5][7] = { {1,1,1,1,1,1,1},
 								{1,0,0,2,0,3,1},
 								{1,0,0,1,1,1,1},
 								{1,0,4,1,1,1,1},
@@ -22,14 +27,14 @@ namespace game_framework {
 			{
 				map[i][j] = map_init[i][j];
 			}
-		for (int i = 0; i < 5; i++)
-			for (int j = 0; j < 7; j++)
-			{
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 7; j++) {
 				if (map[i][j] == 4) {
 					leadersite[0] = i;
 					leadersite[1] = j;
 				}
 			}
+		}
 	}
 
 	int CGameMap::GetComponent(int x, int y)

@@ -11,6 +11,7 @@
 		bool CGameMap::MoveDown();
 		bool CGameMap::IsFinish();
 		void CGameMap::SetLeader();
+		void CGameMap::Initialize();
 	protected:
 		int map[5][7];
 		const int x, y;
