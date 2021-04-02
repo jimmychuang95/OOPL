@@ -13,11 +13,10 @@
 		int  GetX2();					// 揽à x 畒夹
 		int  GetY2();					// 揽à y 畒夹
 		bool GetStatus();
-		void Initialize();				// 砞﹚揽﹍
+		void Initialize(int level);				// 砞﹚揽﹍
 		void LoadBitmap();				// 更瓜
 		void OnMove();					// 簿笆揽
 		void OnShow();					// 盢揽瓜禟礶
-		void OnShowLeft();
 		void SetMovingDown(bool flag);	// 砞﹚琌タ┕簿笆
 		void SetMovingLeft(bool flag);	// 砞﹚琌タ┕オ簿笆
 		void SetMovingRight(bool flag); // 砞﹚琌タ┕簿笆

@@ -13,7 +13,7 @@ namespace game_framework {
 
 	CLeader::CLeader()
 	{
-		Initialize();
+		Initialize(1);
 	}
 
 	int CLeader::GetX1()
@@ -41,13 +41,18 @@ namespace game_framework {
 		return isStanding;
 	}
 
-	void CLeader::Initialize()
+	void CLeader::Initialize(int level)
 	{
-		const int X_POS = 113;
-		const int Y_POS = 318;
+		if (level == 1) {
+			x = 113;
+			y = 318;
+		}
+		else if (level == 2) {
+			x = 149;
+			y = 243;
+		}
+		
 		current = 4;
-		x = X_POS;
-		y = Y_POS;
 		isStanding = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 	}

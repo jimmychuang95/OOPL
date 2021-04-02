@@ -132,7 +132,6 @@ void CGameStateSelect::OnBeginState()
 
 void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	TRACE("%d\n", stageOpened);
 	if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STAGE_ONE);
@@ -145,12 +144,12 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CGameStateSelect::OnShow()		//待修改，需要全域變數!!!!
 {
-	if (stageOpened == 1) {
+	//if (stageOpened == 1) {
 		stageOneBg.ShowBitmap();
-	}
-	else if (stageOpened == 2) {
-		stageTwoBg.ShowBitmap();
-	}
+	//}
+	//else if (stageOpened == 2) {
+	//	stageTwoBg.ShowBitmap();
+	//}
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -228,8 +227,8 @@ CGameStageOne::~CGameStageOne()
 
 void CGameStageOne::OnBeginState()
 {
-	leader.Initialize();
-	box.Initialize();
+	leader.Initialize(1);
+	box.Initialize(1);
 	gamemap.Initialize();
 	background.SetTopLeft(0,0);
 	moveCounter = MOVE_COUNTER;
@@ -286,10 +285,9 @@ void CGameStageOne::OnMove()
 	if (gamemap.IsFinish()) {
 		finishCounter--;
 		if (finishCounter <= 0) {
-			if (stageOpened <= 2) {	//待修改，需要全域變數!!!!
-				stageOpened = 2;
-			}
-			TRACE("%d\n", stageOpened);
+			//if (stageOpened <= 2) {	//待修改，需要全域變數!!!!
+			//	stageOpened = 2;
+			//}
 			GotoGameState(GAME_STATE_OVER);
 		}
 	}
@@ -399,7 +397,6 @@ void CGameStageOne::OnLButtonDown(UINT nFlags, CPoint point)
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_SELECT);
 	}
-	TRACE("%d\n", stageOpened);
 
 }
 
@@ -444,8 +441,8 @@ CGameStageTwo::~CGameStageTwo()
 
 void CGameStageTwo::OnBeginState()
 {
-	leader.Initialize();
-	box.Initialize();
+	leader.Initialize(2);
+	box.Initialize(2);
 	gamemap.Initialize();
 	background.SetTopLeft(0, 0);
 	moveCounter = MOVE_COUNTER;
@@ -502,9 +499,9 @@ void CGameStageTwo::OnMove()
 	if (gamemap.IsFinish()) {
 		finishCounter--;
 		if (finishCounter <= 0) {
-			if (stageOpened <= 3) {	//待修改，需要全域變數!!!!
-				stageOpened = 3;
-			}
+			//if (stageOpened <= 3) {	//待修改，需要全域變數!!!!
+			//	stageOpened = 3;
+			//}
 			GotoGameState(GAME_STATE_OVER);
 		}
 	}
@@ -518,7 +515,7 @@ void CGameStageTwo::OnInit()
 
 	leader.LoadBitmap();
 	box.LoadBitmap();
-	background.LoadBitmap(MY_STAGE_ONE);
+	background.LoadBitmap(MY_STAGE_TWO);
 
 	ShowInitProgress(50);
 	Sleep(300);
