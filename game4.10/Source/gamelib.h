@@ -83,8 +83,7 @@
 enum GAME_STATES {
 	GAME_STATE_INIT,
 	GAME_STATE_SELECT,
-	GAME_STAGE_ONE,
-	GAME_STAGE_TWO,
+	GAME_STATE_RUN,
 	GAME_STATE_OVER
 };
 
@@ -274,7 +273,7 @@ private:
 class CGame;
 class CGameStateInit;
 class CGameStateSelect;
-class CGameStageOne;
+class CGameStateRun;
 class CGameStageTwo;
 class CGameStateOver;
 
@@ -348,7 +347,7 @@ private:
 	bool            suspended;			// 笴栏琌砆suspended
 	const int		NUM_GAME_STATES;	// 笴栏篈计(3篈)
 	CGameState		*gameState;			// pointerヘ玡笴栏篈
-	CGameState		*gameStateTable[5];	// 笴栏篈ンpointer
+	CGameState		*gameStateTable[4];	// 笴栏篈ンpointer
 	static CGame	instance;			// 笴栏斑instance
 };
 

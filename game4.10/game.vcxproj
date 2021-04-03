@@ -332,6 +332,7 @@
   <ItemGroup>
     <Image Include="Bitmaps\box.bmp" />
     <Image Include="Bitmaps\CP_level1.bmp" />
+    <Image Include="Bitmaps\CP_level2.bmp" />
     <Image Include="Bitmaps\floor.bmp" />
     <Image Include="Bitmaps\homepage.bmp" />
     <Image Include="Bitmaps\homepage_try.bmp" />
