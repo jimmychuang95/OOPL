@@ -65,6 +65,11 @@
 #define STAGE_TWO_SL                    189
 #define IDB_BITMAP12                    190
 #define STAGE_TWO_CP                    190
+#define STAGE_THREE_CP                  192
+#define STAGE_FOUR_CP                   193
+#define STAGE_THREE_SL                  194
+#define STAGE_FOUR_SL                   195
+#define IDB_BITMAP18                    197
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -77,7 +82,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        191
+#define _APS_NEXT_RESOURCE_VALUE        198
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

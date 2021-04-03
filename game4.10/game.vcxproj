@@ -333,6 +333,8 @@
     <Image Include="Bitmaps\box.bmp" />
     <Image Include="Bitmaps\CP_level1.bmp" />
     <Image Include="Bitmaps\CP_level2.bmp" />
+    <Image Include="Bitmaps\CP_level3.bmp" />
+    <Image Include="Bitmaps\CP_level4.bmp" />
     <Image Include="Bitmaps\floor.bmp" />
     <Image Include="Bitmaps\homepage.bmp" />
     <Image Include="Bitmaps\homepage_try.bmp" />
@@ -347,6 +349,8 @@
     <Image Include="Bitmaps\my_leader_up.bmp" />
     <Image Include="Bitmaps\SL_level1.bmp" />
     <Image Include="Bitmaps\SL_level2.bmp" />
+    <Image Include="Bitmaps\SL_level3.bmp" />
+    <Image Include="Bitmaps\SL_level4.bmp" />
     <Image Include="Bitmaps\stage_1.bmp" />
     <Image Include="Bitmaps\stage_2.bmp" />
     <Image Include="Bitmaps\stage_3.bmp" />
@@ -354,6 +358,7 @@
     <Image Include="Bitmaps\stage_one.bmp" />
     <Image Include="Bitmaps\stage_select.bmp" />
     <Image Include="Bitmaps\stage_two.bmp" />
+    <Image Include="res\bitmap13.bmp" />
     <Image Include="res\bitmap3.bmp" />
     <Image Include="res\bitmap4.bmp" />
     <Image Include="res\bitmap6.bmp" />

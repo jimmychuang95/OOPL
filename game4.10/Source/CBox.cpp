@@ -13,7 +13,7 @@ namespace game_framework {
 
 	CBox::CBox()
 	{
-		Initialize(1);
+		Initialize(1, 1);
 	}
 
 	int CBox::GetX1()
@@ -73,15 +73,41 @@ namespace game_framework {
 		return canPushUp;
 	}
 
-	void CBox::Initialize(int level)
+	void CBox::Initialize(int level, int num)
 	{
 		if (level == 1) {
-			x = 150;
-			y = 244;
+			if (num == 1) {
+				x = 150;
+				y = 244;
+			}
+			else if (num > 1) {
+				x = 5000;
+				y = 5000;
+			}
 		}
 		else if (level == 2) {
-			x = 187;
-			y = 317;
+			if (num == 1) {
+				x = 187;
+				y = 317;
+			}
+			else if (num > 1) {
+				x = 5000;
+				y = 5000;
+			}
+		}
+		else if (level == 3) {
+			if (num == 1) {
+				x = 186;
+				y = 205;
+			}
+			else if (num == 2) {
+				x = 149;
+				y = 318;
+			}
+			else if (num == 2) {
+				x = 5000;
+				y = 5000;
+			}
 		}
 		isStanding = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;

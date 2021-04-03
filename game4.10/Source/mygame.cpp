@@ -127,7 +127,7 @@ void CGameStateSelect::OnInit()
 	ShowInitProgress(0);
 	stageOneBg.LoadBitmap(STAGE_ONE_SL);
 	stageTwoBg.LoadBitmap(STAGE_TWO_SL);
-	
+	stageThreeBg.LoadBitmap(STAGE_THREE_SL);
 }
 
 void CGameStateSelect::OnBeginState()
@@ -148,6 +148,13 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 			GotoGameState(GAME_STATE_RUN);
 		}
 	}
+	if (stageOpened >= 3) {
+		if (point.x < 189 && point.x > 145 && point.y > 137 && point.y < 180) {		//level two
+			stageNow = 3;
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+	}
 
 
 	if (pow(pow(point.x - 52, 2) + pow(point.y - 526, 2), 0.5) < 24) {				//return to homepage
@@ -163,6 +170,9 @@ void CGameStateSelect::OnShow()
 	}
 	else if (stageOpened == 2) {
 		stageTwoBg.ShowBitmap();
+	}
+	else if (stageOpened == 3) {
+		stageThreeBg.ShowBitmap();
 	}
 }
 
@@ -192,6 +202,7 @@ void CGameStateOver::OnInit()
 
 	stageOneCp.LoadBitmap(STAGE_ONE_CP);
 	stageTwoCp.LoadBitmap(STAGE_TWO_CP);
+	stageThreeCp.LoadBitmap(STAGE_THREE_CP);
 
 	CAudio::Instance()->Load(AUDIO_CLEAR, "sounds\\clear.mp3");	// 破關聲音
 }
@@ -222,6 +233,8 @@ void CGameStateOver::OnShow()
 		stageOneCp.ShowBitmap();
 	if (stageNow == 2)
 		stageTwoCp.ShowBitmap();
+	if (stageNow == 3)
+		stageThreeCp.ShowBitmap();
 }
 
 
@@ -244,7 +257,9 @@ CGameStateRun::~CGameStateRun()
 void CGameStateRun::OnBeginState()
 {
 	leader.Initialize(stageNow);
-	box.Initialize(stageNow);
+	box1.Initialize(stageNow, 1);
+	box2.Initialize(stageNow, 2);
+	box3.Initialize(stageNow, 3);
 	gamemap.Initialize(stageNow);
 
 	//stageOneBg.SetTopLeft(0, 0);
@@ -263,49 +278,123 @@ void CGameStateRun::OnMove()
 		leader.SetMovingRight(false);
 		leader.SetMovingUp(false);
 		leader.SetMovingDown(false);
-		box.SetMovingLeft(false);
-		box.SetMovingRight(false);
-		box.SetMovingUp(false);
-		box.SetMovingDown(false);
+
 		leader.SetStanding(true);
-		//CAudio::Instance()->Stop(AUDIO_BOX);
+
+		box1.SetMovingLeft(false);
+		box1.SetMovingRight(false);
+		box1.SetMovingUp(false);
+		box1.SetMovingDown(false);
+
+		box2.SetMovingLeft(false);
+		box2.SetMovingRight(false);
+		box2.SetMovingUp(false);
+		box2.SetMovingDown(false);
+
+		box3.SetMovingLeft(false);
+		box3.SetMovingRight(false);
+		box3.SetMovingUp(false);
+		box3.SetMovingDown(false);
 	}
+
 	leader.OnMove();
 	
-	if (leader.GetX1() - box.GetX2() < 5 && leader.GetX1() - box.GetX2() > -5 && leader.GetY1() - box.GetY1() < 5 && leader.GetY1() - box.GetY1() > -5) {	//box push left
-		box.PushedLeft(true);
+	////////////////////////////////////////
+	//box movement
+	////////////////////////////////////////
+
+	if (leader.GetX1() - box1.GetX2() < 5 && leader.GetX1() - box1.GetX2() > -5 && leader.GetY1() - box1.GetY1() < 5 && leader.GetY1() - box1.GetY1() > -5) {	//box1 push left
+		box1.PushedLeft(true);
 	}
 	else {
-		box.PushedLeft(false);
+		box1.PushedLeft(false);
 	}
 
-	if (leader.GetX2() - box.GetX1() < 5 && leader.GetX2() - box.GetX1() > -5 && leader.GetY1() - box.GetY1() < 5 && leader.GetY1() - box.GetY1() > -5) {	//box push right
-		box.PushedRight(true);
+	if (leader.GetX2() - box1.GetX1() < 5 && leader.GetX2() - box1.GetX1() > -5 && leader.GetY1() - box1.GetY1() < 5 && leader.GetY1() - box1.GetY1() > -5) {	//box1 push right
+		box1.PushedRight(true);
 	}
 	else {
-		box.PushedRight(false);
+		box1.PushedRight(false);
 	}
 
-	if (leader.GetY2() - box.GetY1() < 5 && leader.GetY2() - box.GetY1() > -5 && leader.GetX1() - box.GetX1() < 5 && leader.GetX1() - box.GetX1() > -5) {	//box push down
-		box.PushedDown(true);
+	if (leader.GetY2() - box1.GetY1() < 5 && leader.GetY2() - box1.GetY1() > -5 && leader.GetX1() - box1.GetX1() < 5 && leader.GetX1() - box1.GetX1() > -5) {	//box1 push down
+		box1.PushedDown(true);
 	}
 	else {
-		box.PushedDown(false);
+		box1.PushedDown(false);
 	}
 
-	if (leader.GetY1() - box.GetY2() < 5 && leader.GetY1() - box.GetY2() > -5 && leader.GetX1() - box.GetX1() < 5 && leader.GetX1() - box.GetX1() > -5) {	//box push up
-		box.PushedUp(true);
+	if (leader.GetY1() - box1.GetY2() < 5 && leader.GetY1() - box1.GetY2() > -5 && leader.GetX1() - box1.GetX1() < 5 && leader.GetX1() - box1.GetX1() > -5) {	//box1 push up
+		box1.PushedUp(true);
 	}
 	else {
-		box.PushedUp(false);
+		box1.PushedUp(false);
 	}
-	box.OnMove();
+	box1.OnMove();
+
+	if (leader.GetX1() - box2.GetX2() < 5 && leader.GetX1() - box2.GetX2() > -5 && leader.GetY1() - box2.GetY1() < 5 && leader.GetY1() - box2.GetY1() > -5) {	//box2 push left
+		box2.PushedLeft(true);
+	}
+	else {
+		box2.PushedLeft(false);
+	}
+
+	if (leader.GetX2() - box2.GetX1() < 5 && leader.GetX2() - box2.GetX1() > -5 && leader.GetY1() - box2.GetY1() < 5 && leader.GetY1() - box2.GetY1() > -5) {	//box2 push right
+		box2.PushedRight(true);
+	}
+	else {
+		box2.PushedRight(false);
+	}
+
+	if (leader.GetY2() - box2.GetY1() < 5 && leader.GetY2() - box2.GetY1() > -5 && leader.GetX1() - box2.GetX1() < 5 && leader.GetX1() - box2.GetX1() > -5) {	//box2 push down
+		box2.PushedDown(true);
+	}
+	else {
+		box2.PushedDown(false);
+	}
+
+	if (leader.GetY1() - box2.GetY2() < 5 && leader.GetY1() - box2.GetY2() > -5 && leader.GetX1() - box2.GetX1() < 5 && leader.GetX1() - box2.GetX1() > -5) {	//box2 push up
+		box2.PushedUp(true);
+	}
+	else {
+		box2.PushedUp(false);
+	}
+	box2.OnMove();
+
+	if (leader.GetX1() - box3.GetX2() < 5 && leader.GetX1() - box3.GetX2() > -5 && leader.GetY1() - box3.GetY1() < 5 && leader.GetY1() - box3.GetY1() > -5) {	//box3 push left
+		box3.PushedLeft(true);
+	}
+	else {
+		box3.PushedLeft(false);
+	}
+
+	if (leader.GetX2() - box3.GetX1() < 5 && leader.GetX2() - box3.GetX1() > -5 && leader.GetY1() - box3.GetY1() < 5 && leader.GetY1() - box3.GetY1() > -5) {	//box3 push right
+		box3.PushedRight(true);
+	}
+	else {
+		box3.PushedRight(false);
+	}
+
+	if (leader.GetY2() - box3.GetY1() < 5 && leader.GetY2() - box3.GetY1() > -5 && leader.GetX1() - box3.GetX1() < 5 && leader.GetX1() - box3.GetX1() > -5) {	//box3 push down
+		box3.PushedDown(true);
+	}
+	else {
+		box3.PushedDown(false);
+	}
+
+	if (leader.GetY1() - box3.GetY2() < 5 && leader.GetY1() - box3.GetY2() > -5 && leader.GetX1() - box3.GetX1() < 5 && leader.GetX1() - box3.GetX1() > -5) {	//box3 push up
+		box3.PushedUp(true);
+	}
+	else {
+		box3.PushedUp(false);
+	}
+	box3.OnMove();
 
 	if (gamemap.IsFinish()) {
 		finishCounter--;
 		if (finishCounter <= 0) {
-			if (stageOpened <= 2) {	//待修改，需要全域變數!!!!
-				stageOpened = 2;
+			if (stageOpened <= stageNow) {
+				stageOpened++;
 			}
 			GotoGameState(GAME_STATE_OVER);
 		}
@@ -318,11 +407,14 @@ void CGameStateRun::OnInit()
 	ShowInitProgress(33);
 
 		leader.LoadBitmap();
-		box.LoadBitmap();
+		box1.LoadBitmap();
+		box2.LoadBitmap();
+		box3.LoadBitmap();
 		CAudio::Instance()->Load(AUDIO_BOX, "sounds\\box_long.mp3");		// 箱子移動聲音
 	
 	stageOneBg.LoadBitmap(MY_STAGE_ONE);
 	stageTwoBg.LoadBitmap(MY_STAGE_TWO);
+	stageThreeBg.LoadBitmap(MY_STAGE_THREE);
 
 	ShowInitProgress(50);
 	Sleep(300);
@@ -341,8 +433,16 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				moveCounter = MOVE_COUNTER;
 				leader.SetMovingLeft(true);
 				leader.SetStanding(false);
-				if (box.CanPushLeft()) {
-					box.SetMovingLeft(true);
+				if (box1.CanPushLeft()) {
+					box1.SetMovingLeft(true);
+					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				if (box2.CanPushLeft()) {
+					box2.SetMovingLeft(true);
+					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				if (box3.CanPushLeft()) {
+					box3.SetMovingLeft(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 			}
@@ -354,8 +454,16 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				moveCounter = MOVE_COUNTER;
 				leader.SetMovingRight(true);
 				leader.SetStanding(false);
-				if (box.CanPushRight()) {
-					box.SetMovingRight(true);
+				if (box1.CanPushRight()) {
+					box1.SetMovingRight(true);
+					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				if (box2.CanPushRight()) {
+					box2.SetMovingRight(true);
+					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				if (box3.CanPushRight()) {
+					box3.SetMovingRight(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 			}
@@ -367,8 +475,16 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				moveCounter = MOVE_COUNTER;
 				leader.SetMovingUp(true);
 				leader.SetStanding(false);
-				if (box.CanPushUp()) {
-					box.SetMovingUp(true);
+				if (box1.CanPushUp()) {
+					box1.SetMovingUp(true);
+					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				if (box2.CanPushUp()) {
+					box2.SetMovingUp(true);
+					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				if (box3.CanPushUp()) {
+					box3.SetMovingUp(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 			}
@@ -380,8 +496,16 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				moveCounter = MOVE_COUNTER;
 				leader.SetMovingDown(true);
 				leader.SetStanding(false);
-				if (box.CanPushDown()) {
-					box.SetMovingDown(true);
+				if (box1.CanPushDown()) {
+					box1.SetMovingDown(true);
+					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				if (box2.CanPushDown()) {
+					box2.SetMovingDown(true);
+					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				if (box3.CanPushDown()) {
+					box3.SetMovingDown(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 			}
@@ -415,6 +539,10 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_SELECT);
 	}
+	if (pow(pow(point.x - 289, 2) + pow(point.y - 546, 2), 0.5) < 23) {
+		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		GotoGameState(GAME_STATE_RUN);
+	}
 
 }
 
@@ -445,8 +573,14 @@ void CGameStateRun::OnShow()
 		stageTwoBg.SetTopLeft(0, 0);
 		stageTwoBg.ShowBitmap();
 	}
+	if (stageNow == 3) {
+		stageThreeBg.SetTopLeft(0, 0);
+		stageThreeBg.ShowBitmap();
+	}
 	leader.OnShow();
-	box.OnShow();
+	box1.OnShow();
+	box2.OnShow();
+	box3.OnShow();
 
 }
 

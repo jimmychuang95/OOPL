@@ -87,6 +87,7 @@ namespace game_framework {
 	private:
 		CMovingBitmap stageOneBg;
 		CMovingBitmap stageTwoBg;
+		CMovingBitmap stageThreeBg;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -116,9 +117,12 @@ namespace game_framework {
 		int				finishCounter;
 		CMovingBitmap	stageOneBg;	// 璉春瓜
 		CMovingBitmap	stageTwoBg;
+		CMovingBitmap	stageThreeBg;
 		CLeader			leader;		// ╃
 		CGameMap        gamemap;
-		CBox			box;
+		CBox			box1;
+		CBox			box2;
+		CBox			box3;
 	};
 
 
@@ -141,6 +145,7 @@ namespace game_framework {
 		int counter;	// 计ぇ璸计竟
 		CMovingBitmap	stageOneCp;
 		CMovingBitmap	stageTwoCp;
+		CMovingBitmap	stageThreeCp;
 	};
 
 }
