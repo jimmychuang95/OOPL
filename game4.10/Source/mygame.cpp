@@ -245,7 +245,7 @@ void CGameStateRun::OnBeginState()
 {
 	leader.Initialize(stageNow);
 	box.Initialize(stageNow);
-	gamemap.Initialize();
+	gamemap.Initialize(stageNow);
 
 	//stageOneBg.SetTopLeft(0, 0);
 	//stageTwoBg.SetTopLeft(0, 0);

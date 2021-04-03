@@ -12,23 +12,49 @@ namespace game_framework {
 	CGameMap::CGameMap()
 		:x(34), y(206), mx(36), my(37)
 	{
-		Initialize();
+		Initialize(1);
 	}
 	
-	void CGameMap::Initialize()
+	void CGameMap::Initialize(int level)
 	{
-		int map_init[5][7] = { {1,1,1,1,1,1,1},
-								{1,0,0,2,0,3,1},
-								{1,0,0,1,1,1,1},
-								{1,0,4,1,1,1,1},
-								{1,1,1,1,1,1,1} }; //0=floor,1=wall,2=box,3=finish,4=leader
-		for (int i = 0; i < 5; i++)
-			for (int j = 0; j < 7; j++)
-			{
-				map[i][j] = map_init[i][j];
-			}
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 7; j++) {
+		int stage_one[9][9] = { {1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1},
+								{1,1,0,0,2,0,3,1,1},
+								{1,1,0,0,1,1,1,1,1},
+								{1,1,0,4,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1}, }; //0=floor,1=wall,2=box,3=finish,4=leader
+
+		int stage_two[9][9] = { {1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1},
+								{1,1,0,0,4,0,0,1,1},
+								{1,1,0,0,0,0,0,1,1},
+								{1,1,0,0,0,2,3,1,1},
+								{1,1,0,0,0,0,0,1,1},
+								{1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1}, };
+
+
+		if (level == 1) {
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+				{
+					map[i][j] = stage_one[i][j];
+				}
+		}
+		else if (level == 2) {
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+				{
+					map[i][j] = stage_two[i][j];
+				}
+		}
+
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
 				if (map[i][j] == 4) {
 					leadersite[0] = i;
 					leadersite[1] = j;
@@ -392,8 +418,8 @@ namespace game_framework {
 	}
 
 	bool CGameMap::IsFinish() {
-		for (int i = 0; i < 5; i++)
-			for (int j = 0; j < 7; j++)
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 9; j++)
 			{
 				if (map[i][j] == 3) {
 					return false;
@@ -407,8 +433,8 @@ namespace game_framework {
 
 	void CGameMap::SetLeader()
 	{
-		for (int i = 0; i < 5; i++)
-			for (int j = 0; j < 7; j++)
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 9; j++)
 			{
 				if (map[i][j] == 4) {
 					leadersite[0] = i;
