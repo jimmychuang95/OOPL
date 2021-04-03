@@ -81,7 +81,7 @@ namespace game_framework {
 		}
 		else if (level == 2) {
 			x = 187;
-			y = 319;
+			y = 317;
 		}
 		isStanding = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
