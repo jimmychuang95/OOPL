@@ -60,6 +60,10 @@
 #include "mygame.h"
 
 namespace game_framework {
+
+	int CGameState::stageOpened = 1;
+	int CGameState::stageNow = 1;
+
 /////////////////////////////////////////////////////////////////////////////
 // CGameStateInit
 /////////////////////////////////////////////////////////////////////////////
@@ -132,24 +136,32 @@ void CGameStateSelect::OnBeginState()
 
 void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {
+	if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {			//level one
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STAGE_ONE);
 	}
-	if (pow(pow(point.x - 52, 2) + pow(point.y - 526, 2), 0.5) < 24) {
+	if (stageOpened == 2) {
+		if (point.x < 130 && point.x > 84 && point.y > 137 && point.y < 180) {		//level two
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STAGE_TWO);
+		}
+	}
+
+
+	if (pow(pow(point.x - 52, 2) + pow(point.y - 526, 2), 0.5) < 24) {				//return to homepage
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_INIT);
 	}
 }
 
-void CGameStateSelect::OnShow()		//待修改，需要全域變數!!!!
+void CGameStateSelect::OnShow()	
 {
-	//if (stageOpened == 1) {
+	if (stageOpened == 1) {
 		stageOneBg.ShowBitmap();
-	//}
-	//else if (stageOpened == 2) {
-	//	stageTwoBg.ShowBitmap();
-	//}
+	}
+	else if (stageOpened == 2) {
+		stageTwoBg.ShowBitmap();
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -185,12 +197,12 @@ void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (pow(pow(point.x - 168, 2) + pow(point.y - 369, 2), 0.5) < 34) {
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STAGE_TWO);			//待修改，需要全域變數!!!!
+		GotoGameState(stageNow + 2);			//to next level
 		leaveOverCount++;
 	}
 	if (pow(pow(point.x - 239, 2) + pow(point.y - 369, 2), 0.5) < 24) {
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STAGE_ONE);			//待修改，需要全域變數!!!!
+		GotoGameState(stageNow + 1);			//replay this level
 		leaveOverCount++;
 	}
 	if (pow(pow(point.x - 97, 2) + pow(point.y - 369, 2), 0.5) < 24) {
@@ -227,6 +239,7 @@ CGameStageOne::~CGameStageOne()
 
 void CGameStageOne::OnBeginState()
 {
+	stageNow = 1;
 	leader.Initialize(1);
 	box.Initialize(1);
 	gamemap.Initialize();
@@ -285,9 +298,9 @@ void CGameStageOne::OnMove()
 	if (gamemap.IsFinish()) {
 		finishCounter--;
 		if (finishCounter <= 0) {
-			//if (stageOpened <= 2) {	//待修改，需要全域變數!!!!
-			//	stageOpened = 2;
-			//}
+			if (stageOpened <= 2) {	//待修改，需要全域變數!!!!
+				stageOpened = 2;
+			}
 			GotoGameState(GAME_STATE_OVER);
 		}
 	}
