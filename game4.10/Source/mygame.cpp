@@ -128,6 +128,7 @@ void CGameStateSelect::OnInit()
 	stageOneBg.LoadBitmap(STAGE_ONE_SL);
 	stageTwoBg.LoadBitmap(STAGE_TWO_SL);
 	stageThreeBg.LoadBitmap(STAGE_THREE_SL);
+	stageFourBg.LoadBitmap(STAGE_FOUR_SL);
 }
 
 void CGameStateSelect::OnBeginState()
@@ -149,8 +150,15 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 		}
 	}
 	if (stageOpened >= 3) {
-		if (point.x < 189 && point.x > 145 && point.y > 137 && point.y < 180) {		//level two
+		if (point.x < 189 && point.x > 145 && point.y > 137 && point.y < 180) {		//level three
 			stageNow = 3;
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+	}
+	if (stageOpened >= 4) {
+		if (point.x < 250 && point.x > 208 && point.y > 137 && point.y < 180) {		//level four
+			stageNow = 4;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
@@ -173,6 +181,9 @@ void CGameStateSelect::OnShow()
 	}
 	else if (stageOpened == 3) {
 		stageThreeBg.ShowBitmap();
+	}
+	else if (stageOpened == 4) {
+		stageFourBg.ShowBitmap();
 	}
 }
 
@@ -203,6 +214,7 @@ void CGameStateOver::OnInit()
 	stageOneCp.LoadBitmap(STAGE_ONE_CP);
 	stageTwoCp.LoadBitmap(STAGE_TWO_CP);
 	stageThreeCp.LoadBitmap(STAGE_THREE_CP);
+	stageFourCp.LoadBitmap(STAGE_FOUR_CP);
 
 	CAudio::Instance()->Load(AUDIO_CLEAR, "sounds\\clear.mp3");	// 破關聲音
 }
@@ -220,7 +232,7 @@ void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 	if (pow(pow(point.x - 97, 2) + pow(point.y - 369, 2), 0.5) < 24) {
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STATE_SELECT);
+		GotoGameState(GAME_STATE_SELECT);		//select level
 	}
 
 }
@@ -235,6 +247,8 @@ void CGameStateOver::OnShow()
 		stageTwoCp.ShowBitmap();
 	if (stageNow == 3)
 		stageThreeCp.ShowBitmap();
+	if (stageNow == 4)
+		stageFourCp.ShowBitmap();
 }
 
 
@@ -415,6 +429,7 @@ void CGameStateRun::OnInit()
 	stageOneBg.LoadBitmap(MY_STAGE_ONE);
 	stageTwoBg.LoadBitmap(MY_STAGE_TWO);
 	stageThreeBg.LoadBitmap(MY_STAGE_THREE);
+	stageFourBg.LoadBitmap(MY_STAGE_FOUR);
 
 	ShowInitProgress(50);
 	Sleep(300);
@@ -535,11 +550,11 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point) 
 {
-	if (pow(pow(point.x - 168, 2) + pow(point.y - 545, 2), 0.5) < 25) {
+	if (pow(pow(point.x - 168, 2) + pow(point.y - 545, 2), 0.5) < 25) {		//go to game state select
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_SELECT);
 	}
-	if (pow(pow(point.x - 289, 2) + pow(point.y - 546, 2), 0.5) < 23) {
+	if (pow(pow(point.x - 289, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//restart level
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_RUN);
 	}
@@ -576,6 +591,10 @@ void CGameStateRun::OnShow()
 	if (stageNow == 3) {
 		stageThreeBg.SetTopLeft(0, 0);
 		stageThreeBg.ShowBitmap();
+	}
+	if (stageNow == 4) {
+		stageFourBg.SetTopLeft(0, 0);
+		stageFourBg.ShowBitmap();
 	}
 	leader.OnShow();
 	box1.OnShow();

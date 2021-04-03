@@ -88,6 +88,7 @@ namespace game_framework {
 		CMovingBitmap stageOneBg;
 		CMovingBitmap stageTwoBg;
 		CMovingBitmap stageThreeBg;
+		CMovingBitmap stageFourBg;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -118,6 +119,7 @@ namespace game_framework {
 		CMovingBitmap	stageOneBg;	// 璉春瓜
 		CMovingBitmap	stageTwoBg;
 		CMovingBitmap	stageThreeBg;
+		CMovingBitmap	stageFourBg;
 		CLeader			leader;		// ╃
 		CGameMap        gamemap;
 		CBox			box1;
@@ -146,6 +148,7 @@ namespace game_framework {
 		CMovingBitmap	stageOneCp;
 		CMovingBitmap	stageTwoCp;
 		CMovingBitmap	stageThreeCp;
+		CMovingBitmap	stageFourCp;
 	};
 
 }
