@@ -82,10 +82,10 @@ void CGameStateInit::OnInit()
 void CGameStateInit::OnBeginState()
 {
 	if (leaveInitCount == 0) {
-		CAudio::Instance()->Load(AUDIO_CLICK, "sounds\\click.mp3");
-		CAudio::Instance()->Load(AUDIO_BGM, "sounds\\bgm.mp3");
+		CAudio::Instance()->Load(AUDIO_CLICK, "sounds\\click.mp3");				//Load click sound
+		CAudio::Instance()->Load(AUDIO_BGM, "sounds\\bgm.mp3");					//Load BGM
 	}
-	CAudio::Instance()->Play(AUDIO_BGM, true);
+	CAudio::Instance()->Play(AUDIO_BGM, true);									//Play BGM
 }
 
 void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -99,7 +99,7 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (point.x < 230 && point.x > 110 && point.y > 260 && point.y < 315) {
+	if (point.x < 230 && point.x > 110 && point.y > 260 && point.y < 315) {		//Play button
 		GotoGameState(GAME_STATE_SELECT);
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		CAudio::Instance()->Stop(AUDIO_BGM);
@@ -142,27 +142,26 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_RUN);
 	}
-	if (stageOpened >= 2) {
+
+	if (stageOpened >= 2)
 		if (point.x < 130 && point.x > 84 && point.y > 137 && point.y < 180) {		//level two
 			stageNow = 2;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
-	}
-	if (stageOpened >= 3) {
+
+	if (stageOpened >= 3)
 		if (point.x < 189 && point.x > 145 && point.y > 137 && point.y < 180) {		//level three
 			stageNow = 3;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
-	}
-	if (stageOpened >= 4) {
+	if (stageOpened >= 4)
 		if (point.x < 250 && point.x > 208 && point.y > 137 && point.y < 180) {		//level four
 			stageNow = 4;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
-	}
 
 
 	if (pow(pow(point.x - 52, 2) + pow(point.y - 526, 2), 0.5) < 24) {				//return to homepage
@@ -216,23 +215,23 @@ void CGameStateOver::OnInit()
 	stageThreeCp.LoadBitmap(STAGE_THREE_CP);
 	stageFourCp.LoadBitmap(STAGE_FOUR_CP);
 
-	CAudio::Instance()->Load(AUDIO_CLEAR, "sounds\\clear.mp3");	// 破關聲音
+	CAudio::Instance()->Load(AUDIO_CLEAR, "sounds\\clear.mp3");					// Load clear sound
 }
 
 void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (pow(pow(point.x - 168, 2) + pow(point.y - 369, 2), 0.5) < 34) {
+	if (pow(pow(point.x - 168, 2) + pow(point.y - 369, 2), 0.5) < 34) {			//to next level
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		stageNow++;
-		GotoGameState(GAME_STATE_RUN);			//to next level
+		GotoGameState(GAME_STATE_RUN);											
 	}
-	if (pow(pow(point.x - 239, 2) + pow(point.y - 369, 2), 0.5) < 24) {
+	if (pow(pow(point.x - 239, 2) + pow(point.y - 369, 2), 0.5) < 24) {			//replay this level
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STATE_RUN);			//replay this level
+		GotoGameState(GAME_STATE_RUN);			
 	}
-	if (pow(pow(point.x - 97, 2) + pow(point.y - 369, 2), 0.5) < 24) {
+	if (pow(pow(point.x - 97, 2) + pow(point.y - 369, 2), 0.5) < 24) {			//select level
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STATE_SELECT);		//select level
+		GotoGameState(GAME_STATE_SELECT);		
 	}
 
 }
@@ -271,9 +270,9 @@ CGameStateRun::~CGameStateRun()
 void CGameStateRun::OnBeginState()
 {
 	leader.Initialize(stageNow);
-	box1.Initialize(stageNow, 1);
-	box2.Initialize(stageNow, 2);
-	box3.Initialize(stageNow, 3);
+	box1.Initialize(stageNow, 1);	//box 1
+	box2.Initialize(stageNow, 2);	//box 2
+	box3.Initialize(stageNow, 3);	//box 3
 	gamemap.Initialize(stageNow);
 
 	//stageOneBg.SetTopLeft(0, 0);
@@ -288,14 +287,14 @@ void CGameStateRun::OnMove()
 {
 	moveCounter--;
 	if (moveCounter <= 0) {
-		leader.SetMovingLeft(false);
+		leader.SetMovingLeft(false);		//leader stop moving
 		leader.SetMovingRight(false);
 		leader.SetMovingUp(false);
 		leader.SetMovingDown(false);
 
 		leader.SetStanding(true);
 
-		box1.SetMovingLeft(false);
+		box1.SetMovingLeft(false);			//boxes stop moving
 		box1.SetMovingRight(false);
 		box1.SetMovingUp(false);
 		box1.SetMovingDown(false);
@@ -404,11 +403,11 @@ void CGameStateRun::OnMove()
 	}
 	box3.OnMove();
 
-	if (gamemap.IsFinish()) {
-		finishCounter--;
+	if (gamemap.IsFinish()) {					//if complete
+		finishCounter--;						//不要馬上進到stateOver, 讓箱子跟leader動畫跑完
 		if (finishCounter <= 0) {
 			if (stageOpened <= stageNow) {
-				stageOpened++;
+				stageOpened++;					//StageOpened 加一, 讓選擇關卡圖片切換成下一張
 			}
 			GotoGameState(GAME_STATE_OVER);
 		}
@@ -424,7 +423,7 @@ void CGameStateRun::OnInit()
 		box1.LoadBitmap();
 		box2.LoadBitmap();
 		box3.LoadBitmap();
-		CAudio::Instance()->Load(AUDIO_BOX, "sounds\\box_long.mp3");		// 箱子移動聲音
+		CAudio::Instance()->Load(AUDIO_BOX, "sounds\\box_long.mp3");		// Load箱子移動聲音
 	
 	stageOneBg.LoadBitmap(MY_STAGE_ONE);
 	stageTwoBg.LoadBitmap(MY_STAGE_TWO);
