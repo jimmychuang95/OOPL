@@ -467,7 +467,7 @@ void CGameStateRun::OnMove()
 	if (gamemap.IsFinish()) {					//if complete
 		finishCounter--;						//不要馬上進到stateOver, 讓箱子跟leader動畫跑完
 		if (finishCounter <= 0) {
-			if (stageOpened == 99999) {				//外掛開啟時不動作
+			if (stageOpened == 99999) {			//外掛開啟時不動作
 				;
 			}
 			else if (stageOpened <= stageNow) {
