@@ -123,6 +123,48 @@ namespace game_framework {
 				y = 5000;
 			}
 		}
+		else if (level == 5) {
+			if (num == 1) {
+				x = 188;
+				y = 242;
+			}
+			else if (num == 2) {
+				x = 188;
+				y = 279;
+			}
+			else if (num == 3) {
+				x = 5000;
+				y = 5000;
+			}
+		}
+		else if (level == 6) {
+			if (num == 1) {
+				x = 112;
+				y = 280;
+			}
+			else if (num == 2) {
+				x = 150;
+				y = 280;
+			}
+			else if (num == 3) {
+				x = 188;
+				y = 280;
+			}
+		}
+		else if (level == 7) {
+			if (num == 1) {
+				x = 112;
+				y = 318;
+			}
+			else if (num == 2) {
+				x = 150;
+				y = 318;
+			}
+			else if (num == 3) {
+				x = 188;
+				y = 318;
+			}
+		}
 
 		isStanding = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;

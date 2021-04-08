@@ -64,7 +64,25 @@ STAGE_THREE_SL          BITMAP                  "..\\Bitmaps\\SL_level3.bmp"
 
 STAGE_FOUR_SL           BITMAP                  "..\\Bitmaps\\SL_level4.bmp"
 
-IDB_BITMAP18            BITMAP                  "D:\\NTUT\\OOPL\\oopl\\game4.10\\Bitmaps\\stage_4.bmp"
+STAGE_FIVE_CP           BITMAP                  "..\\Bitmaps\\CP_level5.bmp"
+
+STAGE_SIX_CP            BITMAP                  "..\\Bitmaps\\CP_level6.bmp"
+
+STAGE_SEVEN_CP          BITMAP                  "..\\Bitmaps\\CP_level7.bmp"
+
+STAGE_FIVE_SL           BITMAP                  "..\\Bitmaps\\SL_level5.bmp"
+
+STAGE_SIX_SL            BITMAP                  "..\\Bitmaps\\SL_level6.bmp"
+
+STAGE_SEVEN_SL          BITMAP                  "..\\Bitmaps\\SL_level7.bmp"
+
+STAGE_EIGHT_SL          BITMAP                  "..\\Bitmaps\\SL_level8.bmp"
+
+MY_STAGE_FIVE           BITMAP                  "..\\Bitmaps\\stage_5.bmp"
+
+MY_STAGE_SIX            BITMAP                  "..\\Bitmaps\\stage_6.bmp"
+
+MY_STAGE_SEVEN          BITMAP                  "..\\Bitmaps\\stage_7.bmp"
 
 #endif    // 中文 (簡體，中華人民共和國) resources
 /////////////////////////////////////////////////////////////////////////////

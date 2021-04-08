@@ -85,10 +85,14 @@ namespace game_framework {
 	protected:
 		void OnShow();									// 陪ボ硂篈笴栏礶
 	private:
-		CMovingBitmap stageOneBg;
-		CMovingBitmap stageTwoBg;
-		CMovingBitmap stageThreeBg;
-		CMovingBitmap stageFourBg;
+		CMovingBitmap	stageOneBg;
+		CMovingBitmap	stageTwoBg;
+		CMovingBitmap	stageThreeBg;
+		CMovingBitmap	stageFourBg;
+		CMovingBitmap	stageFiveBg;
+		CMovingBitmap	stageSixBg;
+		CMovingBitmap	stageSevenBg;
+		CMovingBitmap	stageEightBg;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -120,6 +124,9 @@ namespace game_framework {
 		CMovingBitmap	stageTwoBg;
 		CMovingBitmap	stageThreeBg;
 		CMovingBitmap	stageFourBg;
+		CMovingBitmap	stageFiveBg;
+		CMovingBitmap	stageSixBg;
+		CMovingBitmap	stageSevenBg;
 		CLeader			leader;		// ╃
 		CGameMap        gamemap;
 		CBox			box1;
@@ -149,6 +156,9 @@ namespace game_framework {
 		CMovingBitmap	stageTwoCp;
 		CMovingBitmap	stageThreeCp;
 		CMovingBitmap	stageFourCp;
+		CMovingBitmap	stageFiveCp;
+		CMovingBitmap	stageSixCp;
+		CMovingBitmap	stageSevenCp;
 	};
 
 }

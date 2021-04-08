@@ -59,6 +59,19 @@ namespace game_framework {
 			x = 74;
 			y = 241;
 		}
+		else if (level == 5) {
+			x = 74;
+			y = 241;
+		}
+		else if (level == 6) {
+			x = 113;
+			y = 205;
+		}
+		else if (level == 7) {
+			x = 224;
+			y = 318;
+		}
+
 		
 		current = 4;
 		isStanding = true;
