@@ -300,8 +300,9 @@ public:
 	virtual void OnMouseMove(UINT nFlags, CPoint point) {}  // 矪瞶菲公笆 
 	virtual void OnRButtonDown(UINT nFlags, CPoint point) {}// 矪瞶菲公笆
 	virtual void OnRButtonUp(UINT nFlags, CPoint point) {}	// 矪瞶菲公笆
-	static int stageOpened;
-	static int stageNow;
+	static int	stageOpened;
+	static int	stageNow;
+	static bool	hackEnable;
 protected:
 	void GotoGameState(int state);							// 铬臘﹚state
 	void ShowInitProgress(int percent);						// 陪ボ﹍て秈

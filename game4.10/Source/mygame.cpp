@@ -61,8 +61,9 @@
 
 namespace game_framework {
 
-	int CGameState::stageOpened = 1;
-	int CGameState::stageNow = 1;
+	int		CGameState::stageOpened = 1;
+	int		CGameState::stageNow = 1;
+	bool	CGameState::hackEnable = false;
 
 /////////////////////////////////////////////////////////////////////////////
 // CGameStateInit
@@ -104,6 +105,12 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		CAudio::Instance()->Stop(AUDIO_BGM);
 		leaveInitCount++;
+	}
+
+	if (pow(pow(point.x - 221, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//hack enable (open all level)
+		hackEnable = true;
+		stageOpened = 99999;
+		CAudio::Instance()->Play(AUDIO_CLICK, false);
 	}
 }
 
@@ -147,44 +154,44 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 		GotoGameState(GAME_STATE_RUN);
 	}
 
-	if (stageOpened >= 2)
+	if (stageOpened >= 2 || hackEnable)
 		if (point.x < 130 && point.x > 84 && point.y > 137 && point.y < 180) {		//level two
 			stageNow = 2;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
 
-	if (stageOpened >= 3)
+	if (stageOpened >= 3 || hackEnable)
 		if (point.x < 189 && point.x > 145 && point.y > 137 && point.y < 180) {		//level three
 			stageNow = 3;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
-	if (stageOpened >= 4)
+	if (stageOpened >= 4 || hackEnable)
 		if (point.x < 250 && point.x > 208 && point.y > 137 && point.y < 180) {		//level four
 			stageNow = 4;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
-	if (stageOpened >= 5)
+	if (stageOpened >= 5 || hackEnable)
 		if (point.x < 313 && point.x > 267 && point.y > 137 && point.y < 180) {		//level five
 			stageNow = 5;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
-	if (stageOpened >= 6)
+	if (stageOpened >= 6 || hackEnable)
 		if (point.x < 68 && point.x > 24 && point.y > 199 && point.y < 242) {		//level six
 			stageNow = 6;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
-	if (stageOpened >= 7)
+	if (stageOpened >= 7 || hackEnable)
 		if (point.x < 130 && point.x > 84 && point.y > 199 && point.y < 242) {		//level seven
 			stageNow = 7;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
-	if (stageOpened >= 8)
+	if (stageOpened >= 8 || hackEnable)
 		if (point.x < 189 && point.x > 145 && point.y > 199 && point.y < 242) {		//level eight
 			stageNow = 8;
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
@@ -201,7 +208,10 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CGameStateSelect::OnShow()	
 {
-	if (stageOpened == 1) {
+	if (stageOpened == 99999) {
+		stageEightBg.ShowBitmap();
+	}
+	else if (stageOpened == 1) {
 		stageOneBg.ShowBitmap();
 	}
 	else if (stageOpened == 2) {
@@ -457,7 +467,10 @@ void CGameStateRun::OnMove()
 	if (gamemap.IsFinish()) {					//if complete
 		finishCounter--;						//不要馬上進到stateOver, 讓箱子跟leader動畫跑完
 		if (finishCounter <= 0) {
-			if (stageOpened <= stageNow) {
+			if (stageOpened == 99999) {				//外掛開啟時不動作
+				;
+			}
+			else if (stageOpened <= stageNow) {
 				stageOpened++;					//StageOpened 加一, 讓選擇關卡圖片切換成下一張
 			}
 			GotoGameState(GAME_STATE_OVER);
