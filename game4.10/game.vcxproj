@@ -330,6 +330,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="bitmaps\bitmap13.bmp" />
     <Image Include="Bitmaps\box.bmp" />
     <Image Include="Bitmaps\CP_level1.bmp" />
     <Image Include="Bitmaps\CP_level2.bmp" />

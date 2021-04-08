@@ -78,6 +78,7 @@ void CGameStateInit::OnInit()
 {
 	ShowInitProgress(0);
 	logo.LoadBitmap(MY_HOMEPAGE);
+	line.LoadBitmap(RED_LINE, RGB(255, 255, 255));
 }
 
 void CGameStateInit::OnBeginState()
@@ -112,12 +113,32 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 		stageOpened = 99999;
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 	}
+
+	if (!mute) {
+		if (pow(pow(point.x - 116, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//mute BGM
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			mute = true;
+			CAudio::Instance()->Stop(AUDIO_BGM);
+		}
+	}
+	else {
+		if (pow(pow(point.x - 116, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//unmute BGM
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			mute = false;
+			CAudio::Instance()->Play(AUDIO_BGM, true);
+		}
+	}
 }
 
 void CGameStateInit::OnShow()
 {
 	logo.SetTopLeft(0, 0);
 	logo.ShowBitmap();
+
+	if (mute == true) {				//如果靜音顯示紅色斜線
+		line.SetTopLeft(95, 374);
+		line.ShowBitmap();
+	}
 }								
 
 /////////////////////////////////////////////////////////////////////////////

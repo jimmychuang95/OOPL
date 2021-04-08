@@ -84,6 +84,8 @@ MY_STAGE_SIX            BITMAP                  "..\\Bitmaps\\stage_6.bmp"
 
 MY_STAGE_SEVEN          BITMAP                  "..\\Bitmaps\\stage_7.bmp"
 
+RED_LINE                BITMAP                  "..\\bitmaps\\bitmap13.bmp"
+
 #endif    // 中文 (簡體，中華人民共和國) resources
 /////////////////////////////////////////////////////////////////////////////
 

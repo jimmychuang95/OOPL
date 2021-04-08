@@ -321,5 +321,8 @@
     <Image Include="Bitmaps\stage_7.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="bitmaps\bitmap13.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

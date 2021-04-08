@@ -78,8 +78,9 @@
 #define STAGE_EIGHT_SL                  204
 #define MY_STAGE_FIVE                   205
 #define MY_STAGE_SIX                    206
-#define IDB_BITMAP23                    207
 #define MY_STAGE_SEVEN                  207
+#define IDB_BITMAP13                    208
+#define RED_LINE                        208
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -92,7 +93,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        208
+#define _APS_NEXT_RESOURCE_VALUE        209
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

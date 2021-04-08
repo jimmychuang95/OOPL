@@ -72,7 +72,9 @@ namespace game_framework {
 		void OnShow();									// 陪ボ硂篈笴栏礶
 	private:
 		CMovingBitmap logo;								// csielogo
-		int leaveInitCount = 0;
+		CMovingBitmap line;
+		int		leaveInitCount = 0;
+		bool	mute = false;
 	};
 
 
