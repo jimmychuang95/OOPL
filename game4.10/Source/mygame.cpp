@@ -673,6 +673,81 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 		CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_RUN);
 	}
+	if (pow(pow(point.x - 232, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//previous step
+		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if ((!dirStack.empty()) && (!boxPushStack.empty())) {
+			gamemap.PreviousStep(dirStack.top(), boxPushStack.top());			//change map data
+
+			if (!boxPushStack.top()) {
+				if (dirStack.top() == 0) {
+					leader.SetXY(leader.GetX1(), leader.GetY1() + 38);
+				}
+				if (dirStack.top() == 1) {
+					leader.SetXY(leader.GetX1(), leader.GetY1() - 38);
+				}
+				if (dirStack.top() == 2) {
+					leader.SetXY(leader.GetX1() + 38, leader.GetY1());
+				}
+				if (dirStack.top() == 3) {
+					leader.SetXY(leader.GetX1() - 38, leader.GetY1());
+				}
+			}
+			else if (boxPushStack.top()) {
+				if (dirStack.top() == 0) {
+					leader.SetXY(leader.GetX1(), leader.GetY1() + 38);
+					if (box1.CanPushUp()) {
+						box1.SetXY(box1.GetX1(), box1.GetY1() + 38);
+					}
+					else if (box2.CanPushUp()) {
+						box2.SetXY(box2.GetX1(), box2.GetY1() + 38);
+					}
+					else if (box3.CanPushUp()) {
+						box3.SetXY(box3.GetX1(), box3.GetY1() + 38);
+					}
+				}
+				if (dirStack.top() == 1) {
+					leader.SetXY(leader.GetX1(), leader.GetY1() - 38);
+					if (box1.CanPushDown()) {
+						box1.SetXY(box1.GetX1(), box1.GetY1() - 38);
+					}
+					else if (box2.CanPushDown()) {
+						box2.SetXY(box2.GetX1(), box2.GetY1() - 38);
+					}
+					else if (box3.CanPushDown()) {
+						box3.SetXY(box3.GetX1(), box3.GetY1() - 38);
+					}
+				}
+				if (dirStack.top() == 2) {
+					leader.SetXY(leader.GetX1() + 38, leader.GetY1());
+					if (box1.CanPushLeft()) {
+						box1.SetXY(box1.GetX1() + 38, box1.GetY1());
+					}
+					else if (box2.CanPushLeft()) {
+						box2.SetXY(box2.GetX1() + 38, box2.GetY1());
+					}
+					else if (box3.CanPushLeft()) {
+						box3.SetXY(box3.GetX1() + 38, box3.GetY1());
+					}
+				}
+				if (dirStack.top() == 3) {
+					leader.SetXY(leader.GetX1() - 38, leader.GetY1());
+					if (box1.CanPushRight()) {
+						box1.SetXY(box1.GetX1() - 38, box1.GetY1());
+					}
+					else if (box2.CanPushRight()) {
+						box2.SetXY(box2.GetX1() - 38, box2.GetY1());
+					}
+					else if (box3.CanPushRight()) {
+						box3.SetXY(box3.GetX1() - 38, box3.GetY1());
+					}
+				}
+			}
+
+
+			dirStack.pop();
+			boxPushStack.pop();
+		}
+	}
 
 }
 
