@@ -74,7 +74,7 @@ namespace game_framework {
 		CMovingBitmap logo;								//Background
 		CMovingBitmap line;
 		int		leaveInitCount = 0;
-		bool	mute = false;
+		bool	muteBGM = false;
 	};
 
 
@@ -121,6 +121,7 @@ namespace game_framework {
 		const int		MOVE_COUNTER;
 		int				moveCounter;
 		int				finishCounter;
+		int				hackCounter = 0;
 
 		CMovingBitmap	stageOneBg;
 		CMovingBitmap	stageTwoBg;
@@ -129,6 +130,8 @@ namespace game_framework {
 		CMovingBitmap	stageFiveBg;
 		CMovingBitmap	stageSixBg;
 		CMovingBitmap	stageSevenBg;
+
+		CMovingBitmap	line;
 
 		CLeader			leader;	
 		CGameMap        gamemap;

@@ -155,6 +155,16 @@ namespace game_framework {
 		return map[x][y];
 	}
 
+	void CGameMap::HackModeOn()
+	{
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 9; j++) 
+			{
+				if(map[i][j] == 1)
+					map[i][j] = 0;
+			}
+	}
+
 
 	bool CGameMap::MoveRight()
 	{

@@ -594,7 +594,7 @@ void CGame::OnInit()	// OnInit() 祘Α秨﹍磅︽Ω
 	// 秨币DirectXざ
 	//
 	if (!CAudio::Instance()->Open())						// 秨币ざ
-		AfxMessageBox("Audio Interface Failed (muted)");	// 礚ざ
+		AfxMessageBox("Audio Interface Failed (muteBGMd)");	// 礚ざ
 	//
 	// Switch to the first state
 	//

@@ -303,6 +303,7 @@ public:
 	static int	stageOpened;
 	static int	stageNow;
 	static bool	hackEnable;
+	static bool muteSound;
 protected:
 	void GotoGameState(int state);							// 铬臘﹚state
 	void ShowInitProgress(int percent);						// 陪ボ﹍て秈

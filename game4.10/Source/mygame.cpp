@@ -64,6 +64,7 @@ namespace game_framework {
 	int		CGameState::stageOpened = 1;
 	int		CGameState::stageNow = 1;
 	bool	CGameState::hackEnable = false;
+	bool	CGameState::muteSound = false;
 
 /////////////////////////////////////////////////////////////////////////////
 // CGameStateInit
@@ -103,7 +104,9 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (point.x < 230 && point.x > 110 && point.y > 260 && point.y < 315) {		//Play button
 		GotoGameState(GAME_STATE_SELECT);
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
+
 		CAudio::Instance()->Stop(AUDIO_BGM);
 		leaveInitCount++;
 	}
@@ -111,20 +114,44 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 	if (pow(pow(point.x - 221, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//hack enable (open all level)
 		hackEnable = true;
 		stageOpened = 99999;
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 	}
 
-	if (!mute) {
+	if (!muteBGM) {
 		if (pow(pow(point.x - 116, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//mute BGM
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
-			mute = true;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+
+			muteBGM = true;
 			CAudio::Instance()->Stop(AUDIO_BGM);
 		}
 	}
 	else {
 		if (pow(pow(point.x - 116, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//unmute BGM
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+
+			muteBGM = false;
+			CAudio::Instance()->Play(AUDIO_BGM, true);
+		}
+	}
+
+	if (!muteSound) {
+		if (pow(pow(point.x - 168, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//mute sound effects
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
-			mute = false;
+			muteSound = true;
+			muteBGM = true;
+			CAudio::Instance()->Stop(AUDIO_BGM);
+		}
+	}
+	else {
+		if (pow(pow(point.x - 168, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//unmute sound effects
+			if(!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+
+			muteSound = false;
+			muteBGM = false;
 			CAudio::Instance()->Play(AUDIO_BGM, true);
 		}
 	}
@@ -135,8 +162,12 @@ void CGameStateInit::OnShow()
 	logo.SetTopLeft(0, 0);
 	logo.ShowBitmap();
 
-	if (mute == true) {				//如果靜音顯示紅色斜線
+	if (muteBGM == true) {				//如果靜音顯示紅色斜線
 		line.SetTopLeft(95, 374);
+		line.ShowBitmap();
+	}
+	if (muteSound == true) {
+		line.SetTopLeft(147, 374);
 		line.ShowBitmap();
 	}
 }								
@@ -171,58 +202,67 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {			//level one
 		stageNow = 1;
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_RUN);
 	}
 
 	if (stageOpened >= 2 || hackEnable)
 		if (point.x < 130 && point.x > 84 && point.y > 137 && point.y < 180) {		//level two
 			stageNow = 2;
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
 
 	if (stageOpened >= 3 || hackEnable)
 		if (point.x < 189 && point.x > 145 && point.y > 137 && point.y < 180) {		//level three
 			stageNow = 3;
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
 	if (stageOpened >= 4 || hackEnable)
 		if (point.x < 250 && point.x > 208 && point.y > 137 && point.y < 180) {		//level four
 			stageNow = 4;
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
 	if (stageOpened >= 5 || hackEnable)
 		if (point.x < 313 && point.x > 267 && point.y > 137 && point.y < 180) {		//level five
 			stageNow = 5;
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
 	if (stageOpened >= 6 || hackEnable)
 		if (point.x < 68 && point.x > 24 && point.y > 199 && point.y < 242) {		//level six
 			stageNow = 6;
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
 	if (stageOpened >= 7 || hackEnable)
 		if (point.x < 130 && point.x > 84 && point.y > 199 && point.y < 242) {		//level seven
 			stageNow = 7;
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
 	if (stageOpened >= 8 || hackEnable)
 		if (point.x < 189 && point.x > 145 && point.y > 199 && point.y < 242) {		//level eight
 			stageNow = 8;
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
 
 
 
 	if (pow(pow(point.x - 52, 2) + pow(point.y - 526, 2), 0.5) < 24) {				//return to homepage
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_INIT);
 	}
 }
@@ -274,7 +314,8 @@ void CGameStateOver::OnMove()
 
 void CGameStateOver::OnBeginState()
 {
-	CAudio::Instance()->Play(AUDIO_CLEAR, false);
+	if (!muteSound)
+		CAudio::Instance()->Play(AUDIO_CLEAR, false);
 }
 
 void CGameStateOver::OnInit()
@@ -297,16 +338,19 @@ void CGameStateOver::OnInit()
 void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (pow(pow(point.x - 168, 2) + pow(point.y - 369, 2), 0.5) < 34) {			//to next level
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 		stageNow++;
 		GotoGameState(GAME_STATE_RUN);											
 	}
 	if (pow(pow(point.x - 239, 2) + pow(point.y - 369, 2), 0.5) < 24) {			//replay this level
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_RUN);			
 	}
 	if (pow(pow(point.x - 97, 2) + pow(point.y - 369, 2), 0.5) < 24) {			//select level
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_SELECT);		
 	}
 
@@ -508,6 +552,7 @@ void CGameStateRun::OnInit()
 		box1.LoadBitmap();
 		box2.LoadBitmap();
 		box3.LoadBitmap();
+		line.LoadBitmap(RED_LINE);
 		CAudio::Instance()->Load(AUDIO_BOX, "sounds\\box_long.mp3");		// Load箱子移動聲音
 	
 	stageOneBg.LoadBitmap(MY_STAGE_ONE);
@@ -539,17 +584,20 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				if (box1.CanPushLeft()) {
 					boxPushStack.push(true);
 					box1.SetMovingLeft(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else if (box2.CanPushLeft()) {
 					boxPushStack.push(true);
 					box2.SetMovingLeft(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else if (box3.CanPushLeft()) {
 					boxPushStack.push(true);
 					box3.SetMovingLeft(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else {
 					boxPushStack.push(false);
@@ -567,17 +615,20 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				if (box1.CanPushRight()) {
 					boxPushStack.push(true);
 					box1.SetMovingRight(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else if (box2.CanPushRight()) {
 					boxPushStack.push(true);
 					box2.SetMovingRight(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else if (box3.CanPushRight()) {
 					boxPushStack.push(true);
 					box3.SetMovingRight(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else {
 					boxPushStack.push(false);
@@ -595,17 +646,20 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				if (box1.CanPushUp()) {
 					boxPushStack.push(true);
 					box1.SetMovingUp(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else if (box2.CanPushUp()) {
 					boxPushStack.push(true);
 					box2.SetMovingUp(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else if (box3.CanPushUp()) {
 					boxPushStack.push(true);
 					box3.SetMovingUp(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else {
 					boxPushStack.push(false);
@@ -623,17 +677,20 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				if (box1.CanPushDown()) {
 					boxPushStack.push(true);
 					box1.SetMovingDown(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else if (box2.CanPushDown()) {
 					boxPushStack.push(true);
 					box2.SetMovingDown(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else if (box3.CanPushDown()) {
 					boxPushStack.push(true);
 					box3.SetMovingDown(true);
-					CAudio::Instance()->Play(AUDIO_BOX, false);
+					if (!muteSound)
+						CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
 				else {
 					boxPushStack.push(false);
@@ -666,15 +723,40 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point) 
 {
 	if (pow(pow(point.x - 168, 2) + pow(point.y - 545, 2), 0.5) < 25) {		//go to game state select
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_SELECT);
 	}
+
 	if (pow(pow(point.x - 289, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//restart level
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 		GotoGameState(GAME_STATE_RUN);
 	}
+
+	if (pow(pow(point.x - 104, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//mute sound
+		if (!muteSound) {
+			muteSound = true;
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
+		}
+		else {
+			muteSound = false;
+		}
+	}
+
+	if (pow(pow(point.x - 48, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//mute sound
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
+
+		hackCounter++;
+		if (hackCounter >= 5) {
+			gamemap.HackModeOn();
+		}
+	}
+
 	if (pow(pow(point.x - 232, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//previous step
-		CAudio::Instance()->Play(AUDIO_CLICK, false);
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 		if ((!dirStack.empty()) && (!boxPushStack.empty())) {
 			gamemap.PreviousStep(dirStack.top(), boxPushStack.top());			//change map data
 
@@ -742,8 +824,6 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 					}
 				}
 			}
-
-
 			dirStack.pop();
 			boxPushStack.pop();
 		}
@@ -802,6 +882,12 @@ void CGameStateRun::OnShow()
 	box1.OnShow();
 	box2.OnShow();
 	box3.OnShow();
+
+
+	if (muteSound) {
+		line.SetTopLeft(84, 526);
+		line.ShowBitmap();
+	}
 
 }
 
