@@ -650,4 +650,107 @@ namespace game_framework {
 				}
 			}
 	}
+
+	void CGameMap::PreviousStep(int dir, bool boxPush)
+	{
+		if (dir == 0) {
+			if (!boxPush) {
+				if (map[leadersite[0]][leadersite[1]] == 4) {						//沒踩在終點上
+					if (map[leadersite[0] + 1][leadersite[1]] == 0) {					//下面是地板
+						map[leadersite[0]][leadersite[1]] = 0;
+						map[leadersite[0] + 1][leadersite[1]] = 4;
+						this->SetLeader();
+					}
+					else if (map[leadersite[0] + 1][leadersite[1]] == 3) {				//下面是終點
+						map[leadersite[0]][leadersite[1]] = 0;
+						map[leadersite[0] + 1][leadersite[1]] = 5;
+						leadersite[0] += 1;
+					}
+				}
+				else if (map[leadersite[0]][leadersite[1]] == 5) {					//踩在終點上
+					if (map[leadersite[0] + 1][leadersite[1]] == 0) {					//下面是地板
+						map[leadersite[0]][leadersite[1]] = 3;
+						map[leadersite[0] + 1][leadersite[1]] = 4;
+						this->SetLeader();
+					}
+					else if (map[leadersite[0] + 1][leadersite[1]] == 3) {				//下面是終點
+						map[leadersite[0]][leadersite[1]] = 3;
+						map[leadersite[0] + 1][leadersite[1]] = 5;
+						leadersite[0] += 1;
+					}
+				}
+			}
+			else if (boxPush) {
+				if (map[leadersite[0]][leadersite[1]] == 4) {						//踩在地板
+					if (map[leadersite[0] + 1][leadersite[1]] == 0) {					//下面是地板
+						if (map[leadersite[0] - 1][leadersite[1]] == 2) {					//上面是箱子
+							map[leadersite[0] - 1][leadersite[1]] = 0;
+							map[leadersite[0]][leadersite[1]] = 2;
+							map[leadersite[0] + 1][leadersite[1]] = 4;
+							this->SetLeader();
+						}
+						else if (map[leadersite[0] - 1][leadersite[1]] == 6) {				//上面是完成的箱子
+							map[leadersite[0] - 1][leadersite[1]] = 3;
+							map[leadersite[0]][leadersite[1]] = 2;
+							map[leadersite[0] + 1][leadersite[1]] = 4;
+							this->SetLeader();
+						}
+					}
+					else if (map[leadersite[0] + 1][leadersite[1]] == 3) {				//下面是終點
+						if (map[leadersite[0] - 1][leadersite[1]] == 2) {					//上面是箱子
+							map[leadersite[0] - 1][leadersite[1]] = 0;
+							map[leadersite[0]][leadersite[1]] = 2;
+							map[leadersite[0] + 1][leadersite[1]] = 5;
+							this->SetLeader();
+						}
+						else if (map[leadersite[0] - 1][leadersite[1]] == 6) {				//上面是完成的箱子
+							map[leadersite[0] - 1][leadersite[1]] = 3;
+							map[leadersite[0]][leadersite[1]] = 2;
+							map[leadersite[0] + 1][leadersite[1]] = 5;
+							leadersite[0] += 1;
+						}
+					}
+				}
+				else if (map[leadersite[0]][leadersite[1]] == 5) {					//踩在終點上
+					if (map[leadersite[0] + 1][leadersite[1]] == 0) {					//下面是地板
+						if (map[leadersite[0] - 1][leadersite[1]] == 2) {					//上面是箱子
+							map[leadersite[0] - 1][leadersite[1]] = 0;
+							map[leadersite[0]][leadersite[1]] = 6;
+							map[leadersite[0] + 1][leadersite[1]] = 4;
+							this->SetLeader();
+						}
+						else if (map[leadersite[0] - 1][leadersite[1]] == 6) {				//上面是完成的箱子
+							map[leadersite[0] - 1][leadersite[1]] = 3;
+							map[leadersite[0]][leadersite[1]] = 6;
+							map[leadersite[0] + 1][leadersite[1]] = 4;
+							this->SetLeader();
+						}
+					}
+					else if (map[leadersite[0] + 1][leadersite[1]] == 3) {				//下面是終點
+						if (map[leadersite[0] - 1][leadersite[1]] == 2) {					//上面是箱子
+							map[leadersite[0] - 1][leadersite[1]] = 0;
+							map[leadersite[0]][leadersite[1]] = 6;
+							map[leadersite[0] + 1][leadersite[1]] = 5;
+							this->SetLeader();
+						}
+						else if (map[leadersite[0] - 1][leadersite[1]] == 6) {				//上面是完成的箱子
+							map[leadersite[0] - 1][leadersite[1]] = 3;
+							map[leadersite[0]][leadersite[1]] = 6;
+							map[leadersite[0] + 1][leadersite[1]] = 5;
+							this->SetLeader();
+						}
+					}
+				}
+			}
+		}
+		else if (dir == 1) {
+			
+		}
+		else if (dir == 2) {
+
+		}
+		else if (dir == 3) {
+
+		}
+	}
 }

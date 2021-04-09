@@ -535,17 +535,24 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				moveCounter = MOVE_COUNTER;
 				leader.SetMovingLeft(true);
 				leader.SetStanding(false);
+				dirStack.push(2);
 				if (box1.CanPushLeft()) {
+					boxPushStack.push(true);
 					box1.SetMovingLeft(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
-				if (box2.CanPushLeft()) {
+				else if (box2.CanPushLeft()) {
+					boxPushStack.push(true);
 					box2.SetMovingLeft(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
-				if (box3.CanPushLeft()) {
+				else if (box3.CanPushLeft()) {
+					boxPushStack.push(true);
 					box3.SetMovingLeft(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				else {
+					boxPushStack.push(false);
 				}
 			}
 		}
@@ -556,17 +563,24 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				moveCounter = MOVE_COUNTER;
 				leader.SetMovingRight(true);
 				leader.SetStanding(false);
+				dirStack.push(3);
 				if (box1.CanPushRight()) {
+					boxPushStack.push(true);
 					box1.SetMovingRight(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
-				if (box2.CanPushRight()) {
+				else if (box2.CanPushRight()) {
+					boxPushStack.push(true);
 					box2.SetMovingRight(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
-				if (box3.CanPushRight()) {
+				else if (box3.CanPushRight()) {
+					boxPushStack.push(true);
 					box3.SetMovingRight(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				else {
+					boxPushStack.push(false);
 				}
 			}
 		}
@@ -577,17 +591,24 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				moveCounter = MOVE_COUNTER;
 				leader.SetMovingUp(true);
 				leader.SetStanding(false);
+				dirStack.push(0);
 				if (box1.CanPushUp()) {
+					boxPushStack.push(true);
 					box1.SetMovingUp(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
-				if (box2.CanPushUp()) {
+				else if (box2.CanPushUp()) {
+					boxPushStack.push(true);
 					box2.SetMovingUp(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
-				if (box3.CanPushUp()) {
+				else if (box3.CanPushUp()) {
+					boxPushStack.push(true);
 					box3.SetMovingUp(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				else {
+					boxPushStack.push(false);
 				}
 			}
 		}
@@ -598,17 +619,24 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				moveCounter = MOVE_COUNTER;
 				leader.SetMovingDown(true);
 				leader.SetStanding(false);
+				dirStack.push(1);
 				if (box1.CanPushDown()) {
+					boxPushStack.push(true);
 					box1.SetMovingDown(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
-				if (box2.CanPushDown()) {
+				else if (box2.CanPushDown()) {
+					boxPushStack.push(true);
 					box2.SetMovingDown(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
 				}
-				if (box3.CanPushDown()) {
+				else if (box3.CanPushDown()) {
+					boxPushStack.push(true);
 					box3.SetMovingDown(true);
 					CAudio::Instance()->Play(AUDIO_BOX, false);
+				}
+				else {
+					boxPushStack.push(false);
 				}
 			}
 		}

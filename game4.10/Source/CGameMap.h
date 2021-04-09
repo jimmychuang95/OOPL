@@ -12,6 +12,7 @@
 		bool CGameMap::IsFinish();
 		void CGameMap::SetLeader();
 		void CGameMap::Initialize(int level);
+		void CGameMap::PreviousStep(int dir, bool boxPush);
 	protected:
 		int map[9][9];
 		const int x, y;

@@ -43,13 +43,14 @@
 #include "CBouncingBall.h"
 #include "CGameMap.h"
 #include "CBox.h"
+#include <stack>
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
 
-	enum AUDIO_ID {				// ﹚竡贺絪腹
+	enum AUDIO_ID {				// 音效
 		AUDIO_BGM,				// 0
 		AUDIO_CLICK,			// 1
 		AUDIO_BOX,				// 2
@@ -57,21 +58,20 @@ namespace game_framework {
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 硂class笴栏笴栏秨繷礶ン
-	// –Member functionImplementation常璶来
+	// State Init
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateInit : public CGameState {
 	public:
 		CGameStateInit(CGame *g);
-		void OnInit();  								// 笴栏の瓜砞﹚
-		void OnBeginState();							// 砞﹚–Ω┮惠跑计
-		void OnKeyUp(UINT, UINT, UINT); 				// 矪瞶龄絃Up笆
-		void OnLButtonDown(UINT nFlags, CPoint point);  // 矪瞶菲公笆
+		void OnInit();  								
+		void OnBeginState();							
+		void OnKeyUp(UINT, UINT, UINT); 				
+		void OnLButtonDown(UINT nFlags, CPoint point);  
 	protected:
-		void OnShow();									// 陪ボ硂篈笴栏礶
+		void OnShow();									
 	private:
-		CMovingBitmap logo;								// csielogo
+		CMovingBitmap logo;								//Background
 		CMovingBitmap line;
 		int		leaveInitCount = 0;
 		bool	mute = false;
@@ -81,11 +81,11 @@ namespace game_framework {
 	class CGameStateSelect : public CGameState {
 	public:
 		CGameStateSelect(CGame *g);
-		void OnInit();  								// 笴栏の瓜砞﹚
-		void OnBeginState();							// 砞﹚–Ω┮惠跑计
-		void OnLButtonDown(UINT nFlags, CPoint point);  // 矪瞶菲公笆
+		void OnInit();  
+		void OnBeginState();							
+		void OnLButtonDown(UINT nFlags, CPoint point);  
 	protected:
-		void OnShow();									// 陪ボ硂篈笴栏礶
+		void OnShow();									
 	private:
 		CMovingBitmap	stageOneBg;
 		CMovingBitmap	stageTwoBg;
@@ -98,62 +98,65 @@ namespace game_framework {
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 硂class笴栏笴栏磅︽ン璶笴栏祘Α常硂柑
-	// –Member functionImplementation常璶来
+	// State Run
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateRun : public CGameState {
 	public:
 		CGameStateRun(CGame *g);
 		~CGameStateRun();
-		void OnBeginState();							// 砞﹚–Ω┮惠跑计
-		void OnInit();  								// 笴栏の瓜砞﹚
+		void OnBeginState();				
+		void OnInit();  							
 		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT);
-		void OnLButtonDown(UINT nFlags, CPoint point);  // 矪瞶菲公笆
-		void OnLButtonUp(UINT nFlags, CPoint point);	// 矪瞶菲公笆
-		void OnMouseMove(UINT nFlags, CPoint point);	// 矪瞶菲公笆 
-		void OnRButtonDown(UINT nFlags, CPoint point);  // 矪瞶菲公笆
-		void OnRButtonUp(UINT nFlags, CPoint point);	// 矪瞶菲公笆
+		void OnLButtonDown(UINT nFlags, CPoint point);  
+		void OnLButtonUp(UINT nFlags, CPoint point);	
+		void OnMouseMove(UINT nFlags, CPoint point);	
+		void OnRButtonDown(UINT nFlags, CPoint point);  
+		void OnRButtonUp(UINT nFlags, CPoint point);	
 	protected:
-		void OnMove();									// 簿笆笴栏じ
-		void OnShow();									// 陪ボ硂篈笴栏礶
+		void OnMove();									
+		void OnShow();									
 	private:
 		const int		MOVE_COUNTER;
 		int				moveCounter;
 		int				finishCounter;
-		CMovingBitmap	stageOneBg;	// 璉春瓜
+
+		CMovingBitmap	stageOneBg;
 		CMovingBitmap	stageTwoBg;
 		CMovingBitmap	stageThreeBg;
 		CMovingBitmap	stageFourBg;
 		CMovingBitmap	stageFiveBg;
 		CMovingBitmap	stageSixBg;
 		CMovingBitmap	stageSevenBg;
-		CLeader			leader;		// ╃
+
+		CLeader			leader;	
 		CGameMap        gamemap;
 		CBox			box1;
 		CBox			box2;
 		CBox			box3;
+
+		std::stack<int>		dirStack;
+		std::stack<bool>	boxPushStack;
 	};
 
 
 
 	/////////////////////////////////////////////////////////////////////////////
-	// 硂class笴栏挡篈(Game Over)
-	// –Member functionImplementation常璶来
+	// State Over
 	/////////////////////////////////////////////////////////////////////////////
 
 	class CGameStateOver : public CGameState {
 	public:
 		CGameStateOver(CGame *g);
-		void OnBeginState();							// 砞﹚–Ω┮惠跑计
+		void OnBeginState();	
 		void OnInit();
 		void OnLButtonDown(UINT nFlags, CPoint point);
 	protected:
-		void OnMove();									// 簿笆笴栏じ
-		void OnShow();									// 陪ボ硂篈笴栏礶
+		void OnMove();	
+		void OnShow();									
 	private:
-		int counter;	// 计ぇ璸计竟
+		int counter;	
 		CMovingBitmap	stageOneCp;
 		CMovingBitmap	stageTwoCp;
 		CMovingBitmap	stageThreeCp;
