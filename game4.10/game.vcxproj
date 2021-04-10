@@ -331,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="bitmaps\bitmap13.bmp" />
+    <Image Include="bitmaps\bitmap14.bmp" />
     <Image Include="Bitmaps\box.bmp" />
     <Image Include="Bitmaps\CP_level1.bmp" />
     <Image Include="Bitmaps\CP_level2.bmp" />
@@ -360,6 +361,8 @@
     <Image Include="Bitmaps\SL_level7.bmp" />
     <Image Include="Bitmaps\SL_level8.bmp" />
     <Image Include="Bitmaps\stage_1.bmp" />
+    <Image Include="Bitmaps\stage_1_bottom_left.bmp" />
+    <Image Include="Bitmaps\stage_1_bottom_right.bmp" />
     <Image Include="Bitmaps\stage_2.bmp" />
     <Image Include="Bitmaps\stage_3.bmp" />
     <Image Include="Bitmaps\stage_4.bmp" />

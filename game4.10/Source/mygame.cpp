@@ -141,7 +141,7 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 		if (pow(pow(point.x - 168, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//mute sound effects
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			muteSound = true;
-			muteBGM = true;
+			//muteBGM = true;
 			CAudio::Instance()->Stop(AUDIO_BGM);
 		}
 	}
@@ -151,7 +151,7 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 				CAudio::Instance()->Play(AUDIO_CLICK, false);
 
 			muteSound = false;
-			muteBGM = false;
+			//muteBGM = false;
 			CAudio::Instance()->Play(AUDIO_BGM, true);
 		}
 	}
@@ -562,7 +562,8 @@ void CGameStateRun::OnInit()
 	stageFiveBg.LoadBitmap(MY_STAGE_FIVE);
 	stageSixBg.LoadBitmap(MY_STAGE_SIX);
 	stageSevenBg.LoadBitmap(MY_STAGE_SEVEN);
-
+	stageOneBottomLeft.LoadBitmap(STAGE_ONE_BOTTOM_LEFT);
+	stageOneBottomRight.LoadBitmap(STAGE_ONE_BOTTOM_RIGHT);
 	ShowInitProgress(50);
 	Sleep(300);
 	
@@ -745,14 +746,288 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	if (pow(pow(point.x - 48, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//mute sound
-		if (!muteSound)
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+		switchmodecount++;
 
 		hackCounter++;
 		if (hackCounter >= 5) {
 			gamemap.HackModeOn();
 		}
 	}
+
+	if (switchmodecount % 3 == 1) {     //按鈕在左側的向上走
+		if (point.x < 84 && point.x > 51 && point.y > 388 && point.y < 423) {
+			if (leader.GetStatus()) {
+				if (gamemap.MoveUp()) {
+					moveCounter = MOVE_COUNTER;
+					leader.SetMovingUp(true);
+					leader.SetStanding(false);
+					dirStack.push(0);
+					if (box1.CanPushUp()) {
+						boxPushStack.push(true);
+						box1.SetMovingUp(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box2.CanPushUp()) {
+						boxPushStack.push(true);
+						box2.SetMovingUp(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box3.CanPushUp()) {
+						boxPushStack.push(true);
+						box3.SetMovingUp(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else {
+						boxPushStack.push(false);
+					}
+				}
+			}
+		}
+	}
+
+	if (switchmodecount % 3 == 1) {     //按鈕在左側的向下走
+		if (point.x < 84 && point.x > 51 && point.y > 455 && point.y < 491) {
+			if (leader.GetStatus()) {
+				if (gamemap.MoveDown()) {
+					moveCounter = MOVE_COUNTER;
+					leader.SetMovingDown(true);
+					leader.SetStanding(false);
+					dirStack.push(1);
+					if (box1.CanPushDown()) {
+						boxPushStack.push(true);
+						box1.SetMovingDown(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box2.CanPushDown()) {
+						boxPushStack.push(true);
+						box2.SetMovingDown(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box3.CanPushDown()) {
+						boxPushStack.push(true);
+						box3.SetMovingDown(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else {
+						boxPushStack.push(false);
+					}
+				}
+			}
+		}
+	}
+
+	if (switchmodecount % 3 == 1) {			//按鈕在左側的向左走
+		if (point.x < 51 && point.x > 17 && point.y > 424 && point.y < 456) {
+			if (leader.GetStatus()) {
+				if (gamemap.MoveLeft()) {
+					moveCounter = MOVE_COUNTER;
+					leader.SetMovingLeft(true);
+					leader.SetStanding(false);
+					dirStack.push(2);
+					if (box1.CanPushLeft()) {
+						boxPushStack.push(true);
+						box1.SetMovingLeft(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box2.CanPushLeft()) {
+						boxPushStack.push(true);
+						box2.SetMovingLeft(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box3.CanPushLeft()) {
+						boxPushStack.push(true);
+						box3.SetMovingLeft(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else {
+						boxPushStack.push(false);
+					}
+				}
+			}
+		}
+	}
+
+	if (switchmodecount % 3 == 1) {			//按鈕在左側的向右走
+		if (point.x < 118 && point.x > 83 && point.y > 424 && point.y < 456) {
+			if (leader.GetStatus()) {
+				if (gamemap.MoveRight()) {
+					moveCounter = MOVE_COUNTER;
+					leader.SetMovingRight(true);
+					leader.SetStanding(false);
+					dirStack.push(3);
+					if (box1.CanPushRight()) {
+						boxPushStack.push(true);
+						box1.SetMovingRight(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box2.CanPushRight()) {
+						boxPushStack.push(true);
+						box2.SetMovingRight(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box3.CanPushRight()) {
+						boxPushStack.push(true);
+						box3.SetMovingRight(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else {
+						boxPushStack.push(false);
+					}
+				}
+			}
+		}
+	}
+
+
+	if (switchmodecount % 3 == 2) {     //按鈕在右側的向上走
+		if (point.x < 289  && point.x > 257 && point.y > 388 && point.y < 423) {
+			if (leader.GetStatus()) {
+				if (gamemap.MoveUp()) {
+					moveCounter = MOVE_COUNTER;
+					leader.SetMovingUp(true);
+					leader.SetStanding(false);
+					dirStack.push(0);
+					if (box1.CanPushUp()) {
+						boxPushStack.push(true);
+						box1.SetMovingUp(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box2.CanPushUp()) {
+						boxPushStack.push(true);
+						box2.SetMovingUp(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box3.CanPushUp()) {
+						boxPushStack.push(true);
+						box3.SetMovingUp(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else {
+						boxPushStack.push(false);
+					}
+				}
+			}
+		}
+	}
+
+	if (switchmodecount % 3 == 2) {     //按鈕在右側的向下走
+		if (point.x < 289 && point.x > 257 && point.y > 455 && point.y < 490) {
+			if (leader.GetStatus()) {
+				if (gamemap.MoveDown()) {
+					moveCounter = MOVE_COUNTER;
+					leader.SetMovingDown(true);
+					leader.SetStanding(false);
+					dirStack.push(1);
+					if (box1.CanPushDown()) {
+						boxPushStack.push(true);
+						box1.SetMovingDown(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box2.CanPushDown()) {
+						boxPushStack.push(true);
+						box2.SetMovingDown(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box3.CanPushDown()) {
+						boxPushStack.push(true);
+						box3.SetMovingDown(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else {
+						boxPushStack.push(false);
+					}
+				}
+			}
+		}
+	}
+
+	if (switchmodecount % 3 == 2) {			//按鈕在右側的向左走
+		if (point.x < 258 && point.x > 221 && point.y > 424 && point.y < 456) {
+			if (leader.GetStatus()) {
+				if (gamemap.MoveLeft()) {
+					moveCounter = MOVE_COUNTER;
+					leader.SetMovingLeft(true);
+					leader.SetStanding(false);
+					dirStack.push(2);
+					if (box1.CanPushLeft()) {
+						boxPushStack.push(true);
+						box1.SetMovingLeft(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box2.CanPushLeft()) {
+						boxPushStack.push(true);
+						box2.SetMovingLeft(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box3.CanPushLeft()) {
+						boxPushStack.push(true);
+						box3.SetMovingLeft(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else {
+						boxPushStack.push(false);
+					}
+				}
+			}
+		}
+	}
+
+	if (switchmodecount % 3 == 2) {			//按鈕在右側的向右走
+		if (point.x < 324 && point.x > 289 && point.y > 424 && point.y < 456) {
+			if (leader.GetStatus()) {
+				if (gamemap.MoveRight()) {
+					moveCounter = MOVE_COUNTER;
+					leader.SetMovingRight(true);
+					leader.SetStanding(false);
+					dirStack.push(3);
+					if (box1.CanPushRight()) {
+						boxPushStack.push(true);
+						box1.SetMovingRight(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box2.CanPushRight()) {
+						boxPushStack.push(true);
+						box2.SetMovingRight(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else if (box3.CanPushRight()) {
+						boxPushStack.push(true);
+						box3.SetMovingRight(true);
+						if (!muteSound)
+							CAudio::Instance()->Play(AUDIO_BOX, false);
+					}
+					else {
+						boxPushStack.push(false);
+					}
+				}
+			}
+		}
+	}
+
+
 
 	if (pow(pow(point.x - 232, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//previous step
 		if (!muteSound)
@@ -851,8 +1126,22 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
 void CGameStateRun::OnShow()
 {
 	if (stageNow == 1) {
-		stageOneBg.SetTopLeft(0, 0);
-		stageOneBg.ShowBitmap();
+		if (switchmodecount % 3 == 0) {
+			stageOneBg.SetTopLeft(0, 0);
+			stageOneBg.ShowBitmap();
+		}
+	}
+	if (stageNow == 1) {
+		if (switchmodecount % 3 == 1) {
+			stageOneBottomLeft.SetTopLeft(0, 0);
+			stageOneBottomLeft.ShowBitmap();
+		}
+	}
+	if (stageNow == 1) {
+		if (switchmodecount % 3 == 2) {
+			stageOneBottomRight.SetTopLeft(0, 0);
+			stageOneBottomRight.ShowBitmap();
+		}
 	}
 	if (stageNow == 2) {
 		stageTwoBg.SetTopLeft(0, 0);

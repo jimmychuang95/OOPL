@@ -122,6 +122,7 @@ namespace game_framework {
 		int				moveCounter;
 		int				finishCounter;
 		int				hackCounter = 0;
+		int				switchmodecount = 0;
 
 		CMovingBitmap	stageOneBg;
 		CMovingBitmap	stageTwoBg;
@@ -130,6 +131,8 @@ namespace game_framework {
 		CMovingBitmap	stageFiveBg;
 		CMovingBitmap	stageSixBg;
 		CMovingBitmap	stageSevenBg;
+		CMovingBitmap	stageOneBottomLeft;
+		CMovingBitmap	stageOneBottomRight;
 
 		CMovingBitmap	line;
 

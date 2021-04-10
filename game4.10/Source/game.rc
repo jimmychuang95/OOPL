@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文 (簡體，中華人民共和國) resources
+// いゅ (虏砰い地チ㎝瓣) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
@@ -86,12 +86,12 @@ MY_STAGE_SEVEN          BITMAP                  "..\\Bitmaps\\stage_7.bmp"
 
 RED_LINE                BITMAP                  "..\\bitmaps\\bitmap13.bmp"
 
-#endif    // 中文 (簡體，中華人民共和國) resources
+#endif    // いゅ (虏砰い地チ㎝瓣) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文 (繁體，台灣) resources
+// いゅ (羉砰芖) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
@@ -160,6 +160,12 @@ MY_BOX                  BITMAP                  "..\\Bitmaps\\box.bmp"
 
 MY_FLOOR                BITMAP                  "..\\Bitmaps\\floor.bmp"
 
+IDB_BITMAP14            BITMAP                  "..\\bitmaps\\bitmap14.bmp"
+
+STAGE_ONE_BOTTOM_LEFT   BITMAP                  "..\\Bitmaps\\stage_1_bottom_left.bmp"
+
+STAGE_ONE_BOTTOM_RIGHT  BITMAP                  "C:\\Users\\USER\\Desktop\\OOPL\\game4.10\\Bitmaps\\stage_1_bottom_right.bmp"
+
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -206,12 +212,12 @@ END
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
-#endif    // 中文 (繁體，台灣) resources
+#endif    // いゅ (羉砰芖) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 英文 (美國) resources
+// 璣ゅ (瓣) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -509,7 +515,7 @@ BEGIN
     ID_BUTTON_UNITTEST      "Perform Unit Test"
 END
 
-#endif    // 英文 (美國) resources
+#endif    // 璣ゅ (瓣) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
