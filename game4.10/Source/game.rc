@@ -164,7 +164,7 @@ IDB_BITMAP14            BITMAP                  "..\\bitmaps\\bitmap14.bmp"
 
 STAGE_ONE_BOTTOM_LEFT   BITMAP                  "..\\Bitmaps\\stage_1_bottom_left.bmp"
 
-STAGE_ONE_BOTTOM_RIGHT  BITMAP                  "C:\\Users\\USER\\Desktop\\OOPL\\game4.10\\Bitmaps\\stage_1_bottom_right.bmp"
+STAGE_ONE_BOTTOM_RIGHT  BITMAP                  "..\\Bitmaps\\stage_1_bottom_right.bmp"
 
 
 #ifdef APSTUDIO_INVOKED
