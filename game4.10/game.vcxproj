@@ -332,6 +332,7 @@
   <ItemGroup>
     <Image Include="bitmaps\bitmap13.bmp" />
     <Image Include="bitmaps\bitmap14.bmp" />
+    <Image Include="bitmaps\bitmap17.bmp" />
     <Image Include="Bitmaps\box.bmp" />
     <Image Include="Bitmaps\CP_level1.bmp" />
     <Image Include="Bitmaps\CP_level2.bmp" />
@@ -340,6 +341,7 @@
     <Image Include="Bitmaps\CP_level5.bmp" />
     <Image Include="Bitmaps\CP_level6.bmp" />
     <Image Include="Bitmaps\CP_level7.bmp" />
+    <Image Include="Bitmaps\dir.bmp" />
     <Image Include="Bitmaps\floor.bmp" />
     <Image Include="Bitmaps\homepage.bmp" />
     <Image Include="Bitmaps\homepage_try.bmp" />

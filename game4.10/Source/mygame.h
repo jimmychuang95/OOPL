@@ -131,10 +131,11 @@ namespace game_framework {
 		CMovingBitmap	stageFiveBg;
 		CMovingBitmap	stageSixBg;
 		CMovingBitmap	stageSevenBg;
-		CMovingBitmap	stageOneBottomLeft;
-		CMovingBitmap	stageOneBottomRight;
 
 		CMovingBitmap	line;
+		CMovingBitmap	console;
+		CMovingBitmap	rightCircle;
+		CMovingBitmap	handCircle;
 
 		CLeader			leader;	
 		CGameMap        gamemap;

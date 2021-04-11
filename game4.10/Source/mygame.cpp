@@ -562,8 +562,10 @@ void CGameStateRun::OnInit()
 	stageFiveBg.LoadBitmap(MY_STAGE_FIVE);
 	stageSixBg.LoadBitmap(MY_STAGE_SIX);
 	stageSevenBg.LoadBitmap(MY_STAGE_SEVEN);
-	stageOneBottomLeft.LoadBitmap(STAGE_ONE_BOTTOM_LEFT);
-	stageOneBottomRight.LoadBitmap(STAGE_ONE_BOTTOM_RIGHT);
+	console.LoadBitmap(MY_DIRECTION, RGB(255, 255, 255));
+	rightCircle.LoadBitmap(RIGHT_CIRCLE);
+	handCircle.LoadBitmap(HAND_CIRCLE);
+
 	ShowInitProgress(50);
 	Sleep(300);
 	
@@ -745,9 +747,11 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 		}
 	}
 
-	if (pow(pow(point.x - 48, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//mute sound
-		switchmodecount++;
+	if (pow(pow(point.x - 48, 2) + pow(point.y - 546, 2), 0.5) < 23) {		//switch console
+		if (!muteSound)
+			CAudio::Instance()->Play(AUDIO_CLICK, false);
 
+		switchmodecount++;
 		hackCounter++;
 		if (hackCounter >= 5) {
 			gamemap.HackModeOn();
@@ -755,7 +759,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	if (switchmodecount % 3 == 1) {     //按鈕在左側的向上走
-		if (point.x < 84 && point.x > 51 && point.y > 388 && point.y < 423) {
+		if (point.x < 69 && point.x > 45 && point.y > 420 && point.y < 445) {
 			if (leader.GetStatus()) {
 				if (gamemap.MoveUp()) {
 					moveCounter = MOVE_COUNTER;
@@ -789,7 +793,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	if (switchmodecount % 3 == 1) {     //按鈕在左側的向下走
-		if (point.x < 84 && point.x > 51 && point.y > 455 && point.y < 491) {
+		if (point.x < 69 && point.x > 45 && point.y > 470 && point.y < 494) {
 			if (leader.GetStatus()) {
 				if (gamemap.MoveDown()) {
 					moveCounter = MOVE_COUNTER;
@@ -823,7 +827,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	if (switchmodecount % 3 == 1) {			//按鈕在左側的向左走
-		if (point.x < 51 && point.x > 17 && point.y > 424 && point.y < 456) {
+		if (point.x < 46 && point.x > 20 && point.y > 445 && point.y < 470) {
 			if (leader.GetStatus()) {
 				if (gamemap.MoveLeft()) {
 					moveCounter = MOVE_COUNTER;
@@ -857,7 +861,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	if (switchmodecount % 3 == 1) {			//按鈕在左側的向右走
-		if (point.x < 118 && point.x > 83 && point.y > 424 && point.y < 456) {
+		if (point.x < 94 && point.x > 69 && point.y > 445 && point.y < 470) {
 			if (leader.GetStatus()) {
 				if (gamemap.MoveRight()) {
 					moveCounter = MOVE_COUNTER;
@@ -892,7 +896,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 
 
 	if (switchmodecount % 3 == 2) {     //按鈕在右側的向上走
-		if (point.x < 289  && point.x > 257 && point.y > 388 && point.y < 423) {
+		if (point.x < 293  && point.x > 268 && point.y > 420 && point.y < 445) {
 			if (leader.GetStatus()) {
 				if (gamemap.MoveUp()) {
 					moveCounter = MOVE_COUNTER;
@@ -926,7 +930,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	if (switchmodecount % 3 == 2) {     //按鈕在右側的向下走
-		if (point.x < 289 && point.x > 257 && point.y > 455 && point.y < 490) {
+		if (point.x < 293 && point.x > 268 && point.y > 470 && point.y < 494) {
 			if (leader.GetStatus()) {
 				if (gamemap.MoveDown()) {
 					moveCounter = MOVE_COUNTER;
@@ -960,7 +964,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	if (switchmodecount % 3 == 2) {			//按鈕在右側的向左走
-		if (point.x < 258 && point.x > 221 && point.y > 424 && point.y < 456) {
+		if (point.x < 269 && point.x > 244 && point.y > 445 && point.y < 470) {
 			if (leader.GetStatus()) {
 				if (gamemap.MoveLeft()) {
 					moveCounter = MOVE_COUNTER;
@@ -994,7 +998,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	if (switchmodecount % 3 == 2) {			//按鈕在右側的向右走
-		if (point.x < 324 && point.x > 289 && point.y > 424 && point.y < 456) {
+		if (point.x < 369 && point.x > 244 && point.y > 445 && point.y < 470) {
 			if (leader.GetStatus()) {
 				if (gamemap.MoveRight()) {
 					moveCounter = MOVE_COUNTER;
@@ -1126,23 +1130,10 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
 void CGameStateRun::OnShow()
 {
 	if (stageNow == 1) {
-		if (switchmodecount % 3 == 0) {
-			stageOneBg.SetTopLeft(0, 0);
-			stageOneBg.ShowBitmap();
-		}
+		stageOneBg.SetTopLeft(0, 0);
+		stageOneBg.ShowBitmap();
 	}
-	if (stageNow == 1) {
-		if (switchmodecount % 3 == 1) {
-			stageOneBottomLeft.SetTopLeft(0, 0);
-			stageOneBottomLeft.ShowBitmap();
-		}
-	}
-	if (stageNow == 1) {
-		if (switchmodecount % 3 == 2) {
-			stageOneBottomRight.SetTopLeft(0, 0);
-			stageOneBottomRight.ShowBitmap();
-		}
-	}
+	
 	if (stageNow == 2) {
 		stageTwoBg.SetTopLeft(0, 0);
 		stageTwoBg.ShowBitmap();
@@ -1171,6 +1162,20 @@ void CGameStateRun::OnShow()
 	box1.OnShow();
 	box2.OnShow();
 	box3.OnShow();
+
+
+	if (switchmodecount % 3 == 1) {
+		console.SetTopLeft(20, 420);
+		console.ShowBitmap();
+		rightCircle.SetTopLeft(23, 521);
+		rightCircle.ShowBitmap();
+	}
+	if (switchmodecount % 3 == 2) {
+		console.SetTopLeft(243, 420);
+		console.ShowBitmap();
+		handCircle.SetTopLeft(23, 521);
+		handCircle.ShowBitmap();
+	}
 
 
 	if (muteSound) {

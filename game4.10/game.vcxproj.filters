@@ -327,6 +327,12 @@
     <Image Include="bitmaps\bitmap14.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Bitmaps\dir.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="bitmaps\bitmap17.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="Bitmaps\stage_1_bottom_left.bmp">
       <Filter>Resource Files</Filter>
     </Image>
