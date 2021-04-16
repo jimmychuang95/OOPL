@@ -192,6 +192,11 @@ void CGameStateSelect::OnInit()
 	stageSixBg.LoadBitmap(STAGE_SIX_SL);
 	stageSevenBg.LoadBitmap(STAGE_SEVEN_SL);
 	stageEightBg.LoadBitmap(STAGE_EIGHT_SL);
+	stageNineBg.LoadBitmap(STAGE_NINE_SL);
+	stageTenBg.LoadBitmap(STAGE_TEN_SL);
+	stageElevenBg.LoadBitmap(STAGE_ELEVEN_SL);
+	stageTwelveBg.LoadBitmap(STAGE_TWELVE_SL);
+
 }
 
 void CGameStateSelect::OnBeginState()
@@ -257,6 +262,35 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
+	if (stageOpened >= 9 || hackEnable)
+		if (point.x < 250 && point.x > 207 && point.y > 199 && point.y < 242) {		//level eight
+			stageNow = 9;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+	if (stageOpened >= 10 || hackEnable)
+		if (point.x < 313 && point.x > 267 && point.y > 199 && point.y < 242) {		//level eight
+			stageNow = 10;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+	if (stageOpened >= 11 || hackEnable)
+		if (point.x < 68 && point.x > 24 && point.y > 258 && point.y < 303) {		//level eight
+			stageNow = 11;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+	if (stageOpened >= 12 || hackEnable)
+		if (point.x < 130 && point.x > 84 && point.y > 258 && point.y < 303) {		//level eight
+			stageNow = 12;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+
 
 
 
@@ -270,7 +304,7 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 void CGameStateSelect::OnShow()	
 {
 	if (stageOpened == 99999) {
-		stageEightBg.ShowBitmap();
+		stageTwelveBg.ShowBitmap();
 	}
 	else if (stageOpened == 1) {
 		stageOneBg.ShowBitmap();
@@ -296,6 +330,19 @@ void CGameStateSelect::OnShow()
 	else if (stageOpened == 8) {
 		stageEightBg.ShowBitmap();
 	}
+	else if (stageOpened == 9) {
+		stageNineBg.ShowBitmap();
+	}
+	else if (stageOpened == 10) {
+		stageTenBg.ShowBitmap();
+	}
+	else if (stageOpened == 11) {
+		stageElevenBg.ShowBitmap();
+	}
+	else if (stageOpened == 12) {
+		stageTwelveBg.ShowBitmap();
+	}
+
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -330,6 +377,10 @@ void CGameStateOver::OnInit()
 	stageFiveCp.LoadBitmap(STAGE_FIVE_CP);
 	stageSixCp.LoadBitmap(STAGE_SIX_CP);
 	stageSevenCp.LoadBitmap(STAGE_SEVEN_CP);
+	stageEightCp.LoadBitmap(STAGE_EIGHT_CP);
+	stageNineCp.LoadBitmap(STAGE_NINE_CP);
+	stageTenCp.LoadBitmap(STAGE_TEN_CP);
+	stageElevenCp.LoadBitmap(STAGE_ELEVEN_CP);
 
 
 	CAudio::Instance()->Load(AUDIO_CLEAR, "sounds\\clear.mp3");					// Load clear sound
@@ -374,6 +425,14 @@ void CGameStateOver::OnShow()
 		stageSixCp.ShowBitmap();
 	if (stageNow == 7)
 		stageSevenCp.ShowBitmap();
+	if (stageNow == 8)
+		stageEightCp.ShowBitmap();
+	if (stageNow == 9)
+		stageNineCp.ShowBitmap();
+	if (stageNow == 10)
+		stageTenCp.ShowBitmap();
+	if (stageNow == 11)
+		stageElevenCp.ShowBitmap();
 }
 
 
@@ -562,6 +621,12 @@ void CGameStateRun::OnInit()
 	stageFiveBg.LoadBitmap(MY_STAGE_FIVE);
 	stageSixBg.LoadBitmap(MY_STAGE_SIX);
 	stageSevenBg.LoadBitmap(MY_STAGE_SEVEN);
+	stageEightBg.LoadBitmap(MY_STAGE_EIGHT);
+	stageNineBg.LoadBitmap(MY_STAGE_NINE);
+	stageTenBg.LoadBitmap(MY_STAGE_TEN);
+	stageElevenBg.LoadBitmap(MY_STAGE_ELEVEN);
+
+
 	console.LoadBitmap(MY_DIRECTION, RGB(255, 255, 255));
 	rightCircle.LoadBitmap(RIGHT_CIRCLE);
 	handCircle.LoadBitmap(HAND_CIRCLE);
@@ -1157,6 +1222,22 @@ void CGameStateRun::OnShow()
 	if (stageNow == 7) {
 		stageSevenBg.SetTopLeft(0, 0);
 		stageSevenBg.ShowBitmap();
+	}
+	if (stageNow == 8) {
+		stageEightBg.SetTopLeft(0, 0);
+		stageEightBg.ShowBitmap();
+	}
+	if (stageNow == 9) {
+		stageNineBg.SetTopLeft(0, 0);
+		stageNineBg.ShowBitmap();
+	}
+	if (stageNow == 10) {
+		stageTenBg.SetTopLeft(0, 0);
+		stageTenBg.ShowBitmap();
+	}
+	if (stageNow == 11) {
+		stageElevenBg.SetTopLeft(0, 0);
+		stageElevenBg.ShowBitmap();
 	}
 	leader.OnShow();
 	box1.OnShow();

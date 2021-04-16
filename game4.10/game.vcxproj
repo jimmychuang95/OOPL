@@ -335,12 +335,16 @@
     <Image Include="bitmaps\bitmap17.bmp" />
     <Image Include="Bitmaps\box.bmp" />
     <Image Include="Bitmaps\CP_level1.bmp" />
+    <Image Include="Bitmaps\CP_level10.bmp" />
+    <Image Include="Bitmaps\CP_level11.bmp" />
     <Image Include="Bitmaps\CP_level2.bmp" />
     <Image Include="Bitmaps\CP_level3.bmp" />
     <Image Include="Bitmaps\CP_level4.bmp" />
     <Image Include="Bitmaps\CP_level5.bmp" />
     <Image Include="Bitmaps\CP_level6.bmp" />
     <Image Include="Bitmaps\CP_level7.bmp" />
+    <Image Include="Bitmaps\CP_level8.bmp" />
+    <Image Include="Bitmaps\CP_level9.bmp" />
     <Image Include="Bitmaps\dir.bmp" />
     <Image Include="Bitmaps\floor.bmp" />
     <Image Include="Bitmaps\homepage.bmp" />
@@ -355,6 +359,9 @@
     <Image Include="Bitmaps\my_leader_right.bmp" />
     <Image Include="Bitmaps\my_leader_up.bmp" />
     <Image Include="Bitmaps\SL_level1.bmp" />
+    <Image Include="Bitmaps\SL_level10.bmp" />
+    <Image Include="Bitmaps\SL_level11.bmp" />
+    <Image Include="Bitmaps\SL_level12.bmp" />
     <Image Include="Bitmaps\SL_level2.bmp" />
     <Image Include="Bitmaps\SL_level3.bmp" />
     <Image Include="Bitmaps\SL_level4.bmp" />
@@ -362,7 +369,10 @@
     <Image Include="Bitmaps\SL_level6.bmp" />
     <Image Include="Bitmaps\SL_level7.bmp" />
     <Image Include="Bitmaps\SL_level8.bmp" />
+    <Image Include="Bitmaps\SL_level9.bmp" />
     <Image Include="Bitmaps\stage_1.bmp" />
+    <Image Include="Bitmaps\stage_10.bmp" />
+    <Image Include="Bitmaps\stage_11.bmp" />
     <Image Include="Bitmaps\stage_1_bottom_left.bmp" />
     <Image Include="Bitmaps\stage_1_bottom_right.bmp" />
     <Image Include="Bitmaps\stage_2.bmp" />
@@ -371,6 +381,8 @@
     <Image Include="Bitmaps\stage_5.bmp" />
     <Image Include="Bitmaps\stage_6.bmp" />
     <Image Include="Bitmaps\stage_7.bmp" />
+    <Image Include="Bitmaps\stage_8.bmp" />
+    <Image Include="Bitmaps\stage_9.bmp" />
     <Image Include="Bitmaps\stage_one.bmp" />
     <Image Include="Bitmaps\stage_select.bmp" />
     <Image Include="Bitmaps\stage_two.bmp" />

@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文 (?體，中華人民共和國) resources
+// いゅ (虏砰い地チ㎝瓣) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
@@ -88,12 +88,12 @@ RED_LINE                BITMAP                  "..\\bitmaps\\bitmap13.bmp"
 
 MY_DIRECTION            BITMAP                  "..\\Bitmaps\\dir.bmp"
 
-#endif    // 中文 (?體，中華人民共和國) resources
+#endif    // いゅ (虏砰い地チ㎝瓣) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文 (繁體，台灣) resources
+// いゅ (羉砰芖) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
@@ -168,6 +168,30 @@ RIGHT_CIRCLE            BITMAP                  "..\\Bitmaps\\stage_1_bottom_lef
 
 HAND_CIRCLE             BITMAP                  "..\\Bitmaps\\stage_1_bottom_right.bmp"
 
+MY_STAGE_EIGHT          BITMAP                  "..\\Bitmaps\\stage_8.bmp"
+
+STAGE_EIGHT_CP          BITMAP                  "..\\Bitmaps\\CP_level8.bmp"
+
+STAGE_NINE_SL           BITMAP                  "..\\Bitmaps\\SL_level9.bmp"
+
+STAGE_NINE_CP           BITMAP                  "..\\Bitmaps\\CP_level9.bmp"
+
+STAGE_TEN_CP            BITMAP                  "..\\Bitmaps\\CP_level10.bmp"
+
+STAGE_ELEVEN_CP         BITMAP                  "..\\Bitmaps\\CP_level11.bmp"
+
+STAGE_TEN_SL            BITMAP                  "..\\Bitmaps\\SL_level10.bmp"
+
+STAGE_ELEVEN_SL         BITMAP                  "..\\Bitmaps\\SL_level11.bmp"
+
+STAGE_TWELVE_SL         BITMAP                  "..\\Bitmaps\\SL_level12.bmp"
+
+MY_STAGE_NINE           BITMAP                  "..\\Bitmaps\\stage_9.bmp"
+
+MY_STAGE_TEN            BITMAP                  "..\\Bitmaps\\stage_10.bmp"
+
+MY_STAGE_ELEVEN         BITMAP                  "..\\Bitmaps\\stage_11.bmp"
+
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -214,12 +238,12 @@ END
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
-#endif    // 中文 (繁體，台灣) resources
+#endif    // いゅ (羉砰芖) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 英文 (美國) resources
+// 璣ゅ (瓣) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -517,7 +541,7 @@ BEGIN
     ID_BUTTON_UNITTEST      "Perform Unit Test"
 END
 
-#endif    // 英文 (美國) resources
+#endif    // 璣ゅ (瓣) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
