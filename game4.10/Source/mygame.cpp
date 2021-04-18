@@ -142,7 +142,7 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 			CAudio::Instance()->Play(AUDIO_CLICK, false);
 			muteSound = true;
 			//muteBGM = true;
-			CAudio::Instance()->Stop(AUDIO_BGM);
+			//CAudio::Instance()->Stop(AUDIO_BGM);
 		}
 	}
 	else {
@@ -152,7 +152,7 @@ void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 
 			muteSound = false;
 			//muteBGM = false;
-			CAudio::Instance()->Play(AUDIO_BGM, true);
+			//CAudio::Instance()->Play(AUDIO_BGM, true);
 		}
 	}
 }
