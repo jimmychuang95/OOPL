@@ -162,8 +162,6 @@ MY_BOX                  BITMAP                  "..\\Bitmaps\\box.bmp"
 
 MY_FLOOR                BITMAP                  "..\\Bitmaps\\floor.bmp"
 
-IDB_BITMAP14            BITMAP                  "..\\bitmaps\\bitmap14.bmp"
-
 RIGHT_CIRCLE            BITMAP                  "..\\Bitmaps\\stage_1_bottom_left.bmp"
 
 HAND_CIRCLE             BITMAP                  "..\\Bitmaps\\stage_1_bottom_right.bmp"
@@ -191,6 +189,24 @@ MY_STAGE_NINE           BITMAP                  "..\\Bitmaps\\stage_9.bmp"
 MY_STAGE_TEN            BITMAP                  "..\\Bitmaps\\stage_10.bmp"
 
 MY_STAGE_ELEVEN         BITMAP                  "..\\Bitmaps\\stage_11.bmp"
+
+STAGE_TWELVE_CP         BITMAP                  "..\\Bitmaps\\CP_level12.bmp"
+
+STAGE_THIRTEEN_CP       BITMAP                  "..\\Bitmaps\\CP_level13.bmp"
+
+STAGE_FOURTEEN_CP       BITMAP                  "..\\Bitmaps\\CP_level14.bmp"
+
+STAGE_THIRTEEN_SL       BITMAP                  "..\\Bitmaps\\SL_level13.bmp"
+
+STAGE_FOURTEEN_SL       BITMAP                  "..\\Bitmaps\\SL_level14.bmp"
+
+STAGE_FIFTEEN_SL        BITMAP                  "..\\Bitmaps\\SL_level15.bmp"
+
+MY_STAGE_TWELVE         BITMAP                  "..\\Bitmaps\\stage_12.bmp"
+
+MY_STAGE_THIRTEEN       BITMAP                  "..\\Bitmaps\\stage_13.bmp"
+
+MY_STAGE_FOURTEEN       BITMAP                  "..\\Bitmaps\\stage_14.bmp"
 
 
 #ifdef APSTUDIO_INVOKED

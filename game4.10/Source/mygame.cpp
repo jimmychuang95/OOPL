@@ -196,6 +196,9 @@ void CGameStateSelect::OnInit()
 	stageTenBg.LoadBitmap(STAGE_TEN_SL);
 	stageElevenBg.LoadBitmap(STAGE_ELEVEN_SL);
 	stageTwelveBg.LoadBitmap(STAGE_TWELVE_SL);
+	stageThirteenBg.LoadBitmap(STAGE_THIRTEEN_SL);
+	stageFourteenBg.LoadBitmap(STAGE_FOURTEEN_SL);
+	stageFifteenBg.LoadBitmap(STAGE_FIFTEEN_SL);
 
 }
 
@@ -290,6 +293,27 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 				CAudio::Instance()->Play(AUDIO_CLICK, false);
 			GotoGameState(GAME_STATE_RUN);
 		}
+	if (stageOpened >= 13 || hackEnable)
+		if (point.x < 189 && point.x > 145 && point.y > 258 && point.y < 303) {		//level eight
+			stageNow = 13;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+	if (stageOpened >= 14 || hackEnable)
+		if (point.x < 250 && point.x > 207 && point.y > 258 && point.y < 303) {		//level eight
+			stageNow = 14;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+	if (stageOpened >= 15 || hackEnable)
+		if (point.x < 313 && point.x > 267 && point.y > 258 && point.y < 303) {		//level eight
+			stageNow = 15;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
 
 
 
@@ -304,7 +328,7 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 void CGameStateSelect::OnShow()	
 {
 	if (stageOpened == 99999) {
-		stageTwelveBg.ShowBitmap();
+		stageFifteenBg.ShowBitmap();
 	}
 	else if (stageOpened == 1) {
 		stageOneBg.ShowBitmap();
@@ -341,6 +365,15 @@ void CGameStateSelect::OnShow()
 	}
 	else if (stageOpened == 12) {
 		stageTwelveBg.ShowBitmap();
+	}
+	else if (stageOpened == 13) {
+		stageThirteenBg.ShowBitmap();
+	}
+	else if (stageOpened == 14) {
+		stageFourteenBg.ShowBitmap();
+	}
+	else if (stageOpened == 15) {
+		stageFifteenBg.ShowBitmap();
 	}
 
 }
@@ -381,6 +414,9 @@ void CGameStateOver::OnInit()
 	stageNineCp.LoadBitmap(STAGE_NINE_CP);
 	stageTenCp.LoadBitmap(STAGE_TEN_CP);
 	stageElevenCp.LoadBitmap(STAGE_ELEVEN_CP);
+	stageTwelveCp.LoadBitmap(STAGE_TWELVE_CP);
+	stageThirteenCp.LoadBitmap(STAGE_THIRTEEN_CP);
+	stageFourteenCp.LoadBitmap(STAGE_FOURTEEN_CP);
 
 
 	CAudio::Instance()->Load(AUDIO_CLEAR, "sounds\\clear.mp3");					// Load clear sound
@@ -433,6 +469,12 @@ void CGameStateOver::OnShow()
 		stageTenCp.ShowBitmap();
 	if (stageNow == 11)
 		stageElevenCp.ShowBitmap();
+	if (stageNow == 12)
+		stageTwelveCp.ShowBitmap();
+	if (stageNow == 13)
+		stageThirteenCp.ShowBitmap();
+	if (stageNow == 14)
+		stageFourteenCp.ShowBitmap();
 }
 
 
@@ -625,6 +667,9 @@ void CGameStateRun::OnInit()
 	stageNineBg.LoadBitmap(MY_STAGE_NINE);
 	stageTenBg.LoadBitmap(MY_STAGE_TEN);
 	stageElevenBg.LoadBitmap(MY_STAGE_ELEVEN);
+	stageTwelveBg.LoadBitmap(MY_STAGE_TWELVE);
+	stageThirteenBg.LoadBitmap(MY_STAGE_THIRTEEN);
+	stageFourteenBg.LoadBitmap(MY_STAGE_FOURTEEN);
 
 
 	console.LoadBitmap(MY_DIRECTION, RGB(255, 255, 255));
@@ -1239,10 +1284,23 @@ void CGameStateRun::OnShow()
 		stageElevenBg.SetTopLeft(0, 0);
 		stageElevenBg.ShowBitmap();
 	}
+	if (stageNow == 12) {
+		stageTwelveBg.SetTopLeft(0, 0);
+		stageTwelveBg.ShowBitmap();
+	}
+	if (stageNow == 13) {
+		stageThirteenBg.SetTopLeft(0, 0);
+		stageThirteenBg.ShowBitmap();
+	}
+	if (stageNow == 14) {
+		stageFourteenBg.SetTopLeft(0, 0);
+		stageFourteenBg.ShowBitmap();
+	}
 	leader.OnShow();
 	box1.OnShow();
 	box2.OnShow();
 	box3.OnShow();
+
 
 
 	if (switchmodecount % 3 == 1) {

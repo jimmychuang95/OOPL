@@ -127,6 +127,36 @@ namespace game_framework {
 								   {1,1,1,1,1,1,1,1,1},
 								   {1,1,1,1,1,1,1,1,1}, };
 
+		int stage_twelve[9][9] = { {1,1,1,1,1,1,1,1,1},
+								   {1,1,1,1,1,1,1,1,1},
+								   {1,1,4,0,3,3,1,1,1},
+								   {1,1,0,1,2,0,1,1,1},
+								   {1,1,0,1,0,0,0,1,1},
+								   {1,1,0,0,2,1,0,1,1},
+								   {1,1,0,0,6,0,0,1,1},
+								   {1,1,1,1,1,1,1,1,1},
+								   {1,1,1,1,1,1,1,1,1}, };
+
+		int stage_thirteen[9][9] = { {1,1,1,1,1,1,1,1,1},
+								     {1,1,1,1,1,1,1,1,1},
+								     {1,1,0,0,0,1,1,1,1},
+								     {1,1,0,1,0,1,1,1,1},
+								     {1,1,6,3,2,0,0,1,1},
+								     {1,1,0,0,1,2,0,1,1},
+								     {1,1,4,0,0,0,3,1,1},
+								     {1,1,1,1,1,1,1,1,1},
+								     {1,1,1,1,1,1,1,1,1}, };
+
+		int stage_fourteen[9][9] = { {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,0,0,4,1,1},
+									 {1,1,3,0,6,1,0,1,1},
+									 {1,1,0,0,0,2,0,1,1},
+									 {1,1,0,2,3,0,1,1,1},
+									 {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,1,1,1,1,1}, };
+
 
 		if (level == 1) {
 			for (int i = 0; i < 9; i++)
@@ -203,6 +233,27 @@ namespace game_framework {
 				for (int j = 0; j < 9; j++)
 				{
 					map[i][j] = stage_eleven[i][j];
+				}
+		}
+		else if (level == 12) {
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+				{
+					map[i][j] = stage_twelve[i][j];
+				}
+		}
+		else if (level == 13) {
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+				{
+					map[i][j] = stage_thirteen[i][j];
+				}
+		}
+		else if (level == 14) {
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+				{
+					map[i][j] = stage_fourteen[i][j];
 				}
 		}
 
@@ -384,7 +435,7 @@ namespace game_framework {
 					if (map[leadersite[0]][leadersite[1] - 2] == 3) {				//終點 - 箱子 - leader
 						map[leadersite[0]][leadersite[1]] = 0;
 						map[leadersite[0]][leadersite[1] - 1] = 4;
-						map[leadersite[0]][leadersite[1] - 2] = 6;					/*	6 = finished	*/
+						map[leadersite[0]][leadersite[1] - 2] = 6;			 		/*	6 = finished	*/
 						this->SetLeader();
 						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
 						return true;

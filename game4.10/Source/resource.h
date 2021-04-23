@@ -81,7 +81,6 @@
 #define MY_STAGE_SEVEN                  207
 #define IDB_BITMAP13                    208
 #define RED_LINE                        208
-#define IDB_BITMAP14                    210
 #define IDB_BITMAP15                    211
 #define STAGE_ONE_BOTTOM_LEFT           211
 #define LEFT_CIRCLE                     211
@@ -99,11 +98,20 @@
 #define STAGE_ELEVEN_CP                 221
 #define STAGE_TEN_SL                    222
 #define STAGE_ELEVEN_SL                 223
-#define STAGE_TWELVE                    224
 #define MY_STAGE_NINE                   225
 #define MY_STAGE_TEN                    226
 #define MY_STAGE_ELEVEN                 227
 #define STAGE_TWELVE_SL                 228
+#define STAGE_TWELVE_CP                 238
+#define STAGE_THIRTEEN_CP               239
+#define STAGE_FOURTEEN_CP               240
+#define STAGE_THIRTEEN_SL               241
+#define STAGE_FOURTEEN_SL               242
+#define STAGE_FIFTEEN_SL                243
+#define MY_STAGE_TWELVE                 244
+#define MY_STAGE_THIRTEEN               245
+#define IDB_BITMAP25                    246
+#define MY_STAGE_FOURTEEN               246
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -116,7 +124,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        229
+#define _APS_NEXT_RESOURCE_VALUE        247
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

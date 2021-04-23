@@ -330,6 +330,15 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\Desktop\123\CP_level12.bmp" />
+    <Image Include="..\..\..\Desktop\123\CP_level13.bmp" />
+    <Image Include="..\..\..\Desktop\123\CP_level14.bmp" />
+    <Image Include="..\..\..\Desktop\123\SL_level13.bmp" />
+    <Image Include="..\..\..\Desktop\123\SL_level14.bmp" />
+    <Image Include="..\..\..\Desktop\123\SL_level15.bmp" />
+    <Image Include="..\..\..\Desktop\123\stage_12.bmp" />
+    <Image Include="..\..\..\Desktop\123\stage_13.bmp" />
+    <Image Include="..\..\..\Desktop\123\stage_14.bmp" />
     <Image Include="bitmaps\bitmap13.bmp" />
     <Image Include="bitmaps\bitmap14.bmp" />
     <Image Include="bitmaps\bitmap17.bmp" />
@@ -337,6 +346,9 @@
     <Image Include="Bitmaps\CP_level1.bmp" />
     <Image Include="Bitmaps\CP_level10.bmp" />
     <Image Include="Bitmaps\CP_level11.bmp" />
+    <Image Include="Bitmaps\CP_level12.bmp" />
+    <Image Include="Bitmaps\CP_level13.bmp" />
+    <Image Include="Bitmaps\CP_level14.bmp" />
     <Image Include="Bitmaps\CP_level2.bmp" />
     <Image Include="Bitmaps\CP_level3.bmp" />
     <Image Include="Bitmaps\CP_level4.bmp" />
@@ -362,6 +374,9 @@
     <Image Include="Bitmaps\SL_level10.bmp" />
     <Image Include="Bitmaps\SL_level11.bmp" />
     <Image Include="Bitmaps\SL_level12.bmp" />
+    <Image Include="Bitmaps\SL_level13.bmp" />
+    <Image Include="Bitmaps\SL_level14.bmp" />
+    <Image Include="Bitmaps\SL_level15.bmp" />
     <Image Include="Bitmaps\SL_level2.bmp" />
     <Image Include="Bitmaps\SL_level3.bmp" />
     <Image Include="Bitmaps\SL_level4.bmp" />
@@ -373,6 +388,9 @@
     <Image Include="Bitmaps\stage_1.bmp" />
     <Image Include="Bitmaps\stage_10.bmp" />
     <Image Include="Bitmaps\stage_11.bmp" />
+    <Image Include="Bitmaps\stage_12.bmp" />
+    <Image Include="Bitmaps\stage_13.bmp" />
+    <Image Include="Bitmaps\stage_14.bmp" />
     <Image Include="Bitmaps\stage_1_bottom_left.bmp" />
     <Image Include="Bitmaps\stage_1_bottom_right.bmp" />
     <Image Include="Bitmaps\stage_2.bmp" />

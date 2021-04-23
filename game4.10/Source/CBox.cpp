@@ -221,6 +221,48 @@ namespace game_framework {
 				y = 243;
 			}
 		}
+		else if (level == 12) {
+			if (num == 1) {
+				x = 150;
+				y = 243;
+			}
+			else if (num == 2) {
+				x = 150;
+				y = 318;
+			}
+			else if (num == 3) {
+				x = 150;
+				y = 356;
+			}
+		}
+		else if (level == 13) {
+			if (num == 1) {
+				x = 75;
+				y = 280;
+			}
+			else if (num == 2) {
+				x = 150;
+				y = 280;
+			}
+			else if (num == 3) {
+				x = 187;
+				y = 318;
+			}
+		}
+		else if (level == 14) {
+			if (num == 1) {
+				x = 150;
+				y = 280;
+			}
+			else if (num == 2) {
+				x = 187;
+				y = 318;
+			}
+			else if (num == 3) {
+				x = 112;
+				y = 355;
+			}
+		}
 
 
 
