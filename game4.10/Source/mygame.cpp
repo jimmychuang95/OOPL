@@ -501,6 +501,12 @@ void CGameStateRun::OnBeginState()
 	box2.Initialize(stageNow, 2);	//box 2
 	box3.Initialize(stageNow, 3);	//box 3
 	gamemap.Initialize(stageNow);
+	for (int i = 0; i < 6; i += 2) {
+		finish_pos[i] = leader.GetX1() + gamemap.return_finish_dis(i+1) * 38;
+		finish_pos[i + 1] = leader.GetY1() + gamemap.return_finish_dis(i) * 38;
+	}
+	
+
 
 	//stageOneBg.SetTopLeft(0, 0);
 	//stageTwoBg.SetTopLeft(0, 0);
@@ -654,6 +660,7 @@ void CGameStateRun::OnInit()
 		box2.LoadBitmap();
 		box3.LoadBitmap();
 		line.LoadBitmap(RED_LINE);
+		box_check.LoadBitmap(MY_BOX_CHECK);
 		CAudio::Instance()->Load(AUDIO_BOX, "sounds\\box_long.mp3");		// Load箱子移動聲音
 	
 	stageOneBg.LoadBitmap(MY_STAGE_ONE);
@@ -675,6 +682,7 @@ void CGameStateRun::OnInit()
 	console.LoadBitmap(MY_DIRECTION, RGB(255, 255, 255));
 	rightCircle.LoadBitmap(RIGHT_CIRCLE);
 	handCircle.LoadBitmap(HAND_CIRCLE);
+
 
 	ShowInitProgress(50);
 	Sleep(300);
@@ -1300,7 +1308,26 @@ void CGameStateRun::OnShow()
 	box1.OnShow();
 	box2.OnShow();
 	box3.OnShow();
-
+	
+	for (int i = 0; i < 6; i += 2) {
+		if (box1.GetX1() < finish_pos[i] + 10 && box1.GetX1() > finish_pos[i] - 10 && box1.GetY1() < finish_pos[i+1] + 10 && box1.GetY1() > finish_pos[i+1] - 10) {
+			box_check.SetTopLeft(box1.GetX1(), box1.GetY1());
+			box_check.ShowBitmap();
+		}
+	}
+	for (int i = 0; i < 6; i += 2) {
+		if (box2.GetX1() < finish_pos[i] + 10 && box2.GetX1() > finish_pos[i] - 10 && box2.GetY1() < finish_pos[i + 1] + 10 && box2.GetY1() > finish_pos[i + 1] - 10) {
+			box_check.SetTopLeft(box2.GetX1(), box2.GetY1());
+			box_check.ShowBitmap();
+		}
+	}
+	for (int i = 0; i < 6; i += 2) {
+		if (box3.GetX1() < finish_pos[i] + 10 && box3.GetX1() > finish_pos[i] - 10 && box3.GetY1() < finish_pos[i + 1] + 10 && box3.GetY1() > finish_pos[i + 1] - 10) {
+			box_check.SetTopLeft(box3.GetX1(), box3.GetY1());
+			box_check.ShowBitmap();
+		}
+	}
+	
 
 
 	if (switchmodecount % 3 == 1) {

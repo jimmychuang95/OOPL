@@ -264,9 +264,33 @@ namespace game_framework {
 				if (map[i][j] == 4) {
 					leadersite[0] = i;
 					leadersite[1] = j;
+					init_leadersite[0] = i;
+					init_leadersite[1] = j;
 				}
 			}
 		}
+
+		int a = 0; //find finish and leader's distence
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (map[i][j] == 3 || map[i][j] == 5 || map[i][j] == 6) {
+					finish_pos[a] = i;
+					finish_pos[a + 1] = j;
+					a += 2;
+				}
+			}
+		}
+		for (int i = 0; i < 6; i += 2) {
+			if (finish_pos[i] != 0 && finish_pos[i + 1] != 0) {
+				finish_dis[i] = finish_pos[i] - init_leadersite[0];
+				finish_dis[i + 1] = finish_pos[i + 1] - init_leadersite[1];
+			}
+		}
+
+	}
+
+	int CGameMap::return_finish_dis(int i) {
+		return finish_dis[i];
 	}
 
 	int CGameMap::GetComponent(int x, int y)

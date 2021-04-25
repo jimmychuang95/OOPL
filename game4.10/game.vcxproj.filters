@@ -429,5 +429,8 @@
     <Image Include="Bitmaps\stage_14.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Bitmaps\box_check.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

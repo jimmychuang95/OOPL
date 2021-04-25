@@ -208,6 +208,8 @@ MY_STAGE_THIRTEEN       BITMAP                  "..\\Bitmaps\\stage_13.bmp"
 
 MY_STAGE_FOURTEEN       BITMAP                  "..\\Bitmaps\\stage_14.bmp"
 
+MY_BOX_CHECK            BITMAP                  "..\\Bitmaps\\box_check.bmp"
+
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////

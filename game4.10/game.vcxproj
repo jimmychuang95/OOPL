@@ -343,6 +343,7 @@
     <Image Include="bitmaps\bitmap14.bmp" />
     <Image Include="bitmaps\bitmap17.bmp" />
     <Image Include="Bitmaps\box.bmp" />
+    <Image Include="Bitmaps\box_check.bmp" />
     <Image Include="Bitmaps\CP_level1.bmp" />
     <Image Include="Bitmaps\CP_level10.bmp" />
     <Image Include="Bitmaps\CP_level11.bmp" />

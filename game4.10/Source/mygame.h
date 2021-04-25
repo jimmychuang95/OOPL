@@ -130,6 +130,7 @@ namespace game_framework {
 		int				finishCounter;
 		int				hackCounter = 0;
 		int				switchmodecount = 0;
+		int             finish_pos[6] = { 0 };
 
 		CMovingBitmap	stageOneBg;
 		CMovingBitmap	stageTwoBg;
@@ -151,12 +152,15 @@ namespace game_framework {
 		CMovingBitmap	console;
 		CMovingBitmap	rightCircle;
 		CMovingBitmap	handCircle;
+		CMovingBitmap   box_check;
+		
 
 		CLeader			leader;	
 		CGameMap        gamemap;
 		CBox			box1;
 		CBox			box2;
 		CBox			box3;
+		
 
 		std::stack<int>		dirStack;
 		std::stack<bool>	boxPushStack;
