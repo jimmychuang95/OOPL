@@ -339,6 +339,7 @@
     <Image Include="..\..\..\Desktop\123\stage_12.bmp" />
     <Image Include="..\..\..\Desktop\123\stage_13.bmp" />
     <Image Include="..\..\..\Desktop\123\stage_14.bmp" />
+    <Image Include="Bitmaps\all_lock.bmp" />
     <Image Include="bitmaps\bitmap13.bmp" />
     <Image Include="bitmaps\bitmap14.bmp" />
     <Image Include="bitmaps\bitmap17.bmp" />
@@ -371,6 +372,7 @@
     <Image Include="Bitmaps\my_leader_left.bmp" />
     <Image Include="Bitmaps\my_leader_right.bmp" />
     <Image Include="Bitmaps\my_leader_up.bmp" />
+    <Image Include="Bitmaps\selectBG.bmp" />
     <Image Include="Bitmaps\SL_level1.bmp" />
     <Image Include="Bitmaps\SL_level10.bmp" />
     <Image Include="Bitmaps\SL_level11.bmp" />

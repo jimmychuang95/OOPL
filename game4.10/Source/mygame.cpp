@@ -184,21 +184,23 @@ CGameStateSelect::CGameStateSelect(CGame *g)
 void CGameStateSelect::OnInit()
 {
 	ShowInitProgress(0);
-	stageOneBg.LoadBitmap(STAGE_ONE_SL);
-	stageTwoBg.LoadBitmap(STAGE_TWO_SL);
-	stageThreeBg.LoadBitmap(STAGE_THREE_SL);
-	stageFourBg.LoadBitmap(STAGE_FOUR_SL);
-	stageFiveBg.LoadBitmap(STAGE_FIVE_SL);
-	stageSixBg.LoadBitmap(STAGE_SIX_SL);
-	stageSevenBg.LoadBitmap(STAGE_SEVEN_SL);
-	stageEightBg.LoadBitmap(STAGE_EIGHT_SL);
-	stageNineBg.LoadBitmap(STAGE_NINE_SL);
-	stageTenBg.LoadBitmap(STAGE_TEN_SL);
-	stageElevenBg.LoadBitmap(STAGE_ELEVEN_SL);
-	stageTwelveBg.LoadBitmap(STAGE_TWELVE_SL);
-	stageThirteenBg.LoadBitmap(STAGE_THIRTEEN_SL);
-	stageFourteenBg.LoadBitmap(STAGE_FOURTEEN_SL);
-	stageFifteenBg.LoadBitmap(STAGE_FIFTEEN_SL);
+	selectBg.LoadBitmap(SELECT_BG);
+	selectAllLock.LoadBitmap(SELECT_ALL_LOCK, RGB(255, 255, 255));
+	stageOneBg.LoadBitmap(STAGE_ONE_SL, RGB(255, 255, 255));
+	stageTwoBg.LoadBitmap(STAGE_TWO_SL, RGB(255, 255, 255));
+	stageThreeBg.LoadBitmap(STAGE_THREE_SL, RGB(255, 255, 255));
+	stageFourBg.LoadBitmap(STAGE_FOUR_SL, RGB(255, 255, 255));
+	stageFiveBg.LoadBitmap(STAGE_FIVE_SL, RGB(255, 255, 255));
+	stageSixBg.LoadBitmap(STAGE_SIX_SL, RGB(255, 255, 255));
+	stageSevenBg.LoadBitmap(STAGE_SEVEN_SL, RGB(255, 255, 255));
+	stageEightBg.LoadBitmap(STAGE_EIGHT_SL, RGB(255, 255, 255));
+	stageNineBg.LoadBitmap(STAGE_NINE_SL, RGB(255, 255, 255));
+	stageTenBg.LoadBitmap(STAGE_TEN_SL, RGB(255, 255, 255));
+	stageElevenBg.LoadBitmap(STAGE_ELEVEN_SL, RGB(255, 255, 255));
+	stageTwelveBg.LoadBitmap(STAGE_TWELVE_SL, RGB(255, 255, 255));
+	stageThirteenBg.LoadBitmap(STAGE_THIRTEEN_SL, RGB(255, 255, 255));
+	stageFourteenBg.LoadBitmap(STAGE_FOURTEEN_SL, RGB(255, 255, 255));
+	stageFifteenBg.LoadBitmap(STAGE_FIFTEEN_SL, RGB(255, 255, 255));
 
 }
 
@@ -208,113 +210,114 @@ void CGameStateSelect::OnBeginState()
 
 void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {			//level one
-		stageNow = 1;
-		if (!muteSound)
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
-		GotoGameState(GAME_STATE_RUN);
+	if (page == 1) {
+		if (point.x < 68 && point.x > 24 && point.y > 137 && point.y < 180) {			//level one
+			stageNow = 1;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			GotoGameState(GAME_STATE_RUN);
+		}
+
+		if (stageOpened >= 2 || hackEnable)
+			if (point.x < 130 && point.x > 84 && point.y > 137 && point.y < 180) {		//level two
+				stageNow = 2;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+
+		if (stageOpened >= 3 || hackEnable)
+			if (point.x < 189 && point.x > 145 && point.y > 137 && point.y < 180) {		//level three
+				stageNow = 3;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 4 || hackEnable)
+			if (point.x < 250 && point.x > 208 && point.y > 137 && point.y < 180) {		//level four
+				stageNow = 4;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 5 || hackEnable)
+			if (point.x < 313 && point.x > 267 && point.y > 137 && point.y < 180) {		//level five
+				stageNow = 5;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 6 || hackEnable)
+			if (point.x < 68 && point.x > 24 && point.y > 199 && point.y < 242) {		//level six
+				stageNow = 6;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 7 || hackEnable)
+			if (point.x < 130 && point.x > 84 && point.y > 199 && point.y < 242) {		//level seven
+				stageNow = 7;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 8 || hackEnable)
+			if (point.x < 189 && point.x > 145 && point.y > 199 && point.y < 242) {		//level eight
+				stageNow = 8;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 9 || hackEnable)
+			if (point.x < 250 && point.x > 207 && point.y > 199 && point.y < 242) {		//level eight
+				stageNow = 9;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 10 || hackEnable)
+			if (point.x < 313 && point.x > 267 && point.y > 199 && point.y < 242) {		//level eight
+				stageNow = 10;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 11 || hackEnable)
+			if (point.x < 68 && point.x > 24 && point.y > 258 && point.y < 303) {		//level eight
+				stageNow = 11;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 12 || hackEnable)
+			if (point.x < 130 && point.x > 84 && point.y > 258 && point.y < 303) {		//level eight
+				stageNow = 12;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 13 || hackEnable)
+			if (point.x < 189 && point.x > 145 && point.y > 258 && point.y < 303) {		//level eight
+				stageNow = 13;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 14 || hackEnable)
+			if (point.x < 250 && point.x > 207 && point.y > 258 && point.y < 303) {		//level eight
+				stageNow = 14;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
+		if (stageOpened >= 15 || hackEnable)
+			if (point.x < 313 && point.x > 267 && point.y > 258 && point.y < 303) {		//level eight
+				stageNow = 15;
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+				GotoGameState(GAME_STATE_RUN);
+			}
 	}
-
-	if (stageOpened >= 2 || hackEnable)
-		if (point.x < 130 && point.x > 84 && point.y > 137 && point.y < 180) {		//level two
-			stageNow = 2;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-
-	if (stageOpened >= 3 || hackEnable)
-		if (point.x < 189 && point.x > 145 && point.y > 137 && point.y < 180) {		//level three
-			stageNow = 3;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 4 || hackEnable)
-		if (point.x < 250 && point.x > 208 && point.y > 137 && point.y < 180) {		//level four
-			stageNow = 4;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 5 || hackEnable)
-		if (point.x < 313 && point.x > 267 && point.y > 137 && point.y < 180) {		//level five
-			stageNow = 5;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 6 || hackEnable)
-		if (point.x < 68 && point.x > 24 && point.y > 199 && point.y < 242) {		//level six
-			stageNow = 6;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 7 || hackEnable)
-		if (point.x < 130 && point.x > 84 && point.y > 199 && point.y < 242) {		//level seven
-			stageNow = 7;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 8 || hackEnable)
-		if (point.x < 189 && point.x > 145 && point.y > 199 && point.y < 242) {		//level eight
-			stageNow = 8;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 9 || hackEnable)
-		if (point.x < 250 && point.x > 207 && point.y > 199 && point.y < 242) {		//level eight
-			stageNow = 9;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 10 || hackEnable)
-		if (point.x < 313 && point.x > 267 && point.y > 199 && point.y < 242) {		//level eight
-			stageNow = 10;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 11 || hackEnable)
-		if (point.x < 68 && point.x > 24 && point.y > 258 && point.y < 303) {		//level eight
-			stageNow = 11;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 12 || hackEnable)
-		if (point.x < 130 && point.x > 84 && point.y > 258 && point.y < 303) {		//level eight
-			stageNow = 12;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 13 || hackEnable)
-		if (point.x < 189 && point.x > 145 && point.y > 258 && point.y < 303) {		//level eight
-			stageNow = 13;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 14 || hackEnable)
-		if (point.x < 250 && point.x > 207 && point.y > 258 && point.y < 303) {		//level eight
-			stageNow = 14;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-	if (stageOpened >= 15 || hackEnable)
-		if (point.x < 313 && point.x > 267 && point.y > 258 && point.y < 303) {		//level eight
-			stageNow = 15;
-			if (!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-			GotoGameState(GAME_STATE_RUN);
-		}
-
 
 
 
@@ -325,54 +328,119 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 }
 
+void CGameStateSelect::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	const char KEY_LEFT = 0x25;
+	const char KEY_RIGHT = 0x27;
+
+	if (NotMoving) {
+		if (page != 1) {
+			if (nChar == KEY_LEFT) {
+				page--;
+				moveCounter = 56;
+				isMovingRight = true;
+				NotMoving = false;
+			}
+		}
+		if (page != 3) {
+			if (nChar == KEY_RIGHT) {
+				page++;
+				moveCounter = 56;
+				isMovingLeft = true;
+				NotMoving = false;
+			}
+		}
+	}
+}
+
+void CGameStateSelect::OnMove()
+{
+	moveCounter--;
+	if (moveCounter < 0) {
+		NotMoving = true;
+		isMovingLeft = false;
+		isMovingRight = false;
+	}
+
+	if (isMovingLeft == true)
+		x -= 6;
+
+	if (isMovingRight == true)
+		x += 6;
+}
+
 void CGameStateSelect::OnShow()	
 {
+	selectBg.SetTopLeft(0, 0);
+	selectBg.ShowBitmap();
+
+	if (stageOpened <= 30) {
+		selectAllLock.SetTopLeft(x + 338, 0);
+		selectAllLock.ShowBitmap();
+	}
+
 	if (stageOpened == 99999) {
+		stageFifteenBg.SetTopLeft(x, 0);
 		stageFifteenBg.ShowBitmap();
 	}
 	else if (stageOpened == 1) {
+		stageOneBg.SetTopLeft(x, 0);
 		stageOneBg.ShowBitmap();
 	}
 	else if (stageOpened == 2) {
+		stageTwoBg.SetTopLeft(x, 0);
 		stageTwoBg.ShowBitmap();
 	}
 	else if (stageOpened == 3) {
+		stageThreeBg.SetTopLeft(x, 0);
 		stageThreeBg.ShowBitmap();
 	}
 	else if (stageOpened == 4) {
+		stageFourBg.SetTopLeft(x, 0);
 		stageFourBg.ShowBitmap();
 	}
 	else if (stageOpened == 5) {
+		stageFiveBg.SetTopLeft(x, 0);
 		stageFiveBg.ShowBitmap();
 	}
 	else if (stageOpened == 6) {
+		stageSixBg.SetTopLeft(x, 0);
 		stageSixBg.ShowBitmap();
 	}
 	else if (stageOpened == 7) {
+		stageSevenBg.SetTopLeft(x, 0);
 		stageSevenBg.ShowBitmap();
 	}
 	else if (stageOpened == 8) {
+		stageEightBg.SetTopLeft(x, 0);
 		stageEightBg.ShowBitmap();
 	}
 	else if (stageOpened == 9) {
+		stageNineBg.SetTopLeft(x, 0);
 		stageNineBg.ShowBitmap();
 	}
 	else if (stageOpened == 10) {
+		stageTenBg.SetTopLeft(x, 0);
 		stageTenBg.ShowBitmap();
 	}
 	else if (stageOpened == 11) {
+		stageElevenBg.SetTopLeft(x, 0);
 		stageElevenBg.ShowBitmap();
 	}
 	else if (stageOpened == 12) {
+		stageTwelveBg.SetTopLeft(x, 0);
 		stageTwelveBg.ShowBitmap();
 	}
 	else if (stageOpened == 13) {
+		stageThirteenBg.SetTopLeft(x, 0);
 		stageThirteenBg.ShowBitmap();
 	}
 	else if (stageOpened == 14) {
+		stageFourteenBg.SetTopLeft(x, 0);
 		stageFourteenBg.ShowBitmap();
 	}
 	else if (stageOpened == 15) {
+		stageFifteenBg.SetTopLeft(x, 0);
 		stageFifteenBg.ShowBitmap();
 	}
 

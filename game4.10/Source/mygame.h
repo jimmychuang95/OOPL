@@ -83,10 +83,21 @@ namespace game_framework {
 		CGameStateSelect(CGame *g);
 		void OnInit();  
 		void OnBeginState();							
-		void OnLButtonDown(UINT nFlags, CPoint point);  
+		void OnLButtonDown(UINT nFlags, CPoint point); 
+		void OnKeyDown(UINT, UINT, UINT);
 	protected:
-		void OnShow();									
+		void OnShow();
+		void OnMove();
 	private:
+		int		x = 0;
+		int		page = 1;
+		int		moveCounter;
+		bool	isMovingLeft;
+		bool	isMovingRight;
+		bool	NotMoving = true;
+
+		CMovingBitmap	selectBg;
+		CMovingBitmap	selectAllLock;
 		CMovingBitmap	stageOneBg;
 		CMovingBitmap	stageTwoBg;
 		CMovingBitmap	stageThreeBg;
@@ -132,6 +143,7 @@ namespace game_framework {
 		int				switchmodecount = 0;
 		int             finish_pos[6] = { 0 };
 
+		
 		CMovingBitmap	stageOneBg;
 		CMovingBitmap	stageTwoBg;
 		CMovingBitmap	stageThreeBg;

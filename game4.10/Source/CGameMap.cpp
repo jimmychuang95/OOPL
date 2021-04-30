@@ -261,7 +261,7 @@ namespace game_framework {
 
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				if (map[i][j] == 4) {
+				if (map[i][j] == 4 || map[i][j] == 5) {
 					leadersite[0] = i;
 					leadersite[1] = j;
 					init_leadersite[0] = i;
