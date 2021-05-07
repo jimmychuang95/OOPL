@@ -99,6 +99,18 @@ namespace game_framework {
 			x = 224;
 			y = 243;
 		}
+		else if (level == 15) {
+			x = 36;
+			y = 243;
+		}
+		else if (level == 16) {
+			x = 224;
+			y = 355;
+		}
+		else if (level == 17) {
+			x = 224;
+			y = 356;
+		}
 		
 		current = 4;
 		isStanding = true;

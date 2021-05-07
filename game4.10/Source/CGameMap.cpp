@@ -157,6 +157,36 @@ namespace game_framework {
 									 {1,1,1,1,1,1,1,1,1},
 									 {1,1,1,1,1,1,1,1,1}, };
 
+		int stage_fifteen[9][9] = {  {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,1,1,1,1,1},
+									 {1,4,0,0,0,0,1,1,1},
+									 {1,0,3,2,6,0,0,1,1},
+									 {1,0,1,2,3,0,0,0,1},
+									 {1,0,0,0,0,0,0,0,1},
+									 {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,1,1,1,1,1}, };
+
+		int stage_sixteen[9][9] = {  {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,1,1,1,1,1},
+									 {1,1,0,0,3,0,1,1,1},
+									 {1,1,0,1,3,0,1,1,1},
+									 {1,1,0,0,3,0,0,1,1},
+									 {1,1,0,2,2,2,0,1,1},
+									 {1,1,0,0,1,0,4,1,1},
+									 {1,1,1,1,1,1,1,1,1},
+									 {1,1,1,1,1,1,1,1,1}, };
+
+		int stage_seventeen[9][9] = { {1,1,1,1,1,1,1,1,1},
+									  {1,1,1,1,1,1,1,1,1},
+									  {1,1,0,0,1,1,1,1,1},
+									  {1,1,0,0,0,6,3,1,1},
+									  {1,1,0,0,2,1,0,1,1},
+									  {1,1,0,0,3,2,4,1,1},
+									  {1,1,1,1,1,1,1,1,1},
+									  {1,1,1,1,1,1,1,1,1},
+									  {1,1,1,1,1,1,1,1,1}, };
+
 
 		if (level == 1) {
 			for (int i = 0; i < 9; i++)
@@ -255,6 +285,27 @@ namespace game_framework {
 				{
 					map[i][j] = stage_fourteen[i][j];
 				}
+		}
+		else if (level == 15) {
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+				{
+					map[i][j] = stage_fifteen[i][j];
+				}
+		}
+		else if (level == 16) {
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+				{
+					map[i][j] = stage_sixteen[i][j];
+				}
+		}
+		else if (level == 17) {
+		for (int i = 0; i < 9; i++)
+			for (int j = 0; j < 9; j++)
+			{
+				map[i][j] = stage_seventeen[i][j];
+			}
 		}
 
 
@@ -405,7 +456,7 @@ namespace game_framework {
 				}
 
 				if (map[leadersite[0]][leadersite[1] + 1] == 6) {				//leader在終點上 - 完成的箱子
-					if (map[leadersite[0]][leadersite[1] + 1] == 0) {				//leader在終點上 - 完成的箱子 - 地板
+					if (map[leadersite[0]][leadersite[1] + 2] == 0) {				//leader在終點上 - 完成的箱子 - 地板
 						map[leadersite[0]][leadersite[1]] = 3;
 						map[leadersite[0]][leadersite[1] + 1] = 5;
 						map[leadersite[0]][leadersite[1] + 2] = 0;
@@ -523,7 +574,7 @@ namespace game_framework {
 				}
 
 				if (map[leadersite[0]][leadersite[1] - 1] == 6) {				//完成的箱子 - leader在終點上
-					if (map[leadersite[0]][leadersite[1] - 1] == 0) {				//地板 - 完成的箱子 - leader在終點上
+					if (map[leadersite[0]][leadersite[1] - 2] == 0) {				//地板 - 完成的箱子 - leader在終點上
 						map[leadersite[0]][leadersite[1]] = 3;
 						map[leadersite[0]][leadersite[1] - 1] = 5;
 						map[leadersite[0]][leadersite[1] - 2] = 0;

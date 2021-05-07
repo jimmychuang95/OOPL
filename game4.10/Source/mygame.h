@@ -113,6 +113,9 @@ namespace game_framework {
 		CMovingBitmap	stageThirteenBg;
 		CMovingBitmap	stageFourteenBg;
 		CMovingBitmap	stageFifteenBg;
+		CMovingBitmap	stageSixteenBg;
+		CMovingBitmap	stageSeventeenBg;
+		CMovingBitmap	stageEighteenBg;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -158,7 +161,9 @@ namespace game_framework {
 		CMovingBitmap	stageTwelveBg;
 		CMovingBitmap	stageThirteenBg;
 		CMovingBitmap	stageFourteenBg;
-
+		CMovingBitmap	stageFifteenBg;
+		CMovingBitmap	stageSixteenBg;
+		CMovingBitmap	stageSeventeenBg;
 
 		CMovingBitmap	line;
 		CMovingBitmap	console;
@@ -209,6 +214,9 @@ namespace game_framework {
 		CMovingBitmap	stageTwelveCp;
 		CMovingBitmap	stageThirteenCp;
 		CMovingBitmap	stageFourteenCp;
+		CMovingBitmap	stageFifteenCp;
+		CMovingBitmap	stageSixteenCp;
+		CMovingBitmap	stageSeventeenCp;
 	};
 
 }

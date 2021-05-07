@@ -214,6 +214,26 @@ SELECT_BG               BITMAP                  "..\\Bitmaps\\selectBG.bmp"
 
 SELECT_ALL_LOCK         BITMAP                  "..\\Bitmaps\\all_lock.bmp"
 
+STAGE_FIFTEEN_CP        BITMAP                  "..\\Bitmaps\\CP_level15.bmp"
+
+STAGE_SIXTEEN_CP        BITMAP                  "..\\Bitmaps\\CP_level16.bmp"
+
+STAGE_SEVENTEEN_CP      BITMAP                  "..\\Bitmaps\\CP_level17.bmp"
+
+STAGE_THIRTY_SL         BITMAP                  "..\\Bitmaps\\SL_level30.bmp"
+
+MY_STAGE_FIFTEEN        BITMAP                  "..\\Bitmaps\\stage_15.bmp"
+
+MY_STAGE_SIXTEEN        BITMAP                  "..\\Bitmaps\\stage_16.bmp"
+
+MY_STAGE_SEVENTEEN      BITMAP                  "..\\Bitmaps\\stage_17.bmp"
+
+STAGE_SIXTEEN_SL        BITMAP                  "..\\Bitmaps\\SL_level16.bmp"
+
+STAGE_SEVENTEEN_SL      BITMAP                  "..\\Bitmaps\\SL_level17.bmp"
+
+STAGE_EIGHTEEN_SL       BITMAP                  "..\\Bitmaps\\SL_level18.bmp"
+
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
