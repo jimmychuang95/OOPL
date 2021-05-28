@@ -116,6 +116,18 @@ namespace game_framework {
 		CMovingBitmap	stageSixteenBg;
 		CMovingBitmap	stageSeventeenBg;
 		CMovingBitmap	stageEighteenBg;
+		CMovingBitmap	stageNineteenBg;
+		CMovingBitmap	stageTwentyBg;
+		CMovingBitmap	stageTwentyOneBg;
+		CMovingBitmap	stageTwentyTwoBg;
+		CMovingBitmap	stageTwentyThreeBg;
+		CMovingBitmap	stageTwentyFourBg;
+		CMovingBitmap	stageTwentyFiveBg;
+		CMovingBitmap	stageTwentySixBg;
+		CMovingBitmap	stageTwentySevenBg;
+		CMovingBitmap	stageTwentyEightBg;
+		CMovingBitmap	stageTwentyNineBg;
+		CMovingBitmap	stageThirtyBg;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -164,6 +176,18 @@ namespace game_framework {
 		CMovingBitmap	stageFifteenBg;
 		CMovingBitmap	stageSixteenBg;
 		CMovingBitmap	stageSeventeenBg;
+		CMovingBitmap	stageEighteenBg;
+		CMovingBitmap	stageNineteenBg;
+		CMovingBitmap	stageTwentyBg;
+		CMovingBitmap	stageTwentyOneBg;
+		CMovingBitmap	stageTwentyTwoBg;
+		CMovingBitmap	stageTwentyThreeBg;
+		CMovingBitmap	stageTwentyFourBg;
+		CMovingBitmap	stageTwentyFiveBg;
+		CMovingBitmap	stageTwentySixBg;
+		CMovingBitmap	stageTwentySevenBg;
+		CMovingBitmap	stageTwentyEightBg;
+		CMovingBitmap	stageTwentyNineBg;
 
 		CMovingBitmap	line;
 		CMovingBitmap	console;
@@ -217,6 +241,18 @@ namespace game_framework {
 		CMovingBitmap	stageFifteenCp;
 		CMovingBitmap	stageSixteenCp;
 		CMovingBitmap	stageSeventeenCp;
+		CMovingBitmap	stageEighteenCp;
+		CMovingBitmap	stageNineteenCp;
+		CMovingBitmap	stageTwentyCp;
+		CMovingBitmap	stageTwentyOneCp;
+		CMovingBitmap	stageTwentyTwoCp;
+		CMovingBitmap	stageTwentyThreeCp;
+		CMovingBitmap	stageTwentyFourCp;
+		CMovingBitmap	stageTwentyFiveCp;
+		CMovingBitmap	stageTwentySixCp;
+		CMovingBitmap	stageTwentySevenCp;
+		CMovingBitmap	stageTwentyEightCp;
+		CMovingBitmap	stageTwentyNineCp;
 	};
 
 }
