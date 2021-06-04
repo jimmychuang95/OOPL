@@ -305,7 +305,174 @@ namespace game_framework {
 				y = 356;
 			}
 		}
-
+		else if (level == 18) {
+			if (num == 1) {
+				x = 112;
+				y = 281;
+			}
+			else if (num == 2) {
+				x = 149;
+				y = 281;
+			}
+			else if (num == 3) {
+				x = 187;
+				y = 319;
+			}
+		}
+		else if (level == 19) {
+			if (num == 1) {
+				x = 112;
+				y = 243;
+			}
+			else if (num == 2) {
+				x = 149;
+				y = 243;
+			}
+			else if (num == 3) {
+				x = 187;
+				y = 243;
+			}
+		}
+		else if (level == 20) {
+			if (num == 1) {
+				x = 75;
+				y = 281;
+			}
+			else if (num == 2) {
+				x = 149;
+				y = 281;
+			}
+			else if (num == 3) {
+				x = 187;
+				y = 319;
+			}
+		}
+		else if (level == 21) {
+			if (num == 1) {
+				x = 75;
+				y = 281;
+			}
+			else if (num == 2) {
+				x = 112;
+				y = 281;
+			}
+			else if (num == 3) {
+				x = 149;
+				y = 319;
+			}
+		}
+		else if (level == 22) {
+			if (num == 1) {
+				x = 149;
+				y = 244;
+			}
+			else if (num == 2) {
+				x = 188;
+				y = 244;
+			}
+			else if (num == 3) {
+				x = 244;
+				y = 206;
+			}
+		}
+		else if (level == 23) {
+			if (num == 1) {
+				x = 187;
+				y = 281;
+			}
+			else if (num == 2) {
+				x = 187;
+				y = 319;
+			}
+			else if (num == 3) {
+				x = 149;
+				y = 356;
+			}
+		}
+		else if (level == 24) {
+			if (num == 1) {
+				x = 112;
+				y = 319;
+			}
+			else if (num == 2) {
+				x = 149;
+				y = 355;
+			}
+			else if (num == 3) {
+				x = 186;
+				y = 355;
+			}
+		}
+		else if (level == 25) {
+			if (num == 1) {
+				x = 149;
+				y = 281;
+			}
+			else if (num == 2) {
+				x = 187;
+				y = 281;
+			}
+			else if (num == 3) {
+				x = 187;
+				y = 318;
+			}
+		}
+		else if (level == 26) {
+			if (num == 1) {
+				x = 75;
+				y = 243;
+			}
+			else if (num == 2) {
+				x = 113;
+				y = 281;
+			}
+			else if (num == 3) {
+				x = 187;
+				y = 281;
+			}
+		}
+		else if (level == 27) {
+			if (num == 1) {
+				x = 187;
+				y = 244;
+			}
+			else if (num == 2) {
+				x = 149;
+				y = 281;
+			}
+			else if (num == 3) {
+				x = 112;
+				y = 356;
+			}
+		}
+		else if (level == 28) {
+			if (num == 1) {
+				x = 75;
+				y = 319;
+			}
+			else if (num == 2) {
+				x = 112;
+				y = 319;
+			}
+			else if (num == 3) {
+				x = 150;
+				y = 319;
+			}
+		}
+		else if (level == 29) {
+			if (num == 1) {
+				x = 75;
+				y = 281;
+			}
+			else if (num == 2) {
+				x = 112;
+				y = 281;
+			}
+			else if (num == 3) {
+				x = 112;
+				y = 318;
+			}
+		}
 
 
 		isStanding = true;

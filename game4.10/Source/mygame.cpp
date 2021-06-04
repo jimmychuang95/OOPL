@@ -210,7 +210,7 @@ void CGameStateSelect::OnInit()
 	stageTwentyTwoBg.LoadBitmap(STAGE_TWENTYTWO_SL, RGB(255, 255, 255));
 	stageTwentyThreeBg.LoadBitmap(STAGE_TWENTYTHREE_SL, RGB(255, 255, 255));
 	stageTwentyFourBg.LoadBitmap(STAGE_TWENTYFOUR_SL, RGB(255, 255, 255));
-	stageTwentyFiveBg.LoadBitmap(STAGE_TWENTYFIXE_SL, RGB(255, 255, 255));
+	stageTwentyFiveBg.LoadBitmap(STAGE_TWENTYFIVE_SL, RGB(255, 255, 255));
 	stageTwentySixBg.LoadBitmap(STAGE_TWENTYSIX_SL, RGB(255, 255, 255));
 	stageTwentySevenBg.LoadBitmap(STAGE_TWENTYSEVEN_SL, RGB(255, 255, 255));
 	stageTwentyEightBg.LoadBitmap(STAGE_TWENTYEIGHT_SL, RGB(255, 255, 255));
@@ -501,8 +501,8 @@ void CGameStateSelect::OnShow()
 	}
 
 	if (stageOpened == 99999) {
-		stageEighteenBg.SetTopLeft(x, 0);
-		stageEighteenBg.ShowBitmap();
+		stageThirtyBg.SetTopLeft(x, 0);
+		stageThirtyBg.ShowBitmap();
 	}
 	else if (stageOpened == 1) {
 		stageOneBg.SetTopLeft(x, 0);

@@ -111,6 +111,53 @@ namespace game_framework {
 			x = 224;
 			y = 356;
 		}
+		else if (level == 19) {
+			x = 75;
+			y = 206;
+		}
+		else if (level == 20) {
+			x = 187;
+			y = 281;
+		}
+		else if (level == 21) {
+			x = 187;
+			y = 280;
+		}
+		else if (level == 22) {
+			x = 75;
+			y = 281;
+		}
+		else if (level == 23) {
+			x = 75;
+			y = 281;
+		}
+		else if (level == 24) {
+			x = 75;
+			y = 394;
+		}
+		else if (level == 25) {
+			x = 224;
+			y = 281;
+		}
+		else if (level == 26) {
+			x = 187;
+			y = 319;
+		}
+		else if (level == 27) {
+			x = 225;
+			y = 356;
+		}
+		else if (level == 28) {
+			x = 112;
+			y = 281;
+		}
+		else if (level == 29) {
+			x = 75;
+			y = 244;
+		}
+	
+
+
 		
 		current = 4;
 		isStanding = true;

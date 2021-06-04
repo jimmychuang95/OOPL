@@ -146,14 +146,6 @@ IDB_HELP                BITMAP                  "..\\res\\help.bmp"
 
 IDB_LOADING             BITMAP                  "..\\res\\loading.bmp"
 
-IDB_BITMAP3             BITMAP                  "..\\res\\bitmap3.bmp"
-
-IDB_BITMAP4             BITMAP                  "..\\res\\bitmap4.bmp"
-
-IDB_BITMAP6             BITMAP                  "..\\res\\bitmap6.bmp"
-
-IDB_BITMAP8             BITMAP                  "..\\res\\bitmap8.bmp"
-
 MY_HOMEPAGE             BITMAP                  "..\\Bitmaps\\homepage.bmp"
 
 MY_LEADER               BITMAP                  "..\\Bitmaps\\leader.bmp"
@@ -233,6 +225,76 @@ STAGE_SIXTEEN_SL        BITMAP                  "..\\Bitmaps\\SL_level16.bmp"
 STAGE_SEVENTEEN_SL      BITMAP                  "..\\Bitmaps\\SL_level17.bmp"
 
 STAGE_EIGHTEEN_SL       BITMAP                  "..\\Bitmaps\\SL_level18.bmp"
+
+STAGE_EIGHTEEN_CP       BITMAP                  "..\\Bitmaps\\CP_level18.bmp"
+
+STAGE_NINETEEN_CP       BITMAP                  "..\\Bitmaps\\CP_level19.bmp"
+
+STAGE_TWENTY_CP         BITMAP                  "..\\Bitmaps\\CP_level20.bmp"
+
+STAGE_TWENTYONE_CP      BITMAP                  "..\\Bitmaps\\CP_level21.bmp"
+
+STAGE_TWENTYTWO_CP      BITMAP                  "..\\Bitmaps\\CP_level22.cp.bmp"
+
+STAGE_TWENTYTHREE_CP    BITMAP                  "..\\Bitmaps\\CP_level23.bmp"
+
+STAGE_TWENTYFOUR_CP     BITMAP                  "..\\Bitmaps\\CP_level24.bmp"
+
+STAGE_TWENTYFIVE_CP     BITMAP                  "..\\Bitmaps\\CP_level25.bmp"
+
+STAGE_TWENTYSIX_CP      BITMAP                  "..\\Bitmaps\\CP_level26.bmp"
+
+STAGE_TWENTYSEVEN_CP    BITMAP                  "..\\Bitmaps\\CP_level27.bmp"
+
+STAGE_TWENTYEIGHT_CP    BITMAP                  "..\\Bitmaps\\CP_level28.bmp"
+
+STAGE_TWENTYNINE_CP     BITMAP                  "..\\Bitmaps\\CP_level29.bmp"
+
+MY_STAGE_EIGHTEEN       BITMAP                  "..\\Bitmaps\\stage_18.bmp"
+
+MY_STAGE_NINETEEN       BITMAP                  "..\\Bitmaps\\stage_19.bmp"
+
+MY_STAGE_TWENTY         BITMAP                  "..\\Bitmaps\\stage_20.bmp"
+
+MY_STAGE_TWENTYONE      BITMAP                  "..\\Bitmaps\\stage_21.bmp"
+
+MY_STAGE_TWENTYTWO      BITMAP                  "..\\Bitmaps\\stage_22.bmp"
+
+MY_STAGE_TWENTYTHREE    BITMAP                  "..\\Bitmaps\\stage_23.bmp"
+
+MY_STAGE_TWENTYFOUR     BITMAP                  "..\\Bitmaps\\stage_24.bmp"
+
+MY_STAGE_TWENTYFIVE     BITMAP                  "..\\Bitmaps\\stage_25.bmp"
+
+MY_STAGE_TWENTYSIX      BITMAP                  "..\\Bitmaps\\stage_26.bmp"
+
+MY_STAGE_TWENTYSEVEN    BITMAP                  "..\\Bitmaps\\stage_27.bmp"
+
+MY_STAGE_TWENTYEIGHT    BITMAP                  "..\\Bitmaps\\stage_28.bmp"
+
+MY_STAGE_TWENTYNINE     BITMAP                  "..\\Bitmaps\\stage_29.bmp"
+
+STAGE_NINETEEN_SL       BITMAP                  "..\\Bitmaps\\SL_level19.bmp"
+
+STAGE_TWENTY_SL         BITMAP                  "..\\Bitmaps\\SL_level20.bmp"
+
+STAGE_TWENTYONE_SL      BITMAP                  "..\\Bitmaps\\SL_level21.bmp"
+
+STAGE_TWENTYTWO_SL      BITMAP                  "..\\Bitmaps\\SL_level22.bmp"
+
+STAGE_TWENTYTHREE_SL    BITMAP                  "..\\Bitmaps\\SL_level23.bmp"
+
+STAGE_TWENTYFOUR_SL     BITMAP                  "..\\Bitmaps\\SL_level24.bmp"
+
+STAGE_TWENTYFIVE_SL     BITMAP                  "..\\Bitmaps\\SL_level25.bmp"
+
+STAGE_TWENTYSIX_SL      BITMAP                  "..\\Bitmaps\\SL_level26.bmp"
+
+STAGE_TWENTYSEVEN_SL    BITMAP                  "..\\Bitmaps\\SL_level27.bmp"
+
+STAGE_TWENTYEIGHT_SL    BITMAP                  "..\\Bitmaps\\SL_level28.bmp"
+
+STAGE_TWENTYNINE_SL     BITMAP                  "..\\Bitmaps\\SL_level29.bmp"
 
 
 #ifdef APSTUDIO_INVOKED
