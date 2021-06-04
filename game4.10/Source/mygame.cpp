@@ -88,7 +88,8 @@ void CGameStateInit::OnBeginState()
 		CAudio::Instance()->Load(AUDIO_CLICK, "sounds\\click.mp3");				//Load click sound
 		CAudio::Instance()->Load(AUDIO_BGM, "sounds\\bgm.mp3");					//Load BGM
 	}
-	CAudio::Instance()->Play(AUDIO_BGM, true);									//Play BGM
+	if(!muteBGM)
+		CAudio::Instance()->Play(AUDIO_BGM, true);									//Play BGM
 }
 
 void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)

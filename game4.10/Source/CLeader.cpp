@@ -111,6 +111,10 @@ namespace game_framework {
 			x = 224;
 			y = 356;
 		}
+		else if (level == 18) {
+			x = 150;
+			y = 318;
+		}
 		else if (level == 19) {
 			x = 75;
 			y = 206;

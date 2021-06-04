@@ -231,7 +231,7 @@ namespace game_framework {
 									  {1,0,0,0,0,0,1,1,1},
 									  {1,0,1,0,1,2,0,1,1},
 									  {1,3,0,2,6,0,0,1,1},
-									  {1,0,0,4,1,0,3,1,1},
+									  {1,4,0,0,1,0,3,1,1},
 									  {1,1,1,1,1,1,1,1,1},
 									  {1,1,1,1,1,1,1,1,1},
 									  {1,1,1,1,1,1,1,1,1},
@@ -661,7 +661,7 @@ namespace game_framework {
 					if (map[leadersite[0]][leadersite[1] + 2] == 0) {				//leader在終點上 - 完成的箱子 - 地板
 						map[leadersite[0]][leadersite[1]] = 3;
 						map[leadersite[0]][leadersite[1] + 1] = 5;
-						map[leadersite[0]][leadersite[1] + 2] = 0;
+						map[leadersite[0]][leadersite[1] + 2] = 2;
 						leadersite[1] += 1;
 						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
 						return true;
@@ -779,7 +779,7 @@ namespace game_framework {
 					if (map[leadersite[0]][leadersite[1] - 2] == 0) {				//地板 - 完成的箱子 - leader在終點上
 						map[leadersite[0]][leadersite[1]] = 3;
 						map[leadersite[0]][leadersite[1] - 1] = 5;
-						map[leadersite[0]][leadersite[1] - 2] = 0;
+						map[leadersite[0]][leadersite[1] - 2] = 2;
 						leadersite[1] -= 1;
 						TRACE("my leader site = (%d,%d\n)", leadersite[0], leadersite[1]);
 						return true;

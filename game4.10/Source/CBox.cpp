@@ -358,7 +358,7 @@ namespace game_framework {
 			}
 			else if (num == 3) {
 				x = 149;
-				y = 319;
+				y = 281;
 			}
 		}
 		else if (level == 22) {
@@ -367,11 +367,11 @@ namespace game_framework {
 				y = 244;
 			}
 			else if (num == 2) {
-				x = 188;
+				x = 187;
 				y = 244;
 			}
 			else if (num == 3) {
-				x = 244;
+				x = 224;
 				y = 206;
 			}
 		}
