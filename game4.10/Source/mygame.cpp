@@ -431,14 +431,6 @@ void CGameStateSelect::OnLButtonDown(UINT nFlags, CPoint point)
 					CAudio::Instance()->Play(AUDIO_CLICK, false);
 				GotoGameState(GAME_STATE_RUN);
 			}
-		if (stageOpened >= 30 || hackEnable)
-			if (point.x < 311 && point.x > 268 && point.y > 442 && point.y < 484) {		//level 30
-				stageNow = 30;
-				if (!muteSound)
-					CAudio::Instance()->Play(AUDIO_CLICK, false);
-				GotoGameState(GAME_STATE_RUN);
-			}
-
 	}
 
 
@@ -502,8 +494,8 @@ void CGameStateSelect::OnShow()
 	}
 
 	if (stageOpened == 99999) {
-		stageThirtyBg.SetTopLeft(x, 0);
-		stageThirtyBg.ShowBitmap();
+		stageTwentyNineBg.SetTopLeft(x, 0);
+		stageTwentyNineBg.ShowBitmap();
 	}
 	else if (stageOpened == 1) {
 		stageOneBg.SetTopLeft(x, 0);
@@ -687,11 +679,13 @@ void CGameStateOver::OnInit()
 
 void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (pow(pow(point.x - 168, 2) + pow(point.y - 369, 2), 0.5) < 34) {			//to next level
-		if (!muteSound)
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
-		stageNow++;
-		GotoGameState(GAME_STATE_RUN);											
+	if (stageNow < 29) {
+		if (pow(pow(point.x - 168, 2) + pow(point.y - 369, 2), 0.5) < 34) {			//to next level
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+			stageNow++;
+			GotoGameState(GAME_STATE_RUN);
+		}
 	}
 	if (pow(pow(point.x - 239, 2) + pow(point.y - 369, 2), 0.5) < 24) {			//replay this level
 		if (!muteSound)
