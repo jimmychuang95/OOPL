@@ -73,8 +73,10 @@ namespace game_framework {
 	private:
 		CMovingBitmap logo;								//Background
 		CMovingBitmap line;
+		CMovingBitmap info;
 		int		leaveInitCount = 0;
 		bool	muteBGM = false;
+		bool	showInfo = false;
 	};
 
 

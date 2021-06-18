@@ -80,10 +80,12 @@ void CGameStateInit::OnInit()
 	ShowInitProgress(0);
 	logo.LoadBitmap(MY_HOMEPAGE);
 	line.LoadBitmap(RED_LINE, RGB(255, 255, 255));
+	info.LoadBitmap(INFO, RGB(255, 0, 0));
 }
 
 void CGameStateInit::OnBeginState()
 {
+	showInfo = false;
 	if (leaveInitCount == 0) {
 		CAudio::Instance()->Load(AUDIO_CLICK, "sounds\\click.mp3");				//Load click sound
 		CAudio::Instance()->Load(AUDIO_BGM, "sounds\\bgm.mp3");					//Load BGM
@@ -103,57 +105,67 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (point.x < 230 && point.x > 110 && point.y > 260 && point.y < 315) {		//Play button
-		GotoGameState(GAME_STATE_SELECT);
-		if (!muteSound)
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
+	if (!showInfo) {
+		if (pow(pow(point.x - 221, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//hack enable (open all level) show info
+			showInfo = true;
+			hackEnable = true;
+			stageOpened = 99999;
+			if (!muteSound)
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+		}
 
-		CAudio::Instance()->Stop(AUDIO_BGM);
-		leaveInitCount++;
-	}
-
-	if (pow(pow(point.x - 221, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//hack enable (open all level)
-		hackEnable = true;
-		stageOpened = 99999;
-		if (!muteSound)
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
-	}
-
-	if (!muteBGM) {
-		if (pow(pow(point.x - 116, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//mute BGM
+		if (point.x < 230 && point.x > 110 && point.y > 260 && point.y < 315) {		//Play button
+			GotoGameState(GAME_STATE_SELECT);
 			if (!muteSound)
 				CAudio::Instance()->Play(AUDIO_CLICK, false);
 
-			muteBGM = true;
 			CAudio::Instance()->Stop(AUDIO_BGM);
+			leaveInitCount++;
+		}
+
+		if (!muteBGM) {
+			if (pow(pow(point.x - 116, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//mute BGM
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+
+				muteBGM = true;
+				CAudio::Instance()->Stop(AUDIO_BGM);
+			}
+		}
+		else {
+			if (pow(pow(point.x - 116, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//unmute BGM
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+
+				muteBGM = false;
+				CAudio::Instance()->Play(AUDIO_BGM, true);
+			}
+		}
+
+		if (!muteSound) {
+			if (pow(pow(point.x - 168, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//mute sound effects
+				CAudio::Instance()->Play(AUDIO_CLICK, false);
+				muteSound = true;
+				//muteBGM = true;
+				//CAudio::Instance()->Stop(AUDIO_BGM);
+			}
+		}
+		else {
+			if (pow(pow(point.x - 168, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//unmute sound effects
+				if (!muteSound)
+					CAudio::Instance()->Play(AUDIO_CLICK, false);
+
+				muteSound = false;
+				//muteBGM = false;
+				//CAudio::Instance()->Play(AUDIO_BGM, true);
+			}
 		}
 	}
-	else {
-		if (pow(pow(point.x - 116, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//unmute BGM
+	if (showInfo) {
+		if (point.x < 294 && point.x > 264 && point.y > 160 && point.y < 190) {		//Close info
+			showInfo = false;
 			if (!muteSound)
 				CAudio::Instance()->Play(AUDIO_CLICK, false);
-
-			muteBGM = false;
-			CAudio::Instance()->Play(AUDIO_BGM, true);
-		}
-	}
-
-	if (!muteSound) {
-		if (pow(pow(point.x - 168, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//mute sound effects
-			CAudio::Instance()->Play(AUDIO_CLICK, false);
-			muteSound = true;
-			//muteBGM = true;
-			//CAudio::Instance()->Stop(AUDIO_BGM);
-		}
-	}
-	else {
-		if (pow(pow(point.x - 168, 2) + pow(point.y - 396, 2), 0.5) < 23) {			//unmute sound effects
-			if(!muteSound)
-				CAudio::Instance()->Play(AUDIO_CLICK, false);
-
-			muteSound = false;
-			//muteBGM = false;
-			//CAudio::Instance()->Play(AUDIO_BGM, true);
 		}
 	}
 }
@@ -163,13 +175,17 @@ void CGameStateInit::OnShow()
 	logo.SetTopLeft(0, 0);
 	logo.ShowBitmap();
 
-	if (muteBGM == true) {				//如果靜音顯示紅色斜線
+	if (muteBGM) {				//如果靜音顯示紅色斜線
 		line.SetTopLeft(95, 374);
 		line.ShowBitmap();
 	}
-	if (muteSound == true) {
+	if (muteSound) {
 		line.SetTopLeft(147, 374);
 		line.ShowBitmap();
+	}
+	if (showInfo) {
+		info.SetTopLeft(50, 149);
+		info.ShowBitmap();
 	}
 }								
 

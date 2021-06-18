@@ -22,6 +22,6 @@
 		int init_leadersite[2] = { 0 };
 		int leadersite[2] = { 0 };
 		int finish_pos[6] = { 0 };
-		int finish_dis[6] = { 0 };
+		int finish_dis[6] = { 5000 };
 	};
 }

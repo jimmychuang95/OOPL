@@ -379,6 +379,7 @@
     <Image Include="Bitmaps\floor.bmp" />
     <Image Include="Bitmaps\homepage.bmp" />
     <Image Include="Bitmaps\homepage_try.bmp" />
+    <Image Include="Bitmaps\info.bmp" />
     <Image Include="Bitmaps\leader.bmp" />
     <Image Include="Bitmaps\leader_left.bmp" />
     <Image Include="Bitmaps\leader_right.bmp" />
